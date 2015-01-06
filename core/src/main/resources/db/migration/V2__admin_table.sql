@@ -1,0 +1,2 @@
+ALTER TABLE users
+    ADD COLUMN isAdmin BOOL NOT NULL DEFAULT false;
