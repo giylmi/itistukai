@@ -1,3 +1,4 @@
+<#include "../functions/joiner.ftl"/>
 select u.id, u.login, u.password, u.salt, u.email, u.role<#if withPI!false>, pi.firstName, pi.middleName, pi.lastName</#if>
     from users u
         <#--joining name-->
@@ -7,5 +8,5 @@ select u.id, u.login, u.password, u.salt, u.email, u.role<#if withPI!false>, pi.
 where 1=1
     <#--filtering common user and admins-->
     <#if withRoles?? && withRoles?has_content >
-        and role=${withRoles}
+        and role in (<@join_roles roles=withRoles/>)
     </#if>

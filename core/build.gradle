@@ -1,4 +1,4 @@
-buildscript{
+buildscript {
 
     repositories {
         mavenLocal()
@@ -19,11 +19,15 @@ dependencies {
 
 apply plugin: 'flyway'
 
-Properties properties = new Properties();
-//todo: profile properties
-properties.load(new FileReader(project.file('src/main/resources/database-local.properties')))
 
 flyway {
+    Properties properties = new Properties();
+    //todo: profile properties
+    try {
+        properties.load(new FileReader(project.file('src/main/resources/database-local.properties')))
+    } catch (IOException) {
+
+    }
     url = properties.get('jdbc.url')
     user = properties.get('jdbc.user')
     password = properties.get('jdbc.password')

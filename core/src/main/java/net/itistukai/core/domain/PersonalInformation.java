@@ -57,4 +57,8 @@ public class PersonalInformation {
            return pi;
        }
     };
+
+    public String toString(){
+        return lastName + " " + firstName;
+    }
 }

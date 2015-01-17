@@ -1,5 +1,6 @@
 package net.itistukai.core.test;
 
+import com.google.common.collect.Lists;
 import net.itistukai.core.config.DaoConfig;
 import net.itistukai.core.dao.IUserDao;
 import net.itistukai.core.domain.PersonalInformation;
@@ -12,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
@@ -36,7 +38,7 @@ public class UserDaoTest {
 
     @Test
     public void allAdmins(){
-        IUserDao.UserQueryParameters params = IUserDao.UserQueryParameters.builder().withRole(UserRole.ADMIN).build();
+        IUserDao.UserQueryParameters params = IUserDao.UserQueryParameters.builder().withRole(Arrays.asList(UserRole.ADMIN)).build();
         List<User> users = userDao.all(params);
         assertNotNull(users);
         assertTrue(!users.isEmpty());
