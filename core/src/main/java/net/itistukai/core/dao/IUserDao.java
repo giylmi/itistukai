@@ -19,6 +19,10 @@ public interface IUserDao {
 
     User registerUser(User user);
 
+    Integer count(UserQueryParameters parameters);
+
+    Integer count();
+
     public class UserQueryParameters {
 
         public List<UserRole> withRoles;

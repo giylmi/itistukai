@@ -21,4 +21,9 @@ public class UserService implements IUserService {
     public List<User> all() {
         return userDao.all();
     }
+
+    @Override
+    public Integer count() {
+        return userDao.count();
+    }
 }

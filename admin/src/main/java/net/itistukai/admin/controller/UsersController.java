@@ -1,5 +1,6 @@
 package net.itistukai.admin.controller;
 
+import net.itistukai.admin.service.IAdminService;
 import net.itistukai.core.dao.IUserDao;
 import net.itistukai.core.domain.User;
 import net.itistukai.core.service.IUserService;
@@ -19,10 +20,13 @@ public class UsersController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IAdminService adminService;
+
     @RequestMapping("users")
     public String users(Model model){
-        List<User> users = userService.all();
-        model.addAttribute("users", users);
+        model.addAttribute("usersTotal", userService.count());
+        model.addAttribute("adminsTotal", adminService.count());
         return "users";
     }
 }
