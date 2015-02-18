@@ -1,5 +1,6 @@
 <#include "mainTemplate.ftl"/>
 <#include "functions.ftl"/>
+<#include "users/userFormTabContent.ftl"/>
 <#macro m_body>
 <div class="row">
     <div class="col-lg-12">
@@ -11,11 +12,11 @@
 </div>
 <div class="row">
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-primary">
+        <div class="panel panel-dashboard panel-primary">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-comments fa-5x"></i>
+                        <i class="fa fa-users fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">${usersTotal!0}</div>
@@ -25,7 +26,7 @@
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">Подробнее</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -33,11 +34,11 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-green">
+        <div class="panel panel-dashboard panel-red">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-tasks fa-5x"></i>
+                        <i class="fa fa-users fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">${adminsTotal!0}</div>
@@ -47,7 +48,7 @@
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">Подробнее</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -55,21 +56,21 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-yellow">
+        <div class="panel panel-dashboard panel-yellow">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-shopping-cart fa-5x"></i>
+                        <i class="fa fa-user fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">124</div>
-                        <div>New Orders!</div>
+                        <div class="huge">Создать</div>
+                        <div>пользователя</div>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">Открыть форму</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -77,21 +78,21 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-red">
+        <div class="panel panel-dashboard panel-info">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
                         <i class="fa fa-support fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">13</div>
-                        <div>Support Tickets!</div>
+                        <div class="huge">Создать</div>
+                        <div>администратора</div>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">Открыть форму</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -99,11 +100,14 @@
         </div>
     </div>
 </div>
-<!-- /.row -->
 <div class="row">
-    <#list users as user>
-        <div class="list-group-item">${user.pi}</div>
-    </#list>
+    <@userFormTab/>
 </div>
+<!-- /.row -->
+<#--<div class="row">-->
+    <#--<#list users as user>-->
+        <#--<div class="list-group-item">${user.pi}</div>-->
+    <#--</#list>-->
+<#--</div>-->
 </#macro>
 <@m_page title="Пользователи"/>

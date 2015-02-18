@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title!"Панель администратора"}</title>
     <!-- Bootstrap -->
-    <link href="<@c.url value="/resources/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
-    <link href="<@c.url value="/resources/admin/css/sb-admin-2.css"/>" rel="stylesheet">
-    <link href="<@c.url value="/resources/admin/css/timeline.css"/>" rel="stylesheet">
-    <link href="<@c.url value="/resources/admin/css/metisMenu.min.css"/>" rel="stylesheet">
-    <link href="<@c.url value="/resources/admin/css/font-awesome.min.css"/>" rel="stylesheet">
+    <link href="<@url value="/resources/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<@url value="/resources/admin/css/sb-admin-2.css"/>" rel="stylesheet">
+    <link href="<@url value="/resources/admin/css/timeline.css"/>" rel="stylesheet">
+    <link href="<@url value="/resources/admin/css/metisMenu.min.css"/>" rel="stylesheet">
+    <link href="<@url value="/resources/admin/css/font-awesome.min.css"/>" rel="stylesheet">
 
     <#list customStyles as style>
-        <link href="<@c.url value="/resources/css/${style}"/>" rel="stylesheet">
+        <link href="<@url value="/resources/css/${style}"/>" rel="stylesheet">
     </#list>
 </head>
 <body>
