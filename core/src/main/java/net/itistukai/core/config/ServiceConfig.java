@@ -1,10 +1,7 @@
 package net.itistukai.core.config;
 
-import org.jinstagram.Instagram;
 import org.jinstagram.auth.InstagramAuthService;
-import org.jinstagram.auth.model.Verifier;
 import org.jinstagram.auth.oauth.InstagramService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
@@ -17,13 +14,13 @@ import org.springframework.context.annotation.*;
 public class ServiceConfig {
 
     @Value("INSTAGRAM_CLIENT_ID")
-    public static String INSTAGRAM_CLIENT_ID;
+    public String INSTAGRAM_CLIENT_ID;
 
     @Value("INSTAGRAM_CLIENT_SECRET")
-    public static String INSTAGRAM_CLIENT_SECRET;
+    public String INSTAGRAM_CLIENT_SECRET;
 
     @Value("INSTAGRAM_CALLBACK_URL")
-    public static String INSTAGRAM_CALLBACK_URL;
+    public String INSTAGRAM_CALLBACK_URL;
 
     @Bean
     public InstagramService instagramService(){
