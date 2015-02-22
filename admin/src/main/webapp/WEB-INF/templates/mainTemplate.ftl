@@ -18,18 +18,26 @@
     <#list customStyles as style>
         <link href="<@url value="/resources/css/${style}"/>" rel="stylesheet">
     </#list>
+
+    <script src="<@url value="/resources/js/jquery-2.1.3.min.js"/>"></script>
+    <script src="<@url value="/resources/js/params.jquery.js"/>"></script>
+    <script src="<@url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
+    <script src="<@url value="/resources/admin/js/metisMenu.min.js"/>"></script>
+    <#list customScripts as script>
+        <script src="<@url value="/resources/js/${script}"/>"></script>
+    </#list>
+
+    <script>
+        window.JS_DATA = ${__js_data__!'{}'};
+        window.contextPath = '${rc.contextPath}';
+    </script>
 </head>
 <body>
     <@nav></@nav>
     <div id="page-wrapper">
         <@m_body></@m_body>
     </div>
-<#--TODO: скачать jquery вместо CDN-->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="<@c.url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
-<script src="<@c.url value="/resources/admin/js/metisMenu.min.js"/>"></script>
+
 </body>
 </html>
 </#macro>

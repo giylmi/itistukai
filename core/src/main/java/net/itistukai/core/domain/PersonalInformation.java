@@ -15,6 +15,15 @@ public class PersonalInformation {
     private String middleName;
     private String lastName;
 
+    public PersonalInformation() {
+    }
+
+    public PersonalInformation(String firstName, String middleName, String lastName) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+    }
+
     public Long getUserId() {
         return userId;
     }

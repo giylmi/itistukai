@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IAdminService {
 
-    List<User> all();
+    List<User> all(boolean withPI);
 
     Integer count();
 }

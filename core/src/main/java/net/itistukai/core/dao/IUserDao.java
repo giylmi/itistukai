@@ -28,17 +28,19 @@ public interface IUserDao {
         public List<UserRole> withRoles;
         public Boolean withPI;
 
-        private UserQueryParameters(){}
+        public Map<String, Object> params;
 
-        public UserQueryParameters(List<UserRole> withRoles, Boolean withPI) {
+        public UserQueryParameters(List<UserRole> withRoles, Boolean withPI, Map<String, Object> params) {
             this.withRoles = withRoles;
             this.withPI = withPI;
+            this.params = params;
         }
 
         public Map<String, Object> asMap(){
             Map<String, Object> params = new HashMap<>();
             params.put("withRoles", withRoles);
             params.put("withPI", withPI);
+            params.put("params", this.params);
             return params;
         }
 
@@ -57,6 +59,7 @@ public interface IUserDao {
 
             private List<UserRole> withRoles;
             private Boolean withPI;
+            private Map<String, Object> params = new HashMap<>();
 
             public Builder withRole(List<UserRole> withRoles){
                 this.withRoles = withRoles;
@@ -68,8 +71,13 @@ public interface IUserDao {
                 return this;
             }
 
+            public Builder addParam(String key, Object value){
+                params.put(key, value);
+                return this;
+            }
+
             public UserQueryParameters build(){
-                return new UserQueryParameters(withRoles, withPI);
+                return new UserQueryParameters(withRoles, withPI, params);
             }
         }
     }

@@ -1,6 +1,7 @@
 package net.itistukai.admin.config;
 
 import freemarker.template.TemplateException;
+import net.itistukai.admin.interceptor.JsDataInjectionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -90,15 +91,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return localeResolver;
     }
 
-    @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
-        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-        lci.setParamName("lang");
-        return lci;
-    }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(new JsDataInjectionInterceptor());
     }
 }

@@ -1,6 +1,5 @@
 package net.itistukai.core.test;
 
-import com.google.common.collect.Lists;
 import net.itistukai.core.config.DaoConfig;
 import net.itistukai.core.dao.IUserDao;
 import net.itistukai.core.domain.PersonalInformation;

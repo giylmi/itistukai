@@ -20,9 +20,10 @@ public class AdminService implements IAdminService {
     IUserDao userDao;
 
     @Override
-    public List<User> all() {
+    public List<User> all(boolean withPI) {
         IUserDao.UserQueryParameters.Builder builder = IUserDao.UserQueryParameters.builder();
         builder.withRole(Arrays.asList(UserRole.ADMIN));
+        builder.withPI(Boolean.TRUE);
         return userDao.all(builder.build());
     }
 

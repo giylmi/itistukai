@@ -24,4 +24,10 @@ public enum UserRole {
                 return role;
         return USER;
     }
+
+    public static boolean check(String name){
+        for (UserRole role: UserRole.values())
+            if (role.toString().equals(name)) return true;
+        return false;
+    }
 }

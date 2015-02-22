@@ -1,21 +1,18 @@
 package net.itistukai.admin.controller;
 
 import net.itistukai.admin.service.IAdminService;
-import net.itistukai.admin.validator.UserValidator;
-import net.itistukai.core.dao.IUserDao;
-import net.itistukai.core.domain.User;
+import net.itistukai.core.domain.UserRole;
+import net.itistukai.core.form.UserForm;
 import net.itistukai.core.service.IUserService;
+import net.itistukai.core.validator.UserFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.validation.Valid;
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by giylmi on 06.01.15.
@@ -29,21 +26,40 @@ public class UsersController {
     @Autowired
     private IAdminService adminService;
 
-    @InitBinder("user")
-    protected void initBinder(WebDataBinder binder){
-        binder.addValidators(new UserValidator());
-    }
+    @Autowired
+    UserFormValidator userFormValidator;
 
     @RequestMapping("users")
-    public String users(Model model){
+    public String index(Model model, @RequestParam(value = "tab", required = false, defaultValue = "users") String tab){
         model.addAttribute("usersTotal", userService.count());
         model.addAttribute("adminsTotal", adminService.count());
+        model.addAttribute("js_tab", tab);
+
+        model.addAttribute("userForm", new UserForm());
         return "users";
     }
 
+    @RequestMapping(value = "users/all", method = RequestMethod.POST)
+    public String users(Model model){
+        model.addAttribute("users", userService.all(true));
+        return "users/usersTabContent";
+    }
+
+    @RequestMapping(value = "users/admins", method = RequestMethod.POST)
+    public String admins(Model model){
+        model.addAttribute("users", adminService.all(true));
+        return "users/usersTabContent";
+    }
+
     @RequestMapping(value = "users/register", method = RequestMethod.POST)
-    public String register(@Valid User user, String password_confirmation, BindingResult result){
-        if(!user.getPassword().equals(password_confirmation)) result.rejectValue("password", "notEquals");
-        return "redirect:users";
+    public String register(@ModelAttribute UserForm userForm, BindingResult result, Model model){
+        userFormValidator.validate(userForm, result);
+        if (result.hasErrors()) {
+            return "users/userFormTabContent";
+        }
+        userService.registerUser(userForm);
+        model.addAttribute("userForm", new UserForm());
+        model.addAttribute("created", Boolean.TRUE);
+        return "users/userFormTabContent";
     }
 }

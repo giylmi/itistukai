@@ -1,6 +1,7 @@
 package net.itistukai.core.service;
 
 import net.itistukai.core.domain.User;
+import net.itistukai.core.form.UserForm;
 
 import java.util.List;
 
@@ -9,8 +10,11 @@ import java.util.List;
  */
 public interface IUserService {
 
-    List<User> all();
+    List<User> all(boolean withPI);
 
     Integer count();
 
+    User registerUser(UserForm user);
+
+    Boolean userExists(UserForm userForm);
 }

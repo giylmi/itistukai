@@ -1,6 +1,5 @@
 <#include "mainTemplate.ftl"/>
 <#include "functions.ftl"/>
-<#include "users/userFormTabContent.ftl"/>
 <#macro m_body>
 <div class="row">
     <div class="col-lg-12">
@@ -12,7 +11,7 @@
 </div>
 <div class="row">
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-dashboard panel-primary">
+        <div class="panel panel-dashboard panel-primary" data-tab="users">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -34,7 +33,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-dashboard panel-red">
+        <div class="panel panel-dashboard panel-red" data-tab="admins">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -56,7 +55,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-dashboard panel-yellow">
+        <div class="panel panel-dashboard panel-yellow" data-tab="userForm">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -77,31 +76,39 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-dashboard panel-info">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-support fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">Создать</div>
-                        <div>администратора</div>
-                    </div>
-                </div>
-            </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">Открыть форму</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
+    <#--<div class="col-lg-3 col-md-6">-->
+        <#--<div class="panel panel-dashboard panel-info">-->
+            <#--<div class="panel-heading">-->
+                <#--<div class="row">-->
+                    <#--<div class="col-xs-3">-->
+                        <#--<i class="fa fa-support fa-5x"></i>-->
+                    <#--</div>-->
+                    <#--<div class="col-xs-9 text-right">-->
+                        <#--<div class="huge">Создать</div>-->
+                        <#--<div>администратора</div>-->
+                    <#--</div>-->
+                <#--</div>-->
+            <#--</div>-->
+            <#--<a href="#">-->
+                <#--<div class="panel-footer">-->
+                    <#--<span class="pull-left">Открыть форму</span>-->
+                    <#--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>-->
+                    <#--<div class="clearfix"></div>-->
+                <#--</div>-->
+            <#--</a>-->
+        <#--</div>-->
+    <#--</div>-->
 </div>
 <div class="row">
-    <@userFormTab/>
+    <div id="userFormTabContent" hidden="hidden">
+        <#include "users/userFormTabContent.ftl"/>
+    </div>
+    <div id="usersTabContent" hidden="hidden">
+        <#--<#include "users/usersTabContent.ftl"/>-->
+    </div>
+    <div id="adminsTabContent" hidden="hidden">
+        <#--<#include "users/userFormTabContent.ftl"/>-->
+    </div>
 </div>
 <!-- /.row -->
 <#--<div class="row">-->
@@ -110,4 +117,7 @@
     <#--</#list>-->
 <#--</div>-->
 </#macro>
-<@m_page title="Пользователи"/>
+<@m_page title="Пользователи"
+    customScripts=["users.js"]
+    customStyles=["users.css"]
+/>
