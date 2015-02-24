@@ -1,7 +1,0 @@
-rootProject.name = 'itistukai'
-
-include 'admin'
-
-include 'core'
-
-include 'web'

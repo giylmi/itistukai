@@ -10,25 +10,25 @@ import org.springframework.context.annotation.*;
  */
 @Configuration
 @ComponentScan(basePackages = {"net.itistukai.core.service"})
-@PropertySource("classpath:instagram-api.properties")
+//@PropertySource("classpath:instagram-api.properties")
 public class ServiceConfig {
 
-    @Value("INSTAGRAM_CLIENT_ID")
-    public String INSTAGRAM_CLIENT_ID;
-
-    @Value("INSTAGRAM_CLIENT_SECRET")
-    public String INSTAGRAM_CLIENT_SECRET;
-
-    @Value("INSTAGRAM_CALLBACK_URL")
-    public String INSTAGRAM_CALLBACK_URL;
-
-    @Bean
-    public InstagramService instagramService(){
-        return new InstagramAuthService()
-                .apiKey(INSTAGRAM_CLIENT_ID)
-                .apiSecret(INSTAGRAM_CLIENT_SECRET)
-                .callback(INSTAGRAM_CALLBACK_URL)
-                .build();
-    }
+//    @Value("INSTAGRAM_CLIENT_ID")
+//    public String INSTAGRAM_CLIENT_ID;
+//
+//    @Value("INSTAGRAM_CLIENT_SECRET")
+//    public String INSTAGRAM_CLIENT_SECRET;
+//
+//    @Value("INSTAGRAM_CALLBACK_URL")
+//    public String INSTAGRAM_CALLBACK_URL;
+//
+//    @Bean
+//    public InstagramService instagramService(){
+//        return new InstagramAuthService()
+//                .apiKey(INSTAGRAM_CLIENT_ID)
+//                .apiSecret(INSTAGRAM_CLIENT_SECRET)
+//                .callback(INSTAGRAM_CALLBACK_URL)
+//                .build();
+//    }
 
 }
