@@ -1,7 +1,7 @@
-package net.itistukai.core.service;
+package net.itistukai.web.service;
 
 import net.itistukai.core.domain.User;
-import net.itistukai.core.form.UserForm;
+import net.itistukai.web.form.UserForm;
 
 import java.util.List;
 

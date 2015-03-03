@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Import;
  * Created by adel on 22.02.15.
  */
 @Configuration
-@Import(value = {DaoConfig.class, ServiceConfig.class, ValidatorsConfig.class})
+@Import(value = {DaoConfig.class})
 public class CoreConfig {
 }

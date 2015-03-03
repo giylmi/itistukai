@@ -1,7 +1,7 @@
-package net.itistukai.core.util;
+package net.itistukai.web.util;
 
 import net.itistukai.core.domain.User;
-import net.itistukai.core.form.UserForm;
+import net.itistukai.web.form.UserForm;
 import org.springframework.util.DigestUtils;
 
 import java.util.UUID;

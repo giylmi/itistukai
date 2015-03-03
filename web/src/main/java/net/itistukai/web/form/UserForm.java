@@ -1,6 +1,4 @@
-package net.itistukai.core.form;
-
-import net.itistukai.core.domain.UserRole;
+package net.itistukai.web.form;
 
 /**
  * Created by adel on 22.02.15.

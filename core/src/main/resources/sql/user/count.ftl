@@ -3,7 +3,7 @@ select count(*) from users u
 where 1=1
 <#--filtering common user and admins-->
 <#if withRoles?? && withRoles?has_content >
-and role in (<@join_roles roles=withRoles/>)
+and role in (<@join_enum values=withRoles/>)
 </#if>
 <#if params?? && (params.login?? || params.email??)>
     and

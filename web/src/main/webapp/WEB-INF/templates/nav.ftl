@@ -32,6 +32,9 @@
                 <li>
                     <a href="/admin/users"><i class="fa fa-male fa-fw"></i> Пользователи</a>
                 </li>
+                <li>
+                    <a href="/admin/compositions"><i class="fa fa-male fa-fw"></i> Произведения</a>
+                </li>
             <#--<li>-->
             <#--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
             <#--<ul class="nav nav-second-level">-->

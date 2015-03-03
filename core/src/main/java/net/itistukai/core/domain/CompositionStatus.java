@@ -5,5 +5,14 @@ package net.itistukai.core.domain;
  */
 public enum CompositionStatus {
 
-    ON, OFF, ARCHIVED
+    ON(0), ARCHIVED(1);
+    private final Integer value;
+
+    CompositionStatus(int value) {
+        this.value = value;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
 }

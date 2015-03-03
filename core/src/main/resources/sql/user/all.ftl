@@ -8,5 +8,5 @@ select u.id, u.login, u.password, u.salt, u.email, u.role<#if withPI!false>, pi.
 where 1=1
     <#--filtering common user and admins-->
     <#if withRoles?? && withRoles?has_content >
-        and role in (<@join_roles roles=withRoles/>)
+        and role in (<@join_enum values=withRoles/>)
     </#if>

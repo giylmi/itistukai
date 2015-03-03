@@ -1,4 +1,4 @@
-package net.itistukai.core.service;
+package net.itistukai.web.service;
 
 import net.itistukai.core.domain.User;
 

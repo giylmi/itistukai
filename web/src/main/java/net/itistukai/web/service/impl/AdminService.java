@@ -1,10 +1,10 @@
-package net.itistukai.core.service.impl;
+package net.itistukai.web.service.impl;
 
 import com.google.common.collect.Lists;
 import net.itistukai.core.dao.IUserDao;
 import net.itistukai.core.domain.User;
 import net.itistukai.core.domain.UserRole;
-import net.itistukai.core.service.IAdminService;
+import net.itistukai.web.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

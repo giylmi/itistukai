@@ -1,5 +1,5 @@
-<#macro join_roles roles=[]>
-    <#list roles as role>
-        ${role.value}<#if role_has_next>,</#if>
+<#macro join_enum values=[]>
+    <#list values as val>
+        ${val.value}<#if val_has_next>,</#if>
     </#list>
 </#macro>

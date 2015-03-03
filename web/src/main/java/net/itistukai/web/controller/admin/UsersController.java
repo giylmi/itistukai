@@ -1,9 +1,9 @@
 package net.itistukai.web.controller.admin;
 
-import net.itistukai.core.form.UserForm;
-import net.itistukai.core.service.IAdminService;
-import net.itistukai.core.service.IUserService;
-import net.itistukai.core.validator.UserFormValidator;
+import net.itistukai.web.form.UserForm;
+import net.itistukai.web.service.IAdminService;
+import net.itistukai.web.service.IUserService;
+import net.itistukai.web.validator.UserFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

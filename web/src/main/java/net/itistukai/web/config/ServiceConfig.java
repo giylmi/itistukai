@@ -1,15 +1,12 @@
-package net.itistukai.core.config;
+package net.itistukai.web.config;
 
-import org.jinstagram.auth.InstagramAuthService;
-import org.jinstagram.auth.oauth.InstagramService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 /**
  * Created by adel on 17.01.15.
  */
 @Configuration
-@ComponentScan(basePackages = {"net.itistukai.core.service"})
+@ComponentScan(basePackages = {"net.itistukai.web.service"})
 //@PropertySource("classpath:instagram-api.properties")
 public class ServiceConfig {
 
