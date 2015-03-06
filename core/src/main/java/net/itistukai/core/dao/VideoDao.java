@@ -9,5 +9,5 @@ public interface VideoDao {
 
     InstagramVideo getInstagramVideoByInstagramId(String id);
 
-    boolean saveInstagramVideo(InstagramVideo instagramVideo);
+    InstagramVideo saveInstagramVideo(InstagramVideo instagramVideo);
 }
