@@ -1,4 +1,4 @@
-package net.itistukai.core.domain;
+package net.itistukai.core.domain.core;
 
 import org.springframework.jdbc.core.RowMapper;
 

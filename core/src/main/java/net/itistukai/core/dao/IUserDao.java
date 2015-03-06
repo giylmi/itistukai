@@ -1,7 +1,7 @@
 package net.itistukai.core.dao;
 
-import net.itistukai.core.domain.User;
-import net.itistukai.core.domain.UserRole;
+import net.itistukai.core.domain.core.User;
+import net.itistukai.core.domain.core.UserRole;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.util.HashMap;

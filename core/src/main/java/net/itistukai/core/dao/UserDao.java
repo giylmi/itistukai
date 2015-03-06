@@ -3,7 +3,7 @@ package net.itistukai.core.dao;
 import com.google.common.collect.ImmutableMap;
 import net.itistukai.core.dao.adapter.DataSourceAdapter;
 import net.itistukai.core.dao.adapter.QueryManager;
-import net.itistukai.core.domain.User;
+import net.itistukai.core.domain.core.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;

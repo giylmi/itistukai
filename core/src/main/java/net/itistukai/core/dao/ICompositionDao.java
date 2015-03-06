@@ -1,7 +1,7 @@
 package net.itistukai.core.dao;
 
-import net.itistukai.core.domain.Composition;
-import net.itistukai.core.domain.CompositionStatus;
+import net.itistukai.core.domain.core.Composition;
+import net.itistukai.core.domain.core.CompositionStatus;
 
 import java.util.HashMap;
 import java.util.List;

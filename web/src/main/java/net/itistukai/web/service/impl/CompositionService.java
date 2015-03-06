@@ -2,9 +2,9 @@ package net.itistukai.web.service.impl;
 
 import com.google.common.collect.ImmutableList;
 import net.itistukai.core.dao.ICompositionDao;
-import net.itistukai.core.domain.Composition;
-import net.itistukai.core.domain.CompositionStatus;
-import net.itistukai.core.domain.Part;
+import net.itistukai.core.domain.core.Composition;
+import net.itistukai.core.domain.core.CompositionStatus;
+import net.itistukai.core.domain.core.Part;
 import net.itistukai.web.form.CompositionForm;
 import net.itistukai.web.service.ICompositionService;
 import org.springframework.beans.factory.annotation.Autowired;

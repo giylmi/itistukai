@@ -1,4 +1,4 @@
-package net.itistukai.core.domain;
+package net.itistukai.core.domain.core;
 
 import net.itistukai.core.exception.NotIncludedException;
 

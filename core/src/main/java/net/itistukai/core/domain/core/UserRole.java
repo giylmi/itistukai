@@ -1,4 +1,4 @@
-package net.itistukai.core.domain;
+package net.itistukai.core.domain.core;
 
 /**
  * Created by giylmi on 06.01.15.

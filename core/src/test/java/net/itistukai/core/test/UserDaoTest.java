@@ -2,9 +2,9 @@ package net.itistukai.core.test;
 
 import net.itistukai.core.config.DaoConfig;
 import net.itistukai.core.dao.IUserDao;
-import net.itistukai.core.domain.PersonalInformation;
-import net.itistukai.core.domain.User;
-import net.itistukai.core.domain.UserRole;
+import net.itistukai.core.domain.core.PersonalInformation;
+import net.itistukai.core.domain.core.User;
+import net.itistukai.core.domain.core.UserRole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

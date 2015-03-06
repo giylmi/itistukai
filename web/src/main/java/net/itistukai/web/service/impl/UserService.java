@@ -1,9 +1,9 @@
 package net.itistukai.web.service.impl;
 
 import net.itistukai.core.dao.IUserDao;
-import net.itistukai.core.domain.PersonalInformation;
-import net.itistukai.core.domain.User;
-import net.itistukai.core.domain.UserRole;
+import net.itistukai.core.domain.core.PersonalInformation;
+import net.itistukai.core.domain.core.User;
+import net.itistukai.core.domain.core.UserRole;
 import net.itistukai.web.form.UserForm;
 import net.itistukai.web.service.IUserService;
 import net.itistukai.web.util.PasswordUtil;

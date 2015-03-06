@@ -1,6 +1,6 @@
 package net.itistukai.web.controller.admin;
 
-import net.itistukai.core.domain.CompositionStatus;
+import net.itistukai.core.domain.core.CompositionStatus;
 import net.itistukai.web.form.CompositionForm;
 import net.itistukai.web.service.ICompositionService;
 import net.itistukai.web.validator.CompositionFormValidator;
@@ -9,14 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Iterator;
 
 /**
  * Created by giylmi on 03.03.2015.

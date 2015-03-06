@@ -1,6 +1,6 @@
 package net.itistukai.web.form;
 
-import net.itistukai.core.domain.CompositionStatus;
+import net.itistukai.core.domain.core.CompositionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 /**

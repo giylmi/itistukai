@@ -1,6 +1,6 @@
 package net.itistukai.web.validator;
 
-import net.itistukai.core.domain.UserRole;
+import net.itistukai.core.domain.core.UserRole;
 import net.itistukai.web.service.IUserService;
 import net.itistukai.web.form.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;

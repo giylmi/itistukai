@@ -1,6 +1,6 @@
 package net.itistukai.web.util;
 
-import net.itistukai.core.domain.User;
+import net.itistukai.core.domain.core.User;
 import net.itistukai.web.form.UserForm;
 import org.springframework.util.DigestUtils;
 
