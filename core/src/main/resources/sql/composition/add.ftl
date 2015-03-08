@@ -1,2 +1,3 @@
+<#include "../functions/sql.ftl"/>
 INSERT INTO compositions (name, status)
-values ('${composition.name}', ${composition.status.value});
+values ('${sql(composition.name)}', ${composition.status.value});

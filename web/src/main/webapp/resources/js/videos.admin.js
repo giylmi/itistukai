@@ -3,6 +3,7 @@
  */
 $(document).ready(function () {
     var activeTab = window.JS_DATA['tab'] || '';
+    var grid = $('.js-grid');
 
     enableTab(activeTab);
 
@@ -21,15 +22,15 @@ $(document).ready(function () {
     //}
 
     function enableTab(tab) {
-        $('.js-composition-' + activeTab + '-tab-content').hide();
-        activeTab = tab;
-        switch (activeTab) {
-            //case 'users': updateUsersTab(); break;
-            //case 'admins': updateAdminsTab(); break;
-        }
-        $('.js-composition-' + activeTab + '-tab-content').show();
-
-
+        grid.html('');
+        $.ajax({
+            type: 'POST',
+            data: 'status=' + tab.toUpperCase(),
+            url: '/admin/videos/videos',
+            success: function (data) {
+                grid.html(data);
+            }
+        });
         history.pushState(null, null, jQuery.param.querystring(window.location.href, 'tab=' + activeTab));
     }
 

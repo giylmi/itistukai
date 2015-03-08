@@ -35,6 +35,9 @@
                 <li>
                     <a href="/admin/compositions"><i class="fa fa-male fa-fw"></i> Произведения</a>
                 </li>
+                <li>
+                    <a href="/admin/videos"><i class="fa fa-male fa-fw"></i> Видео</a>
+                </li>
             <#--<li>-->
             <#--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
             <#--<ul class="nav nav-second-level">-->

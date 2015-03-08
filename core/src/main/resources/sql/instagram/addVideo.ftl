@@ -1,4 +1,6 @@
+<#include "../functions/sql.ftl">
 insert into instagram_videos
-    (id, userId, instagram_video_id, link)
+    (id, user_id, instagram_video_id, link)
     values
-    (${video.id}, ${video.instagramUser.id}, ${video.instagramId}, ${video.InstagramUrl});
+    (${video.id}, '${sql(video.instagramUser.id)}',
+     '${sql(video.instagramId)}', '${sql(video.instagramUrl)}');

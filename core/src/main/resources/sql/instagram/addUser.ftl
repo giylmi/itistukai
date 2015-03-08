@@ -1,11 +1,12 @@
+<#include "../functions/sql.ftl">
 insert into instagram_users
     (
-        id, username, profile_picture, full_name
+        user_id, username, profile_picture, full_name
     )
     values
     (
         ${user.id},
-        '${user.userName}',
-        '${user.profilePicture}',
-        '${user.fullName}'
+        '${sql(user.userName)}',
+        '${sql(user.profilePicture)}',
+        '${sql(user.fullName)}'
     );

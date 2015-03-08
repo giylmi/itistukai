@@ -11,6 +11,8 @@ import org.jinstagram.entity.tags.TagMediaFeed;
 import org.jinstagram.entity.users.feed.MediaFeedData;
 import org.jinstagram.exceptions.InstagramException;
 import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -26,15 +28,18 @@ import java.util.List;
 @Service
 public class InstagramDownloadJob{
 
+    private Logger logger = LoggerFactory.getLogger(InstagramDownloadJob.class);
+
     @Autowired
     Instagram instagram;
 
     @Autowired
     VideoDao videoDao;
 
-    @Scheduled(fixedDelay = 600000)
+//    @Scheduled(fixedDelay = 600000)
     public void execute(){
         try {
+            logger.info("request to instagram be delay");
             TagMediaFeed feed = instagram.getRecentMediaTags(Constants.MAIN_HASHTAG);
             processFeed(feed);
         } catch (InstagramException e) {
@@ -43,6 +48,7 @@ public class InstagramDownloadJob{
     }
 
     private void processFeed(TagMediaFeed feed) throws InstagramException {
+        logger.info("processing feed");
         if (feed != null) {
             boolean found = false;
             List<MediaFeedData> mediaFeeds = Lists.reverse(feed.getData());
@@ -59,6 +65,7 @@ public class InstagramDownloadJob{
                     }
                 }
             if (!found && feed.getPagination().hasNextPage()) {
+                logger.info("getting next page");
                 feed = instagram.getTagMediaInfoNextPage(feed.getPagination());
                 processFeed(feed);
             }
@@ -71,7 +78,7 @@ public class InstagramDownloadJob{
 
         populateInstagramUser(mediaFeedData, instagramVideo);
 
-        instagramVideo.setDate(new DateTime(Long.valueOf(mediaFeedData.getCreatedTime())));
+        instagramVideo.setDate(new DateTime(1000 * Long.valueOf(mediaFeedData.getCreatedTime())));
         instagramVideo.setStatus(VideoStatus.NEW);
         instagramVideo.setUrl(mediaFeedData.getVideos().getStandardResolution().getUrl());
     }

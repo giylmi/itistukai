@@ -15,4 +15,11 @@ public enum VideoStatus {
     public int getValue() {
         return value;
     }
+
+    public static VideoStatus byValue(int status) {
+        for (VideoStatus videoStatus: VideoStatus.values())
+            if (videoStatus.getValue() == status)
+                return videoStatus;
+        return null;
+    }
 }

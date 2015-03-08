@@ -118,6 +118,6 @@
 <#--</div>-->
 </#macro>
 <@m_page title="Пользователи"
-    customScripts=["users.admin.js"]
-    customStyles=["users.css"]
+    customScripts=["js/users.admin.js"]
+    customStyles=["css/users.css"]
 />

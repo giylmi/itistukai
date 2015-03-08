@@ -16,7 +16,7 @@
     <link href="/resources/admin/css/font-awesome.min.css" rel="stylesheet">
 
     <#list customStyles as style>
-        <link href="/resources/css/${style}" rel="stylesheet">
+        <link href="/resources/${style}" rel="stylesheet">
     </#list>
 
     <script src="/resources/js/jquery-2.1.3.min.js"></script>
@@ -24,7 +24,7 @@
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/resources/admin/js/metisMenu.min.js"></script>
     <#list customScripts as script>
-        <script src="/resources/js/${script}"></script>
+        <script src="/resources/${script}"></script>
     </#list>
 
     <script>
