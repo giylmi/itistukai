@@ -2,6 +2,7 @@ package net.itistukai.core.dao;
 
 import net.itistukai.core.domain.core.User;
 import net.itistukai.core.domain.core.UserRole;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.util.HashMap;
@@ -11,74 +12,6 @@ import java.util.Map;
 /**
  * Created by giylmi on 27.12.14.
  */
-public interface IUserDao {
+public interface IUserDao extends CrudRepository<User, Long> {
 
-    List<User> all();
-
-    List<User> all(UserQueryParameters params);
-
-    User registerUser(User user);
-
-    Integer count(UserQueryParameters parameters);
-
-    Integer count();
-
-    public class UserQueryParameters {
-
-        public List<UserRole> withRoles;
-        public Boolean withPI;
-
-        public Map<String, Object> params;
-
-        public UserQueryParameters(List<UserRole> withRoles, Boolean withPI, Map<String, Object> params) {
-            this.withRoles = withRoles;
-            this.withPI = withPI;
-            this.params = params;
-        }
-
-        public Map<String, Object> asMap(){
-            Map<String, Object> params = new HashMap<>();
-            params.put("withRoles", withRoles);
-            params.put("withPI", withPI);
-            params.put("params", this.params);
-            return params;
-        }
-
-        public static Builder builder(){
-            return new Builder();
-        }
-
-        public RowMapper<User> getMapper() {
-            if (withPI != null && withPI) return User.COMMON_WITH_PI_ROW;
-            return User.COMMON_ROW;
-        }
-
-        public static final class Builder {
-
-            protected Builder(){}
-
-            private List<UserRole> withRoles;
-            private Boolean withPI;
-            private Map<String, Object> params = new HashMap<>();
-
-            public Builder withRole(List<UserRole> withRoles){
-                this.withRoles = withRoles;
-                return this;
-            }
-
-            public Builder withPI(Boolean withPI){
-                this.withPI = withPI;
-                return this;
-            }
-
-            public Builder addParam(String key, Object value){
-                params.put(key, value);
-                return this;
-            }
-
-            public UserQueryParameters build(){
-                return new UserQueryParameters(withRoles, withPI, params);
-            }
-        }
-    }
 }

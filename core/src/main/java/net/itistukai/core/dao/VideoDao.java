@@ -4,13 +4,14 @@ import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.core.domain.instagram.InstagramUser;
 import net.itistukai.core.domain.instagram.InstagramVideo;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
 /**
  * Created by giylmi on 06.03.2015.
  */
-public interface VideoDao {
+public interface VideoDao extends CrudRepository<Video, Long>{
 
     InstagramVideo getInstagramVideoByInstagramId(String id);
 
