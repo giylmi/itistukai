@@ -2,15 +2,16 @@ package net.itistukai.core.domain.core;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import javax.persistence.Embeddable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  * Created by giylmi on 26.12.14.
  */
+@Embeddable
 public class PersonalInformation {
 
-    private Long userId;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -22,14 +23,6 @@ public class PersonalInformation {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getFirstName() {

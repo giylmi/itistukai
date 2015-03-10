@@ -2,6 +2,8 @@ package net.itistukai.core.job;
 
 import com.google.common.collect.Lists;
 import net.itistukai.core.Constants;
+import net.itistukai.core.dao.InstagramUserDao;
+import net.itistukai.core.dao.InstagramVideoDao;
 import net.itistukai.core.dao.VideoDao;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.core.domain.instagram.InstagramUser;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -35,8 +38,12 @@ public class InstagramDownloadJob{
 
     @Autowired
     VideoDao videoDao;
+    @Autowired
+    InstagramVideoDao instagramVideoDao;
+    @Autowired
+    InstagramUserDao instagramUserDao;
 
-//    @Scheduled(fixedDelay = 600000)
+//        @Scheduled(fixedDelay = 600000)
     public void execute(){
         try {
             logger.info("request to instagram be delay");
@@ -52,24 +59,32 @@ public class InstagramDownloadJob{
         if (feed != null) {
             boolean found = false;
             List<MediaFeedData> mediaFeeds = Lists.reverse(feed.getData());
-            for (MediaFeedData mediaFeedData: mediaFeeds)
+            for (MediaFeedData mediaFeedData: mediaFeeds) {
+                if (found) break;
                 if (mediaFeedData.getType().equals("video")) {
-                    InstagramVideo instagramVideo = videoDao.getInstagramVideoByInstagramId(mediaFeedData.getId());
+                    InstagramVideo instagramVideo = instagramVideoDao.getByInstagramId(mediaFeedData.getId());
                     if (instagramVideo != null) {
                         found = true;
                     } else {
                         instagramVideo = new InstagramVideo();
                         populateInstagramVideo(mediaFeedData, instagramVideo);
 
-                        videoDao.saveInstagramVideo(instagramVideo);
+                        save(instagramVideo);
                     }
                 }
+            }
             if (!found && feed.getPagination().hasNextPage()) {
                 logger.info("getting next page");
                 feed = instagram.getTagMediaInfoNextPage(feed.getPagination());
                 processFeed(feed);
             }
         }
+    }
+
+    @Transactional
+    private void save(InstagramVideo instagramVideo) {
+        instagramVideo.setInstagramUser(instagramUserDao.save(instagramVideo.getInstagramUser()));
+        instagramVideoDao.save(instagramVideo);
     }
 
     private void populateInstagramVideo(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {
@@ -81,6 +96,7 @@ public class InstagramDownloadJob{
         instagramVideo.setDate(new DateTime(1000 * Long.valueOf(mediaFeedData.getCreatedTime())));
         instagramVideo.setStatus(VideoStatus.NEW);
         instagramVideo.setUrl(mediaFeedData.getVideos().getStandardResolution().getUrl());
+        instagramVideo.setPreloaderUrl(mediaFeedData.getImages().getStandardResolution().getImageUrl());
     }
 
     private void populateInstagramUser(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {

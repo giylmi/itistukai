@@ -9,8 +9,7 @@ import net.itistukai.web.service.IUserService;
 import net.itistukai.web.util.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by adel on 17.01.15.
@@ -22,18 +21,17 @@ public class UserService implements IUserService {
     IUserDao userDao;
 
     @Override
-    public List<User> all(boolean withPI) {
-        if (!withPI)
-            return userDao.all();
-        return userDao.all(IUserDao.UserQueryParameters.builder().withPI(Boolean.TRUE).build());
+    public Iterable<User> all() {
+        return userDao.findAll();
     }
 
     @Override
-    public Integer count() {
+    public long count() {
         return userDao.count();
     }
 
     @Override
+    @Transactional
     public User registerUser(UserForm userForm) {
         User user = new User();
         user.setLogin(userForm.getLogin());
@@ -43,14 +41,11 @@ public class UserService implements IUserService {
 
         PasswordUtil.setPasswordAndSalt(userForm, user);
 
-        return userDao.registerUser(user);
+        return userDao.save(user);
     }
 
     @Override
     public Boolean userExists(UserForm userForm) {
-        IUserDao.UserQueryParameters.Builder builder = IUserDao.UserQueryParameters.builder();
-        builder.addParam("login", userForm.getLogin());
-        builder.addParam("email", userForm.getEmail());
-        return userDao.count(builder.build()) > 0;
+        return !userDao.findAllByLoginAndEmail(userForm.getLogin(), userForm.getEmail()).isEmpty();
     }
 }

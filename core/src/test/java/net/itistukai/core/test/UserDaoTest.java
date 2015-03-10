@@ -54,7 +54,7 @@ public class UserDaoTest {
         pi.setLastName("testLast");
         user.setPi(pi);
         user.setRole(UserRole.USER);
-        userDao.registerUser(user);
+        userDao.save(user);
         assertNotNull(user.getId());
     }
 

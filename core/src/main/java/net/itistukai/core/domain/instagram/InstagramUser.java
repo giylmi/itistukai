@@ -1,30 +1,32 @@
 package net.itistukai.core.domain.instagram;
 
-import org.springframework.jdbc.core.RowMapper;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 /**
  * Created by giylmi on 06.03.2015.
  */
+@Entity
 public class InstagramUser {
 
-    public static RowMapper<InstagramUser> FULL_ROW_MAPPER = new RowMapper<InstagramUser>() {
-        @Override
-        public InstagramUser mapRow(ResultSet resultSet, int i) throws SQLException {
-            InstagramUser instagramUser = new InstagramUser();
-            instagramUser.setUserName(resultSet.getString("username"));
-            instagramUser.setFullName(resultSet.getString("full_name"));
-            instagramUser.setProfilePicture(resultSet.getString("profile_picture"));
-            instagramUser.setId(resultSet.getString("user_id"));
-            return instagramUser;
-        }
-    };
+    @Id
     private String id;
     private String userName;
     private String profilePicture;
     private String fullName;
+
+    @OneToMany(mappedBy = "id")
+    private List<InstagramVideo> videos;
+
+    public List<InstagramVideo> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(List<InstagramVideo> videos) {
+        this.videos = videos;
+    }
 
     public String getId() {
         return id;

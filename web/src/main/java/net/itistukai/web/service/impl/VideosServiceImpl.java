@@ -1,12 +1,17 @@
 package net.itistukai.web.service.impl;
 
+import com.google.common.collect.Lists;
 import net.itistukai.core.dao.VideoDao;
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.web.service.VideosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,26 +25,42 @@ public class VideosServiceImpl implements VideosService {
 
     @Override
     public Long getNewVideosCount() {
-        return videoDao.countVideosByStatus(VideoStatus.NEW);
+        return videoDao.countByStatus(VideoStatus.NEW);
     }
 
     @Override
     public Long getViewedVideosCount() {
-        return videoDao.countVideosByStatus(VideoStatus.VIEWED);
+        return videoDao.countByStatus(VideoStatus.VIEWED);
     }
 
     @Override
     public Long getAcceptedVideosCount() {
-        return videoDao.countVideosByStatus(VideoStatus.OK);
+        return videoDao.countByStatus(VideoStatus.OK);
     }
 
     @Override
     public Long getBannedVideosCount() {
-        return videoDao.countVideosByStatus(VideoStatus.BANNED);
+        return videoDao.countByStatus(VideoStatus.BANNED);
     }
 
     @Override
     public List<Video> getVideosByStatus(VideoStatus status) {
-        return videoDao.getVideosByStatus(status);
+        return videoDao.findAllByStatus(status);
+    }
+
+    @Override
+    public List<Video> getVideosByStatus(VideoStatus status, int page) {
+        PageRequest pageable = new PageRequest(page - 1, 15);
+        return videoDao.findAllByStatus(status, pageable);
+    }
+
+    @Override
+    public Video getVideoById(Long id) {
+        return videoDao.findOne(id);
+    }
+
+    @Override
+    public Video saveVideo(Video video) {
+        return videoDao.save(video);
     }
 }

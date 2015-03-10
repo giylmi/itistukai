@@ -23,6 +23,7 @@
     <script src="/resources/js/params.jquery.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/resources/admin/js/metisMenu.min.js"></script>
+    <script src="/resources/js/dashboard.admin.js"></script>
     <#list customScripts as script>
         <script src="/resources/${script}"></script>
     </#list>

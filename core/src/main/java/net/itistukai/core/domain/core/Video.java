@@ -1,39 +1,35 @@
 package net.itistukai.core.domain.core;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
-import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.persistence.*;
 
 /**
  * Created by adel on 18.02.15.
  */
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "VIDEO_PROVIDER")
 public abstract class Video {
 
-    public static Video mapVideo(Video video, ResultSet resultSet, int i) throws SQLException {
-        video.setId(resultSet.getLong("id"));
-        video.setDate(new DateTime(Long.valueOf(resultSet.getString("date"))));
-        video.setPartId(resultSet.getLong("partId"));
-        video.setUrl(resultSet.getString("url"));
-        video.setStatus(VideoStatus.byValue(resultSet.getInt("status")));
-        return video;
-    }
+    @Id
+    @GeneratedValue
     private Long id;
-    private Long partId;
+    @OneToOne
+    private Part part;
     private VideoStatus status;
     private String url;
-    private DateTime date = DateTime.now();
+    private String preloaderUrl;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime date;
 
-    public Video() {
+    public String getPreloaderUrl() {
+        return preloaderUrl;
     }
 
-    public Video(Long id, Long partId, VideoStatus status, String url, DateTime date) {
-        this.id = id;
-        this.partId = partId;
-        this.status = status;
-        this.url = url;
-        this.date = date;
+    public void setPreloaderUrl(String preloaderUrl) {
+        this.preloaderUrl = preloaderUrl;
     }
 
     public String getUrl() {
@@ -60,12 +56,12 @@ public abstract class Video {
         this.id = id;
     }
 
-    public Long getPartId() {
-        return partId;
+    public Part getPart() {
+        return part;
     }
 
-    public void setPartId(Long partId) {
-        this.partId = partId;
+    public void setPart(Part part) {
+        this.part = part;
     }
 
     public VideoStatus getStatus() {

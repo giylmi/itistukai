@@ -10,7 +10,7 @@
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6  js-panel-dashboard-wrapper-data-tab-new">
         <div class="panel panel-dashboard panel-primary" data-tab="new">
             <div class="panel-heading">
                 <div class="row">
@@ -32,7 +32,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6  js-panel-dashboard-wrapper-data-tab-viewed">
         <div class="panel panel-dashboard panel-red" data-tab="viewed">
             <div class="panel-heading">
                 <div class="row">
@@ -54,7 +54,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6  js-panel-dashboard-wrapper-data-tab-ok">
         <div class="panel panel-dashboard panel-yellow" data-tab="ok">
             <div class="panel-heading">
                 <div class="row">
@@ -76,7 +76,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6  js-panel-dashboard-wrapper-data-tab-banned">
         <div class="panel panel-dashboard panel-yellow" data-tab="banned">
             <div class="panel-heading">
                 <div class="row">

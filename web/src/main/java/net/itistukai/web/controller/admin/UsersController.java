@@ -41,13 +41,13 @@ public class UsersController {
 
     @RequestMapping(value = "users/all", method = RequestMethod.POST)
     public String users(Model model){
-        model.addAttribute("users", userService.all(true));
+        model.addAttribute("users", userService.all());
         return "users/usersTabContent";
     }
 
     @RequestMapping(value = "users/admins", method = RequestMethod.POST)
     public String admins(Model model){
-        model.addAttribute("users", adminService.all(true));
+        model.addAttribute("users", adminService.all());
         return "users/usersTabContent";
     }
 

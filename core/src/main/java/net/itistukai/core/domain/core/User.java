@@ -2,19 +2,25 @@ package net.itistukai.core.domain.core;
 
 import org.springframework.jdbc.core.RowMapper;
 
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  * Created by giylmi on 26.12.14.
  */
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String login;
     private String password;
     private String salt;
     private String email;
+    @Embedded
     private PersonalInformation pi;
     private UserRole role;
 

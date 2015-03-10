@@ -10,7 +10,7 @@
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6 js-panel-dashboard-wrapper-data-tab-on">
         <div class="panel panel-dashboard panel-primary" data-tab="on">
             <div class="panel-heading">
                 <div class="row">
@@ -32,7 +32,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6 js-panel-dashboard-wrapper-data-tab-archieved">
         <div class="panel panel-dashboard panel-red" data-tab="archived">
             <div class="panel-heading">
                 <div class="row">

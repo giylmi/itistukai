@@ -34,6 +34,6 @@ public class AdminCreateUtil {
         user.setSalt(salt);
         user.setRole(UserRole.ADMIN);
         user.setEmail("blabla@gmail.com");
-        userDao.registerUser(user);
+        userDao.save(user);
     }
 }

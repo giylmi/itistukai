@@ -2,26 +2,21 @@ package net.itistukai.core.dao;
 
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
-import net.itistukai.core.domain.instagram.InstagramUser;
-import net.itistukai.core.domain.instagram.InstagramVideo;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
 /**
  * Created by giylmi on 06.03.2015.
  */
-public interface VideoDao extends CrudRepository<Video, Long>{
+public interface VideoDao extends PagingAndSortingRepository<Video, Long> {
 
-    InstagramVideo getInstagramVideoByInstagramId(String id);
+    Long countByStatus(VideoStatus status);
 
-    InstagramVideo saveInstagramVideo(InstagramVideo instagramVideo);
+    List<Video> findAllByStatus(VideoStatus status);
 
-    InstagramUser getInstagramUserById(String id);
-
-    InstagramUser saveInstagramUser(InstagramUser instagramUser);
-
-    List<Video> getVideosByStatus(VideoStatus status);
-
-    Long countVideosByStatus(VideoStatus status);
+    List<Video> findAllByStatus(VideoStatus status, Pageable pageable);
 }

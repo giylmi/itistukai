@@ -1,21 +1,26 @@
 package net.itistukai.core.domain.core;
 
-import net.itistukai.core.exception.NotIncludedException;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
  * Created by adel on 18.02.15.
  */
+@Entity
 public class Composition {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private CompositionStatus status;
+    @OneToMany(mappedBy = "id")
     private List<Part> parts;
 
     public List<Part> getParts() {
-        if (parts == null) throw new NotIncludedException("Parts were not included sql query");
         return parts;
     }
 

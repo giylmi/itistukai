@@ -1,6 +1,5 @@
 package net.itistukai.web.service.impl;
 
-import com.google.common.collect.ImmutableList;
 import net.itistukai.core.dao.ICompositionDao;
 import net.itistukai.core.domain.core.Composition;
 import net.itistukai.core.domain.core.CompositionStatus;
@@ -9,8 +8,11 @@ import net.itistukai.web.form.CompositionForm;
 import net.itistukai.web.service.ICompositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +27,11 @@ public class CompositionService implements ICompositionService {
 
     @Override
     public Boolean existsName(String name) {
-
-        return compositionDao.count(ICompositionDao.QueryParameters.builder().addParam("name", name).build())
-                > 0;
+        return !compositionDao.findAllByName(name).isEmpty();
     }
 
     @Override
+    @Transactional
     public void saveComposition(CompositionForm compositionForm) {
         try {
             Composition composition = new Composition();
@@ -60,11 +61,11 @@ public class CompositionService implements ICompositionService {
 
     @Override
     public Long countOn() {
-        return compositionDao.count(ICompositionDao.QueryParameters.builder().setStatuses(ImmutableList.of(CompositionStatus.ON)).build());
+        return compositionDao.countByStatus(CompositionStatus.ON);
     }
 
     @Override
     public Long countArchived() {
-        return compositionDao.count(ICompositionDao.QueryParameters.builder().setStatuses(ImmutableList.of(CompositionStatus.ARCHIVED)).build());
+        return compositionDao.countByStatus(CompositionStatus.ARCHIVED);
     }
 }

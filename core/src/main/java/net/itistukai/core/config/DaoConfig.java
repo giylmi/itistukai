@@ -3,11 +3,11 @@ package net.itistukai.core.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -23,7 +23,7 @@ import java.beans.PropertyVetoException;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"net.itistukai.core.dao"})
+@EnableJpaRepositories(basePackages = {"net.itistukai.core.dao"})
 @PropertySource("classpath:database-local.properties")
 public class DaoConfig {
 
@@ -63,7 +63,7 @@ public class DaoConfig {
         vendorAdapter.setDatabasePlatform(databasePlatform);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("ru.kpfu.itis.activity.model");
+        factory.setPackagesToScan("net.itistukai.core.domain");
         factory.setDataSource(dataSource());
         factory.afterPropertiesSet();
 

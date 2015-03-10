@@ -1,12 +1,21 @@
 package net.itistukai.core.domain.core;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * Created by adel on 18.02.15.
  */
+@Entity
 public class Part {
 
+    @Id
+    @GeneratedValue
     private Long id;
-    private Long compositionId;
+    @ManyToOne
+    private Composition composition;
     private String text;
 
     public Long getId() {
@@ -17,12 +26,12 @@ public class Part {
         this.id = id;
     }
 
-    public Long getCompositionId() {
-        return compositionId;
+    public Composition getComposition() {
+        return composition;
     }
 
-    public void setCompositionId(Long compositionId) {
-        this.compositionId = compositionId;
+    public void setComposition(Composition composition) {
+        this.composition = composition;
     }
 
     public String getText() {
