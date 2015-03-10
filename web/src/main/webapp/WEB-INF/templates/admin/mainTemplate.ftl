@@ -1,4 +1,4 @@
-<#include "./nav.ftl"/>
+<#include "nav.ftl"/>
 <#assign c=JspTaglibs['http://java.sun.com/jstl/core']/>
 <#macro m_page title customStyles=[] customScripts=[]>
 <!DOCTYPE html>

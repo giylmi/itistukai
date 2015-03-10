@@ -36,30 +36,30 @@ public class UsersController {
         model.addAttribute("js_tab", tab);
 
         model.addAttribute("userForm", new UserForm());
-        return "users";
+        return "admin/users";
     }
 
     @RequestMapping(value = "users/all", method = RequestMethod.POST)
     public String users(Model model){
         model.addAttribute("users", userService.all());
-        return "users/usersTabContent";
+        return "admin/users/usersTabContent";
     }
 
     @RequestMapping(value = "users/admins", method = RequestMethod.POST)
     public String admins(Model model){
         model.addAttribute("users", adminService.all());
-        return "users/usersTabContent";
+        return "admin/users/usersTabContent";
     }
 
     @RequestMapping(value = "users/register", method = RequestMethod.POST)
     public String register(@ModelAttribute UserForm userForm, BindingResult result, Model model){
         userFormValidator.validate(userForm, result);
         if (result.hasErrors()) {
-            return "users/userFormTabContent";
+            return "admin/users/userFormTabContent";
         }
         userService.registerUser(userForm);
         model.addAttribute("userForm", new UserForm());
         model.addAttribute("created", Boolean.TRUE);
-        return "users/userFormTabContent";
+        return "admin/users/userFormTabContent";
     }
 }

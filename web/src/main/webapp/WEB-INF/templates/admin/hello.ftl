@@ -1,6 +1,6 @@
 <#assign c=JspTaglibs['http://java.sun.com/jstl/core']/>
-<#include "./mainTemplate.ftl"/>
-<#include "./functions.ftl"/>
+<#include "mainTemplate.ftl"/>
+<#include "functions.ftl"/>
 <#macro m_body>
     <div class="row">
         <div class="col-lg-12">

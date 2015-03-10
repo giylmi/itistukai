@@ -26,7 +26,7 @@ public class VideoController {
     public String dashboard(Model model, @RequestParam(required = false, defaultValue = "new") String tab){
         model.addAttribute("js_tab", tab);
         populateDashboard(model);
-        return "videos/videos";
+        return "admin/videos/videos";
     }
 
     public void populateDashboard(Model model) {
@@ -43,7 +43,7 @@ public class VideoController {
         model.addAttribute("hasNext", videosByStatus.size() == 15);
         model.addAttribute("page", page + 1);
         populateDashboard(model);
-        return "videos/videosGridWrapper";
+        return "admin/videos/videosGridWrapper";
     }
 
     @RequestMapping(value = "videos/status", method = RequestMethod.POST)
@@ -55,6 +55,6 @@ public class VideoController {
             model.addAttribute("video", video);
         }
         populateDashboard(model);
-        return "videos/videoStatusWrapper";
+        return "admin/videos/videoStatusWrapper";
     }
 }

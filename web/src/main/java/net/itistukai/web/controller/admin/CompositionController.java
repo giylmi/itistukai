@@ -32,7 +32,7 @@ public class CompositionController {
         model.addAttribute("compositionsArchived", compositionService.countArchived());
         if (!model.containsAttribute("compositionForm")) model.addAttribute("compositionForm", new CompositionForm());
         model.addAttribute("js_tab", tab);
-        return "composition/composition";
+        return "admin/composition/composition";
     }
 
     @RequestMapping(value = "compositions/upload", method = RequestMethod.POST)
