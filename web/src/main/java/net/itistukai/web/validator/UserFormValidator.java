@@ -21,10 +21,10 @@ public class UserFormValidator {
         if (userForm.getEmail().isEmpty()) result.rejectValue("email", "null");
 
         boolean check = !(userForm.getLogin().isEmpty() && userForm.getEmail().isEmpty());
-        if (check && userService.userExists(userForm)) result.reject("login", "exists");
+        if (check && userService.userExists(userForm)) result.rejectValue("login", "exists");
 
         if (userForm.getPassword().isEmpty()) result.rejectValue("password", "null");
-        if (userForm.getRepeatPassword().isEmpty()) result.rejectValue("repeat", "null");
+        if (userForm.getRepeatPassword().isEmpty()) result.rejectValue("repeatPassword", "null");
         if (!userForm.getRepeatPassword().equals(userForm.getPassword())) result.rejectValue("password", "notEqual");
         if (userForm.getFirstName().isEmpty()) result.rejectValue("firstName", "null");
         if (userForm.getLastName().isEmpty()) result.rejectValue("lastName", "null");

@@ -10,15 +10,20 @@ Dashboard = {
             var tab = $(element).data('tab');
             $('.js-panel-dashboard-wrapper-data-tab-' + tab).html(element);
         });
-        this.bindPanelDashboardClick(this.enableTab);
+        this.bindPanelDashboardClick();
         onSuccess($data.find('.js-main-content-wrapper'));
     },
-    bindPanelDashboardClick: function (enableTab) {
-        this.enableTab = enableTab;
-        $('.panel-dashboard').on('click', function () {
+    bindPanelDashboardClick: function () {
+        var $dashboard = $('.panel-dashboard');
+        $dashboard.unbind('click');
+        $dashboard.on('click', function () {
             var $self = $(this);
             var tab = $self.data('tab');
-            enableTab(tab);
+            Dashboard.enableTab(tab, Dashboard.oldTab);
+            Dashboard.oldTab = tab;
+            history.pushState(null, null, jQuery.param.querystring(window.location.href, 'tab=' + tab));
         });
-    }
+    },
+    oldTab: '',
+    enableTab: function(){}
 };

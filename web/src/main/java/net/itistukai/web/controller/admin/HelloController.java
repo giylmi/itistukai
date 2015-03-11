@@ -12,6 +12,6 @@ public class HelloController {
 
     @RequestMapping("")
     public String hello(){
-        return "admin/hello";
+        return "redirect:/admin/users";
     }
 }

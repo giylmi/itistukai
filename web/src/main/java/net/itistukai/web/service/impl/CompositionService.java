@@ -1,6 +1,7 @@
 package net.itistukai.web.service.impl;
 
 import net.itistukai.core.dao.ICompositionDao;
+import net.itistukai.core.dao.PartsDao;
 import net.itistukai.core.domain.core.Composition;
 import net.itistukai.core.domain.core.CompositionStatus;
 import net.itistukai.core.domain.core.Part;
@@ -24,6 +25,8 @@ public class CompositionService implements ICompositionService {
 
     @Autowired
     ICompositionDao compositionDao;
+    @Autowired
+    PartsDao partsDao;
 
     @Override
     public Boolean existsName(String name) {
@@ -37,6 +40,7 @@ public class CompositionService implements ICompositionService {
             Composition composition = new Composition();
             composition.setName(compositionForm.getName());
             composition.setStatus(compositionForm.getStatus());
+            composition = compositionDao.save(composition);
 
             List<Part> parts = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new InputStreamReader(compositionForm.getFile().getInputStream()));
@@ -46,12 +50,11 @@ public class CompositionService implements ICompositionService {
                 if (!s.isEmpty()) {
                     Part part = new Part();
                     part.setText(s);
+                    part.setComposition(composition);
                     parts.add(part);
+                    partsDao.save(part);
                 }
             }
-            composition.setParts(parts);
-
-            compositionDao.save(composition);
         } catch (IOException e) {
             e.printStackTrace();
         }

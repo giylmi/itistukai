@@ -31,35 +31,43 @@ public class UsersController {
 
     @RequestMapping("users")
     public String index(Model model, @RequestParam(value = "tab", required = false, defaultValue = "users") String tab){
-        model.addAttribute("usersTotal", userService.count());
-        model.addAttribute("adminsTotal", adminService.count());
+        populateDashboard(model);
         model.addAttribute("js_tab", tab);
 
         model.addAttribute("userForm", new UserForm());
-        return "admin/users";
+        return "admin/users/users";
+    }
+
+    public void populateDashboard(Model model) {
+        model.addAttribute("usersTotal", userService.count());
+        model.addAttribute("adminsTotal", adminService.count());
     }
 
     @RequestMapping(value = "users/all", method = RequestMethod.POST)
     public String users(Model model){
+        populateDashboard(model);
         model.addAttribute("users", userService.all());
-        return "admin/users/usersTabContent";
+        return "admin/users/usersTabContentWrapper";
     }
 
     @RequestMapping(value = "users/admins", method = RequestMethod.POST)
     public String admins(Model model){
+        populateDashboard(model);
         model.addAttribute("users", adminService.all());
-        return "admin/users/usersTabContent";
+        return "admin/users/usersTabContentWrapper";
     }
 
     @RequestMapping(value = "users/register", method = RequestMethod.POST)
     public String register(@ModelAttribute UserForm userForm, BindingResult result, Model model){
         userFormValidator.validate(userForm, result);
         if (result.hasErrors()) {
-            return "admin/users/userFormTabContent";
+            populateDashboard(model);
+            return "admin/users/userFormTabContentWrapper";
         }
         userService.registerUser(userForm);
+        populateDashboard(model);
         model.addAttribute("userForm", new UserForm());
         model.addAttribute("created", Boolean.TRUE);
-        return "admin/users/userFormTabContent";
+        return "admin/users/userFormTabContentWrapper";
     }
 }

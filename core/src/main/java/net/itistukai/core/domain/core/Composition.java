@@ -17,7 +17,7 @@ public class Composition {
     private Long id;
     private String name;
     private CompositionStatus status;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "composition")
     private List<Part> parts;
 
     public List<Part> getParts() {

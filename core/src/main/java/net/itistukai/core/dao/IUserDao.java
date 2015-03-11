@@ -15,5 +15,5 @@ public interface IUserDao extends CrudRepository<User, Long> {
 
     Long countByRole(UserRole role);
 
-    List<User> findAllByLoginAndEmail(String login, String email);
+    List<User> findAllByLoginOrEmail(String login, String email);
 }

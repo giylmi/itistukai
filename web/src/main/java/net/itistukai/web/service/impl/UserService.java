@@ -46,6 +46,6 @@ public class UserService implements IUserService {
 
     @Override
     public Boolean userExists(UserForm userForm) {
-        return !userDao.findAllByLoginAndEmail(userForm.getLogin(), userForm.getEmail()).isEmpty();
+        return !userDao.findAllByLoginOrEmail(userForm.getLogin(), userForm.getEmail()).isEmpty();
     }
 }
