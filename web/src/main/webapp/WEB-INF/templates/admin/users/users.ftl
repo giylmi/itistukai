@@ -3,6 +3,14 @@
 <#include "../functions.ftl"/>
 <#macro m_body>
 <div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Пользователи
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
     <div class="col-lg-3 col-md-6 js-panel-dashboard-wrapper-data-tab-users">
         <div class="panel panel-dashboard panel-primary" data-tab="users">
             <div class="panel-heading">
@@ -93,14 +101,7 @@
 <#--</div>-->
 <#--</div>-->
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            Пользователи
-        </h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
+
 <div class="row">
     <div id="userFormTabContent" hidden="hidden">
         <@userFormTabContent created=created userForm=userForm/>

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -19,6 +20,13 @@ public class Composition {
     private CompositionStatus status;
     @OneToMany(mappedBy = "composition")
     private List<Part> parts;
+
+    public static Comparator<Composition> BY_NAME_COMPARATOR = new Comparator<Composition>() {
+        @Override
+        public int compare(Composition o1, Composition o2) {
+            return o1.getName().compareTo(o2.getName());
+        }
+    };
 
     public List<Part> getParts() {
         return parts;

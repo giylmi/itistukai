@@ -14,6 +14,8 @@
     <link href="/resources/admin/css/timeline.css" rel="stylesheet">
     <link href="/resources/admin/css/metisMenu.min.css" rel="stylesheet">
     <link href="/resources/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.theme.min.css"/>
 
     <#list customStyles as style>
         <link href="/resources/${style}" rel="stylesheet">
@@ -24,6 +26,7 @@
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/resources/admin/js/metisMenu.min.js"></script>
     <script src="/resources/js/dashboard.admin.js"></script>
+    <script src="/resources/jquery-ui/jquery-ui.min.js"></script>
     <#list customScripts as script>
         <script src="/resources/${script}"></script>
     </#list>

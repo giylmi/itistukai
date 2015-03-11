@@ -3,7 +3,7 @@
     <div>
     <#if (videos?has_content)>
         <#list videos as video>
-        <div class="col-xs-4 well js-video">
+        <div class="col-xs-12 col-md-4 well js-video">
             <div class="player">
                 <video poster="${video.preloaderUrl}" controls crossorigin>
                     <!-- Video files -->

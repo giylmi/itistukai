@@ -14,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by giylmi on 03.03.2015.
@@ -42,16 +40,16 @@ public class CompositionService implements ICompositionService {
             composition.setStatus(compositionForm.getStatus());
             composition = compositionDao.save(composition);
 
-            List<Part> parts = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new InputStreamReader(compositionForm.getFile().getInputStream()));
             String s = null;
+            long n = 0;
             while ((s = reader.readLine()) != null){
                 s = s.trim();
                 if (!s.isEmpty()) {
                     Part part = new Part();
+                    part.setNumber(++n);
                     part.setText(s);
                     part.setComposition(composition);
-                    parts.add(part);
                     partsDao.save(part);
                 }
             }

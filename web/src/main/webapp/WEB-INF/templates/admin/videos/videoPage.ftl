@@ -39,7 +39,8 @@
                     <label for="composition">
                         Произведение:
                     </label>
-                    <input class="form-control" id="composition" type="text"
+                    <input type="hidden" class="js-composition-id-value" value="<#if video.part??>${video.part.composition.id}</#if>"/>
+                    <input class="form-control js-composition-autocomplete" id="composition" type="text"
                            value="<#if video.part??>${video.part.composition.name}</#if>"/>
                 </div>
             </div>
@@ -48,9 +49,9 @@
                     <label for="part">
                         Отрывок:
                     </label>
-                    <input class="form-control" id="part" type="text"
+                    <input class="form-control js-part-autocomplete" id="part" type="text"
                            value="<#if video.part??>${video.part.text}</#if>"/>
-                    <input name="partId" type="hidden" value="<#if video.part??>${video.part.id}</#if>">
+                    <input class="js-part-id-value" name="partId" type="hidden" value="<#if video.part??>${video.part.id}</#if>">
                 </div>
             </div>
 
@@ -124,6 +125,6 @@
 </script>
 </#macro>
 <@m_page title="Видео"
-customScripts=[<#--"js/videos.admin.js", -->"plyr/plyr.js"]
+customScripts=["js/videoEdit.admin.js", "plyr/plyr.js"]
 customStyles=["plyr/plyr.css"]
 />
