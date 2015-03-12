@@ -1,9 +1,6 @@
 package net.itistukai.core.domain.core;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Comparator;
 
 /**
@@ -13,7 +10,8 @@ import java.util.Comparator;
 public class Part {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "partGenerator", sequenceName = "part_sequence")
+    @GeneratedValue(generator = "partGenerator")
     private Long id;
     private Long number;
     @ManyToOne

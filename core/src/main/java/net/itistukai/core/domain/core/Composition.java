@@ -1,9 +1,6 @@
 package net.itistukai.core.domain.core;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Comparator;
 import java.util.List;
 
@@ -14,7 +11,8 @@ import java.util.List;
 public class Composition {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "compositionGenerator", sequenceName = "composition_sequence")
+    @GeneratedValue(generator = "compositionGenerator")
     private Long id;
     private String name;
     private CompositionStatus status;

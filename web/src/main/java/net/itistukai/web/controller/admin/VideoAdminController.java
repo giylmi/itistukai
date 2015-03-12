@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("admin")
-public class VideoController {
+public class VideoAdminController {
 
     @Autowired
     VideosService videosService;

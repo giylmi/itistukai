@@ -14,7 +14,8 @@ import javax.persistence.*;
 public abstract class Video {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "videoGenerator", sequenceName = "video_sequence")
+    @GeneratedValue(generator = "videoGenerator")
     private Long id;
     @OneToOne
     private Part part;

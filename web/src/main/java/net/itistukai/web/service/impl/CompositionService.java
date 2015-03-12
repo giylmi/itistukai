@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Created by giylmi on 03.03.2015.
@@ -68,5 +69,11 @@ public class CompositionService implements ICompositionService {
     @Override
     public Long countArchived() {
         return compositionDao.countByStatus(CompositionStatus.ARCHIVED);
+    }
+
+    @Override
+    public Composition getOneByName(String s) {
+        List<Composition> allByName = compositionDao.findAllByName(s);
+        return allByName.get(0);
     }
 }

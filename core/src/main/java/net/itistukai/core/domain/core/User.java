@@ -14,7 +14,8 @@ import java.sql.SQLException;
 public class User {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "userGenerator", sequenceName = "user_sequence")
+    @GeneratedValue(generator = "userGenerator")
     private Long id;
     private String login;
     private String password;

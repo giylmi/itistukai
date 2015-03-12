@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("admin")
-public class CompositionController {
+public class CompositionAdminController {
 
     @Autowired
     CompositionFormValidator compositionFormValidator;

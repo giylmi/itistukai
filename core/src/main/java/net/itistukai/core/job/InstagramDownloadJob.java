@@ -31,79 +31,79 @@ import java.util.List;
 @Service
 public class InstagramDownloadJob{
 
-    private Logger logger = LoggerFactory.getLogger(InstagramDownloadJob.class);
-
-    @Autowired
-    Instagram instagram;
-
-    @Autowired
-    VideoDao videoDao;
-    @Autowired
-    InstagramVideoDao instagramVideoDao;
-    @Autowired
-    InstagramUserDao instagramUserDao;
-
-//        @Scheduled(fixedDelay = 600000)
-    public void execute(){
-        try {
-            logger.info("request to instagram be delay");
-            TagMediaFeed feed = instagram.getRecentMediaTags(Constants.MAIN_HASHTAG);
-            processFeed(feed);
-        } catch (InstagramException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void processFeed(TagMediaFeed feed) throws InstagramException {
-        logger.info("processing feed");
-        if (feed != null) {
-            boolean found = false;
-            List<MediaFeedData> mediaFeeds = Lists.reverse(feed.getData());
-            for (MediaFeedData mediaFeedData: mediaFeeds) {
-                if (found) break;
-                if (mediaFeedData.getType().equals("video")) {
-                    InstagramVideo instagramVideo = instagramVideoDao.getByInstagramId(mediaFeedData.getId());
-                    if (instagramVideo != null) {
-                        found = true;
-                    } else {
-                        instagramVideo = new InstagramVideo();
-                        populateInstagramVideo(mediaFeedData, instagramVideo);
-
-                        save(instagramVideo);
-                    }
-                }
-            }
-            if (!found && feed.getPagination().hasNextPage()) {
-                logger.info("getting next page");
-                feed = instagram.getTagMediaInfoNextPage(feed.getPagination());
-                processFeed(feed);
-            }
-        }
-    }
-
-    @Transactional
-    private void save(InstagramVideo instagramVideo) {
-        instagramVideo.setInstagramUser(instagramUserDao.save(instagramVideo.getInstagramUser()));
-        instagramVideoDao.save(instagramVideo);
-    }
-
-    private void populateInstagramVideo(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {
-        instagramVideo.setInstagramId(mediaFeedData.getId());
-        instagramVideo.setInstagramUrl(mediaFeedData.getLink());
-
-        populateInstagramUser(mediaFeedData, instagramVideo);
-
-        instagramVideo.setDate(new DateTime(1000 * Long.valueOf(mediaFeedData.getCreatedTime())));
-        instagramVideo.setStatus(VideoStatus.NEW);
-        instagramVideo.setUrl(mediaFeedData.getVideos().getStandardResolution().getUrl());
-        instagramVideo.setPreloaderUrl(mediaFeedData.getImages().getStandardResolution().getImageUrl());
-    }
-
-    private void populateInstagramUser(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {
-        instagramVideo.setInstagramUser(new InstagramUser());
-        instagramVideo.getInstagramUser().setId(mediaFeedData.getUser().getId());
-        instagramVideo.getInstagramUser().setFullName(mediaFeedData.getUser().getFullName());
-        instagramVideo.getInstagramUser().setProfilePicture(mediaFeedData.getUser().getProfilePictureUrl());
-        instagramVideo.getInstagramUser().setUserName(mediaFeedData.getUser().getUserName());
-    }
+//    private Logger logger = LoggerFactory.getLogger(InstagramDownloadJob.class);
+//
+////    @Autowired
+////    Instagram instagram;
+//
+//    @Autowired
+//    VideoDao videoDao;
+//    @Autowired
+//    InstagramVideoDao instagramVideoDao;
+//    @Autowired
+//    InstagramUserDao instagramUserDao;
+//
+////        @Scheduled(fixedDelay = 600000)
+//    public void execute(){
+//        try {
+//            logger.info("request to instagram be delay");
+//            TagMediaFeed feed = instagram.getRecentMediaTags(Constants.MAIN_HASHTAG);
+//            processFeed(feed);
+//        } catch (InstagramException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    private void processFeed(TagMediaFeed feed) throws InstagramException {
+//        logger.info("processing feed");
+//        if (feed != null) {
+//            boolean found = false;
+//            List<MediaFeedData> mediaFeeds = Lists.reverse(feed.getData());
+//            for (MediaFeedData mediaFeedData: mediaFeeds) {
+//                if (found) break;
+//                if (mediaFeedData.getType().equals("video")) {
+//                    InstagramVideo instagramVideo = instagramVideoDao.getByInstagramId(mediaFeedData.getId());
+//                    if (instagramVideo != null) {
+//                        found = true;
+//                    } else {
+//                        instagramVideo = new InstagramVideo();
+//                        populateInstagramVideo(mediaFeedData, instagramVideo);
+//
+//                        save(instagramVideo);
+//                    }
+//                }
+//            }
+//            if (!found && feed.getPagination().hasNextPage()) {
+//                logger.info("getting next page");
+//                feed = instagram.getTagMediaInfoNextPage(feed.getPagination());
+//                processFeed(feed);
+//            }
+//        }
+//    }
+//
+//    @Transactional
+//    private void save(InstagramVideo instagramVideo) {
+//        instagramVideo.setInstagramUser(instagramUserDao.save(instagramVideo.getInstagramUser()));
+//        instagramVideoDao.save(instagramVideo);
+//    }
+//
+//    private void populateInstagramVideo(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {
+//        instagramVideo.setInstagramId(mediaFeedData.getId());
+//        instagramVideo.setInstagramUrl(mediaFeedData.getLink());
+//
+//        populateInstagramUser(mediaFeedData, instagramVideo);
+//
+//        instagramVideo.setDate(new DateTime(1000 * Long.valueOf(mediaFeedData.getCreatedTime())));
+//        instagramVideo.setStatus(VideoStatus.NEW);
+//        instagramVideo.setUrl(mediaFeedData.getVideos().getStandardResolution().getUrl());
+//        instagramVideo.setPreloaderUrl(mediaFeedData.getImages().getStandardResolution().getImageUrl());
+//    }
+//
+//    private void populateInstagramUser(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {
+//        instagramVideo.setInstagramUser(new InstagramUser());
+//        instagramVideo.getInstagramUser().setId(mediaFeedData.getUser().getId());
+//        instagramVideo.getInstagramUser().setFullName(mediaFeedData.getUser().getFullName());
+//        instagramVideo.getInstagramUser().setProfilePicture(mediaFeedData.getUser().getProfilePictureUrl());
+//        instagramVideo.getInstagramUser().setUserName(mediaFeedData.getUser().getUserName());
+//    }
 }

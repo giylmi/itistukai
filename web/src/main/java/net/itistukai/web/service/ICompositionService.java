@@ -1,5 +1,6 @@
 package net.itistukai.web.service;
 
+import net.itistukai.core.domain.core.Composition;
 import net.itistukai.web.form.CompositionForm;
 
 /**
@@ -14,4 +15,6 @@ public interface ICompositionService {
     Long countOn();
 
     Long countArchived();
+
+    Composition getOneByName(String s);
 }
