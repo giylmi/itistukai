@@ -10,11 +10,11 @@
                 <source src="${video.url}" type="video/mp4">
             </video>
         </div>
-        <p class="video_text">
-            <#if video.part??>
-                ${video.part.text}
-            </#if>
-        </p>
+        <#--<p class="video_text">-->
+            <#--<#if video.part??>-->
+                <#--${video.part.text}-->
+            <#--</#if>-->
+        <#--</p>-->
     </div>
 </div>
 </#if>

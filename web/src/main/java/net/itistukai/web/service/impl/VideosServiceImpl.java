@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -66,7 +68,8 @@ public class VideosServiceImpl implements VideosService {
     @Override
     public List<Video> getGalleryVideos(int page) {
         Pageable pageable = new PageRequest(page - 1, 15, Sort.Direction.DESC, "date");
-        List<Video> videos = videoDao.findAll(pageable).getContent();
+        List<Video> videos = new ArrayList<>();
+        Collections.copy(videoDao.findAll(pageable).getContent(), videos);
         for(Iterator<Video> iterator = videos.iterator(); iterator.hasNext(); ){
             Video video = iterator.next();
             if (video.getStatus() == VideoStatus.BANNED) iterator.remove();
