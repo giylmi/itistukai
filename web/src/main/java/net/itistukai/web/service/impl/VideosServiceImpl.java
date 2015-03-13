@@ -1,18 +1,17 @@
 package net.itistukai.web.service.impl;
 
+import net.itistukai.core.Constants;
 import net.itistukai.core.dao.VideoDao;
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.web.service.VideosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -50,8 +49,8 @@ public class VideosServiceImpl implements VideosService {
     }
 
     @Override
-    public List<Video> getVideosByStatus(VideoStatus status, int page) {
-        PageRequest pageable = new PageRequest(page - 1, 15);
+    public Page<Video> getVideosByStatus(VideoStatus status, int page) {
+        PageRequest pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE);
         return videoDao.findAllByStatus(status, pageable);
     }
 
@@ -66,15 +65,8 @@ public class VideosServiceImpl implements VideosService {
     }
 
     @Override
-    public List<Video> getGalleryVideos(int page) {
-        Pageable pageable = new PageRequest(page - 1, 15, Sort.Direction.DESC, "date");
-        List<Video> content = videoDao.findAll(pageable).getContent();
-        List<Video> videos = new ArrayList<>();
-        videos.addAll(content);
-        for(Iterator<Video> iterator = videos.iterator(); iterator.hasNext(); ){
-            Video video = iterator.next();
-            if (video.getStatus() == VideoStatus.BANNED) iterator.remove();
-        }
-        return videos;
+    public Page getGalleryVideos(int page) {
+        Pageable pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, Sort.Direction.DESC, "date");
+        return videoDao.findAllByStatusNotEqual(pageable);
     }
 }

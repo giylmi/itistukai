@@ -48,10 +48,11 @@ public class AutocompleteServiceImpl implements AutocompleteService {
             parts = (List<Part>) partsDao.findAll();
         else
             parts = partsDao.findAllByTextContaining(query);
-        for(Iterator<Part> iterator = parts.iterator(); iterator.hasNext();){
-            if (!iterator.next().getComposition().getId().equals(compositionId))
-                iterator.remove();
-        }
+        if (compositionId != null)
+            for(Iterator<Part> iterator = parts.iterator(); iterator.hasNext();){
+                if (!iterator.next().getComposition().getId().equals(compositionId))
+                    iterator.remove();
+            }
         Collections.sort(parts, Part.BY_NUMBER_COMPARATOR);
         List<PartVO> vos = new ArrayList<>();
         for (Part part: parts)

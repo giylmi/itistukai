@@ -2,6 +2,7 @@ package net.itistukai.core.dao;
 
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
@@ -18,5 +19,7 @@ public interface VideoDao extends PagingAndSortingRepository<Video, Long> {
 
     List<Video> findAllByStatus(VideoStatus status);
 
-    List<Video> findAllByStatus(VideoStatus status, Pageable pageable);
+    Page<Video> findAllByStatus(VideoStatus status, Pageable pageable);
+
+    Page<Video> findAllByStatusNotEqual(Pageable pageable);
 }

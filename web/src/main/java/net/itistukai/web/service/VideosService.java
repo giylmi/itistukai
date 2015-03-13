@@ -2,6 +2,7 @@ package net.itistukai.web.service;
 
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -20,11 +21,11 @@ public interface VideosService {
     Long getBannedVideosCount();
 
     List<Video> getVideosByStatus(VideoStatus status);
-    List<Video> getVideosByStatus(VideoStatus status, int page);
+    Page<Video> getVideosByStatus(VideoStatus status, int page);
 
     Video getVideoById(Long id);
 
     Video saveVideo(Video video);
 
-    List<Video> getGalleryVideos(int page);
+    Page getGalleryVideos(int page);
 }

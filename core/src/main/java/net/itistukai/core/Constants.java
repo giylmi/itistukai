@@ -9,4 +9,6 @@ public interface Constants {
 
     public static DateTime START_DATE = DateTime.parse("2015-03-13");
     public static String MAIN_HASHTAG = "snow";
+
+    public static Integer VIDEOS_PAGE_SIZE = 15;
 }

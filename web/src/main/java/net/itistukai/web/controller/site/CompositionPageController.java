@@ -4,6 +4,7 @@ import net.itistukai.core.domain.core.Video;
 import net.itistukai.web.service.CompositionService;
 import net.itistukai.web.service.VideosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,12 +38,10 @@ public class CompositionPageController {
                          @RequestParam(required = false, defaultValue = "") String query,
                          @RequestParam(required = false, defaultValue = "grid") String viewType,
                          @RequestParam(required = false, defaultValue = "1") int page){
-        List<Video> galleryVideos = videosService.getGalleryVideos(page);
-        if (galleryVideos.size() == 15) {
-            model.addAttribute("hasNext", true);
-            model.addAttribute("page", page + 1);
-        }
-        model.addAttribute("videos", galleryVideos);
+        Page galleryVideos = videosService.getGalleryVideos(page);
+        model.addAttribute("hasNext", galleryVideos.hasNext());
+        model.addAttribute("page", page + 1);
+        model.addAttribute("videos", galleryVideos.getContent());
         return "site/composition/videos";
     }
 }

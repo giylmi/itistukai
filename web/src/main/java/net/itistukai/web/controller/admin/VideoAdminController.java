@@ -5,6 +5,7 @@ import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.web.service.VideosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,9 +43,9 @@ public class VideoAdminController {
 
     @RequestMapping(value = "videos/videos", method = RequestMethod.POST)
     public String videos(Model model, @RequestParam VideoStatus status, @RequestParam(required = false, defaultValue = "1") int page){
-        List<Video> videosByStatus = videosService.getVideosByStatus(status, page);
-        model.addAttribute("videos", videosByStatus);
-        model.addAttribute("hasNext", videosByStatus.size() == 15);
+        Page<Video> videosByStatus = videosService.getVideosByStatus(status, page);
+        model.addAttribute("videos", videosByStatus.getContent());
+        model.addAttribute("hasNext", videosByStatus.hasNext());
         model.addAttribute("page", page + 1);
         populateDashboard(model);
         return "admin/videos/videosGridWrapper";

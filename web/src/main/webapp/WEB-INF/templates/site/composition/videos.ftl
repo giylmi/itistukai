@@ -1,7 +1,6 @@
 
 <#-- @ftlvariable name="video" type="net.itistukai.core.domain.core.Video"-->
 <#list videos as video>
-<#if video_index != 14 >
 <div class="col-md-4 col-lg-4">
     <div class="video_block">
         <div class="player">
@@ -17,7 +16,6 @@
         <#--</p>-->
     </div>
 </div>
-</#if>
 </#list>
 <#if hasNext!false>
 <button class="btn btn-link btn-block btn-lg js-more-videos" data-page="${page}">Больше видео</button>
