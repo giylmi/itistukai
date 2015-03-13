@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +46,7 @@ public class InstagramDownloadJob{
     @Autowired
     PartsDao partsDao;
 
-    //    @Scheduled(fixedDelay = 60000)
+        @Scheduled(fixedDelay = 60000)
     public void execute(){
         try {
             logger.info("request to instagram by delay");
