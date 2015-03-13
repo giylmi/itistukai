@@ -21,5 +21,5 @@ public interface VideoDao extends PagingAndSortingRepository<Video, Long> {
 
     Page<Video> findAllByStatus(VideoStatus status, Pageable pageable);
 
-    Page<Video> findAllByStatusNotEqual(Pageable pageable);
+    Page<Video> findAllByStatusNot(VideoStatus banned, Pageable pageable);
 }

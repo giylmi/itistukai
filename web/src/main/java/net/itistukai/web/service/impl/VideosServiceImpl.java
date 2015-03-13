@@ -50,7 +50,7 @@ public class VideosServiceImpl implements VideosService {
 
     @Override
     public Page<Video> getVideosByStatus(VideoStatus status, int page) {
-        PageRequest pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE);
+        PageRequest pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, Sort.Direction.DESC, "date");
         return videoDao.findAllByStatus(status, pageable);
     }
 
@@ -67,6 +67,6 @@ public class VideosServiceImpl implements VideosService {
     @Override
     public Page getGalleryVideos(int page) {
         Pageable pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, Sort.Direction.DESC, "date");
-        return videoDao.findAllByStatusNotEqual(pageable);
+        return videoDao.findAllByStatusNot(VideoStatus.BANNED, pageable);
     }
 }
