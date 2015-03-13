@@ -6,3 +6,5 @@
 **/build/*
 
 !**/messages/*.properties
+!**/log4j.properties
+!**/instagram-api.properties
