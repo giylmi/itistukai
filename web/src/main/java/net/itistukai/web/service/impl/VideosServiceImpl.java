@@ -69,8 +69,8 @@ public class VideosServiceImpl implements VideosService {
     public List<Video> getGalleryVideos(int page) {
         Pageable pageable = new PageRequest(page - 1, 15, Sort.Direction.DESC, "date");
         List<Video> content = videoDao.findAll(pageable).getContent();
-        List<Video> videos = new ArrayList<>(content.size());
-        Collections.copy(videos, content);
+        List<Video> videos = new ArrayList<>();
+        videos.addAll(content);
         for(Iterator<Video> iterator = videos.iterator(); iterator.hasNext(); ){
             Video video = iterator.next();
             if (video.getStatus() == VideoStatus.BANNED) iterator.remove();
