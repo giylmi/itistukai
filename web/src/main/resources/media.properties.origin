@@ -1,0 +1,4 @@
+#проперти для сохранения и получения изображений
+static.folder=D:\\itistukaimedia\\
+#на сервер юзается nginx, для локалки можно обращаться напрямую к файлам
+static.mapping=file:///D:/itistukaimedia/

@@ -8,5 +8,5 @@ import org.joda.time.DateTime;
 public interface Constants {
 
     public static DateTime START_DATE = DateTime.parse("2015-03-13");
-    public static String MAIN_HASHTAG = "itistuqai";
+    public static String MAIN_HASHTAG = "snow";
 }

@@ -15,11 +15,21 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
+                <label for="file">Файл текста произведения</label>
                 <input type="file" name="file" id="file" class="form-control" >
                 <@form.errors path="file" cssClass="text-danger"/>
             </div>
         </div>
     </div>
+    <#--<div class="row">-->
+        <#--<div class="col-md-6">-->
+            <#--<div class="form-group">-->
+                <#--<label for="poster">Постер произведения</label>-->
+                <#--<input type="file" name="poster" id="poster" class="form-control" >-->
+                <#--<@form.errors path="poster" cssClass="text-danger"/>-->
+            <#--</div>-->
+        <#--</div>-->
+    <#--</div>-->
 
     <input id="createCompositionBtn" type="submit" data-loading="Создаем..." value="Создать" class="btn btn-primary btn-block">
 

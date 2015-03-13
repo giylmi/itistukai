@@ -1,17 +1,16 @@
 package net.itistukai.web.service.impl;
 
-import com.google.common.collect.Lists;
 import net.itistukai.core.dao.VideoDao;
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.web.service.VideosService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -62,5 +61,16 @@ public class VideosServiceImpl implements VideosService {
     @Override
     public Video saveVideo(Video video) {
         return videoDao.save(video);
+    }
+
+    @Override
+    public List<Video> getGalleryVideos(int page) {
+        Pageable pageable = new PageRequest(page - 1, 15, Sort.Direction.DESC, "date");
+        List<Video> videos = videoDao.findAll(pageable).getContent();
+        for(Iterator<Video> iterator = videos.iterator(); iterator.hasNext(); ){
+            Video video = iterator.next();
+            if (video.getStatus() == VideoStatus.BANNED) iterator.remove();
+        }
+        return videos;
     }
 }

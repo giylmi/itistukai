@@ -1,7 +1,7 @@
 package net.itistukai.core.test;
 
 import net.itistukai.core.config.DaoConfig;
-import net.itistukai.core.dao.IUserDao;
+import net.itistukai.core.dao.UserDao;
 import net.itistukai.core.domain.core.PersonalInformation;
 import net.itistukai.core.domain.core.User;
 import net.itistukai.core.domain.core.UserRole;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertNotNull;
 public class UserDaoTest {
 
     @Autowired
-    IUserDao userDao;
+    UserDao userDao;
 
     @Test
     public void allUsers(){
@@ -33,7 +33,7 @@ public class UserDaoTest {
 
     @Test
     public void allAdmins(){
-//        IUserDao.UserQueryParameters params = IUserDao.UserQueryParameters.builder().withRole(Arrays.asList(UserRole.ADMIN)).build();
+//        UserDao.UserQueryParameters params = UserDao.UserQueryParameters.builder().withRole(Arrays.asList(UserRole.ADMIN)).build();
 //        List<User> users = userDao.all(params);
 //        assertNotNull(users);
 //        assertTrue(!users.isEmpty());

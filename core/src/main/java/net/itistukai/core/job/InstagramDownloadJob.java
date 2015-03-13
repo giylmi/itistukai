@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import net.itistukai.core.Constants;
 import net.itistukai.core.dao.InstagramUserDao;
 import net.itistukai.core.dao.InstagramVideoDao;
+import net.itistukai.core.dao.PartsDao;
 import net.itistukai.core.dao.VideoDao;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.core.domain.instagram.InstagramUser;
@@ -17,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,11 +42,13 @@ public class InstagramDownloadJob{
     InstagramVideoDao instagramVideoDao;
     @Autowired
     InstagramUserDao instagramUserDao;
+    @Autowired
+    PartsDao partsDao;
 
-        @Scheduled(fixedDelay = 60000)
+    //    @Scheduled(fixedDelay = 60000)
     public void execute(){
         try {
-            logger.info("request to instagram be delay");
+            logger.info("request to instagram by delay");
             TagMediaFeed feed = instagram.getRecentMediaTags(Constants.MAIN_HASHTAG);
             processFeed(feed);
         } catch (InstagramException e) {
@@ -91,12 +93,27 @@ public class InstagramDownloadJob{
         instagramVideo.setInstagramId(mediaFeedData.getId());
         instagramVideo.setInstagramUrl(mediaFeedData.getLink());
 
+        populatePart(mediaFeedData, instagramVideo);
+
         populateInstagramUser(mediaFeedData, instagramVideo);
 
         instagramVideo.setDate(new DateTime(1000 * Long.valueOf(mediaFeedData.getCreatedTime())));
         instagramVideo.setStatus(VideoStatus.NEW);
         instagramVideo.setUrl(mediaFeedData.getVideos().getStandardResolution().getUrl());
         instagramVideo.setPreloaderUrl(mediaFeedData.getImages().getStandardResolution().getImageUrl());
+    }
+
+    private void populatePart(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {
+        List<String> tags = mediaFeedData.getTags();
+        for (String tag: tags)
+            if (tag.startsWith("part")) {
+                try {
+                    Long number = Long.valueOf(tag.substring(4));
+                    instagramVideo.setPart(partsDao.findOne(number));
+                } catch (Exception e) {
+
+                }
+            }
     }
 
     private void populateInstagramUser(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {

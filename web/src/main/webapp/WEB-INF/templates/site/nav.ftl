@@ -1,5 +1,5 @@
 <#function navHref href isLanding>
-    <#if isLanding>
+    <#if !isLanding>
         <#return "/" + href/>
     <#else>
         <#return href/>
@@ -30,7 +30,7 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#tukai", isLanding)}">Габдулла Тукай</a>
+                    <a class="page-scroll" href="${navHref("#tuqai", isLanding)}">Габдулла Тукай</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="${navHref("#project", isLanding)}">О проекте</a>
@@ -40,6 +40,9 @@
                 </li>
                 <li>
                     <a class="page-scroll" href="${navHref("#join", isLanding)}">Участие</a>
+                </li>
+                <li>
+                    <a href="/composition">Галерея</a>
                 </li>
             </ul>
         </div>

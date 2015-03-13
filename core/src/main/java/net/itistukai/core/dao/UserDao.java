@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by giylmi on 27.12.14.
  */
-public interface IUserDao extends CrudRepository<User, Long> {
+public interface UserDao extends CrudRepository<User, Long> {
 
     Iterable<User> findAllByRole(UserRole role);
 

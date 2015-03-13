@@ -6,7 +6,7 @@ import net.itistukai.web.form.CompositionForm;
 /**
  * Created by giylmi on 03.03.2015.
  */
-public interface ICompositionService {
+public interface CompositionService {
 
     public Boolean existsName(String name);
 

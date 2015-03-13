@@ -5,7 +5,7 @@ import net.itistukai.core.domain.core.User;
 /**
  * Created by giylmi on 25.02.2015.
  */
-public interface IAdminService {
+public interface AdminService {
 
     public Iterable<User> all();
 

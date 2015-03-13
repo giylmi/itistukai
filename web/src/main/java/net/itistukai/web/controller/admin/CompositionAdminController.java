@@ -2,7 +2,7 @@ package net.itistukai.web.controller.admin;
 
 import net.itistukai.core.domain.core.CompositionStatus;
 import net.itistukai.web.form.CompositionForm;
-import net.itistukai.web.service.ICompositionService;
+import net.itistukai.web.service.CompositionService;
 import net.itistukai.web.validator.CompositionFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class CompositionAdminController {
     CompositionFormValidator compositionFormValidator;
 
     @Autowired
-    ICompositionService compositionService;
+    CompositionService compositionService;
 
     @RequestMapping("compositions")
     public String index(Model model, @RequestParam(required = false, defaultValue = "on") String tab){

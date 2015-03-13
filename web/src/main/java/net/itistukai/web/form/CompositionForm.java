@@ -10,7 +10,16 @@ public class CompositionForm {
 
     private String name;
     private MultipartFile file;
+    private MultipartFile poster;
     private CompositionStatus status;
+
+    public MultipartFile getPoster() {
+        return poster;
+    }
+
+    public void setPoster(MultipartFile poster) {
+        this.poster = poster;
+    }
 
     public String getName() {
         return name;

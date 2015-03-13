@@ -103,5 +103,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JsDataInjectionInterceptor());
+//        registry.addInterceptor(new StaticMappingInjectionInterceptor());
+    }
+
+    @Bean
+    public static WebApplicationContextAware applicationContextAware(){
+        return new WebApplicationContextAware();
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by giylmi on 03.03.2015.
  */
-public interface ICompositionDao extends PagingAndSortingRepository<Composition, Long> {
+public interface CompositionDao extends PagingAndSortingRepository<Composition, Long> {
 
     List<Composition> findAllByName(String name);
 

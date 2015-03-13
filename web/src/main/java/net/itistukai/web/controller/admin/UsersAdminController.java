@@ -1,8 +1,8 @@
 package net.itistukai.web.controller.admin;
 
 import net.itistukai.web.form.UserForm;
-import net.itistukai.web.service.IAdminService;
-import net.itistukai.web.service.IUserService;
+import net.itistukai.web.service.AdminService;
+import net.itistukai.web.service.UserService;
 import net.itistukai.web.validator.UserFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UsersAdminController {
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @Autowired
-    private IAdminService adminService;
+    private AdminService adminService;
 
     @Autowired
     UserFormValidator userFormValidator;

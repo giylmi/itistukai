@@ -1,3 +1,4 @@
+
 <#include "../mainTemplate.ftl"/>
 <#macro m_body>
 <!-- Header -->
@@ -6,13 +7,13 @@
         <div class="intro-text">
             <!--<div class="intro-lead-in">проект</div>-->
             <div class="intro-heading">IT IS Tuqay</div>
-            <a href="#services" class="page-scroll btn btn-xl">Узнать больше</a>
+            <a href="#tuqai" class="page-scroll btn btn-xl">Узнать больше</a>
         </div>
     </div>
 </header>
 
 <!-- Services Section -->
-<section id="tukai">
+<section id="tuqai">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -117,14 +118,14 @@
             <div class="col-sm-12">
                 <p class="text-center">
                     <ol>
-                        <li>Запишите видео с прочтением части произведения. Свою часть можно получить <a class="page-scroll" href="#join">тут</a></li>
+                        <li>Запишите видео с прочтением части произведения.</li>
                         <li>Опубликуйте видео в <a href="http://instagram.com" target="_blank">Инстаграме</a>  c хэштегами #itistuqai и #part${(randomPart.id)!}</li>
                     </ol>
                 </p>
             </div>
             <div class="col-sm-12">
                 <p class="text-center text_p">
-                    ${(randomPart.text)!}
+                    ${(randomPart.htmlText())!}
                 </p>
             </div>
             <div class="text-center">
@@ -167,4 +168,4 @@
     <#--</div>-->
 <#--</div>-->
 </#macro>
-<@m_page title="Главная страница"/>
+<@m_page title="Главная страница" isLanding=true/>

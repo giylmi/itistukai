@@ -1,9 +1,9 @@
 package net.itistukai.web.service.impl;
 
-import net.itistukai.core.dao.IUserDao;
+import net.itistukai.core.dao.UserDao;
 import net.itistukai.core.domain.core.User;
 import net.itistukai.core.domain.core.UserRole;
-import net.itistukai.web.service.IAdminService;
+import net.itistukai.web.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
  * Created by giylmi on 25.02.2015.
  */
 @Service
-public class AdminService implements IAdminService {
+public class AdminServiceImpl implements AdminService {
 
     @Autowired
-    private IUserDao userDao;
+    private UserDao userDao;
 
     @Override
     public Iterable<User> all() {

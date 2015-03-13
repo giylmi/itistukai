@@ -6,7 +6,7 @@ import net.itistukai.web.form.UserForm;
 /**
  * Created by adel on 17.01.15.
  */
-public interface IUserService {
+public interface UserService {
 
     Iterable<User> all();
 

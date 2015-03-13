@@ -1,7 +1,7 @@
 package net.itistukai.web.controller.site;
 
 import net.itistukai.core.domain.core.Composition;
-import net.itistukai.web.service.ICompositionService;
+import net.itistukai.web.service.CompositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import java.util.Collections;
 public class LandingPageController {
 
     @Autowired
-    ICompositionService compositionService;
+    CompositionService compositionService;
 
     @RequestMapping
     public String landingPage(Model model){

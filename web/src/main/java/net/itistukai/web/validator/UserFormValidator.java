@@ -2,7 +2,7 @@ package net.itistukai.web.validator;
 
 import net.itistukai.core.domain.core.UserRole;
 import net.itistukai.web.form.UserForm;
-import net.itistukai.web.service.IUserService;
+import net.itistukai.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 public class UserFormValidator {
 
     @Autowired
-    IUserService userService;
+    UserService userService;
 
     public void validate(UserForm userForm, BindingResult result){
         if (userForm.getLogin().isEmpty()) result.rejectValue("login", "null");

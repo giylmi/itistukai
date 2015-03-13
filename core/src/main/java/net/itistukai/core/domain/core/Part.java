@@ -56,4 +56,8 @@ public class Part {
     public void setText(String text) {
         this.text = text;
     }
+
+    public String htmlText(){
+        return text.replaceAll("\n", "<br>");
+    }
 }

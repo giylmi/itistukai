@@ -1,5 +1,5 @@
 <#include "nav.ftl"/>
-<#macro m_page title isLanding=false>
+<#macro m_page title isLanding=false customScripts=[] customStyles=[]>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +26,10 @@
           type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+    <#list customStyles as style>
+        <link rel="stylesheet" href="/resources/${style}"/>
+    </#list>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -49,7 +53,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="/resources/js/agency.js"></script>
-
+    <#list customScripts as script>
+        <script src="/resources/${script}"></script>
+    </#list>
 </head>
 
 <body id="page-top" class="index">

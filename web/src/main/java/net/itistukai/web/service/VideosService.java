@@ -2,7 +2,6 @@ package net.itistukai.web.service;
 
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -26,4 +25,6 @@ public interface VideosService {
     Video getVideoById(Long id);
 
     Video saveVideo(Video video);
+
+    List<Video> getGalleryVideos(int page);
 }

@@ -1,6 +1,6 @@
 package net.itistukai.web.service.impl;
 
-import net.itistukai.core.dao.ICompositionDao;
+import net.itistukai.core.dao.CompositionDao;
 import net.itistukai.core.dao.PartsDao;
 import net.itistukai.core.domain.core.Composition;
 import net.itistukai.core.domain.core.Part;
@@ -22,7 +22,7 @@ import java.util.List;
 public class AutocompleteServiceImpl implements AutocompleteService {
 
     @Autowired
-    ICompositionDao compositionDao;
+    CompositionDao compositionDao;
     @Autowired
     PartsDao partsDao;
 

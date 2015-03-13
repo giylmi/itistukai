@@ -1,7 +1,7 @@
 package net.itistukai.core.test;
 
 import net.itistukai.core.config.DaoConfig;
-import net.itistukai.core.dao.IUserDao;
+import net.itistukai.core.dao.UserDao;
 import net.itistukai.core.domain.core.User;
 import net.itistukai.core.domain.core.UserRole;
 import org.junit.Test;
@@ -21,7 +21,7 @@ import java.util.UUID;
 public class AdminCreateUtil {
 
     @Autowired
-    IUserDao userDao;
+    UserDao userDao;
 
     @Test
     public void createAdmin() throws Exception {
