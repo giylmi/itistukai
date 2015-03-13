@@ -35,7 +35,7 @@ public class CompositionServiceImpl implements CompositionService {
 
     @Override
     public Boolean existsName(String name) {
-        return !compositionDao.findAllByName(name).isEmpty();
+        return !compositionDao.findAllByNameIgnoreCase(name).isEmpty();
     }
 
     @Override
@@ -113,7 +113,7 @@ public class CompositionServiceImpl implements CompositionService {
     @Override
     @Transactional
     public Composition getOneByName(String s) {
-        List<Composition> allByName = compositionDao.findAllByName(s);
+        List<Composition> allByName = compositionDao.findAllByNameIgnoreCase(s);
         Hibernate.initialize(allByName.get(0).getParts());
         return allByName.get(0);
     }

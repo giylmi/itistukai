@@ -32,7 +32,7 @@ public class AutocompleteServiceImpl implements AutocompleteService {
         if (query == null || query.isEmpty())
             compositions = (List<Composition>) compositionDao.findAll();
         else
-            compositions = compositionDao.findAllByNameContaining(query);
+            compositions = compositionDao.findAllByNameContainingIgnoreCase(query);
         Collections.sort(compositions, Composition.BY_NAME_COMPARATOR);
         List<CompositionVO> vos = new ArrayList<>();
         for (Composition composition: compositions) {
@@ -47,7 +47,7 @@ public class AutocompleteServiceImpl implements AutocompleteService {
         if (query == null || query.isEmpty())
             parts = (List<Part>) partsDao.findAll();
         else
-            parts = partsDao.findAllByTextContaining(query);
+            parts = partsDao.findAllByTextContainingIgnoreCase(query);
         if (compositionId != null)
             for(Iterator<Part> iterator = parts.iterator(); iterator.hasNext();){
                 if (!iterator.next().getComposition().getId().equals(compositionId))

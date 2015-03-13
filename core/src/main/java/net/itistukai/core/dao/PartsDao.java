@@ -9,5 +9,5 @@ import java.util.List;
  * Created by giylmi on 11.03.2015.
  */
 public interface PartsDao extends CrudRepository<Part, Long> {
-    List<Part> findAllByTextContaining(String query);
+    List<Part> findAllByTextContainingIgnoreCase(String query);
 }

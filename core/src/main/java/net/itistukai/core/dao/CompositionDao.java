@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface CompositionDao extends PagingAndSortingRepository<Composition, Long> {
 
-    List<Composition> findAllByName(String name);
+    List<Composition> findAllByNameIgnoreCase(String name);
 
     Long countByStatus(CompositionStatus status);
 
-    List<Composition> findAllByNameContaining(String query);
+    List<Composition> findAllByNameContainingIgnoreCase(String query);
 }
