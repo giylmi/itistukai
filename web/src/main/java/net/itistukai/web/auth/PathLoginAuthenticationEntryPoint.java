@@ -32,7 +32,7 @@ public class PathLoginAuthenticationEntryPoint extends LoginUrlAuthenticationEnt
         if (requestUrl.contains("admin")) {
             return "/admin/login";
         } else {
-            return "/login";
+            return "user/login";
         }
     }
 }
