@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http.authorizeRequests().antMatchers("/admin/login/**").anonymous();
+        http.authorizeRequests().antMatchers("/user/login/**").anonymous();
         http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
         http
                 .formLogin()
