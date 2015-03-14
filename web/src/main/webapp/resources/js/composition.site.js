@@ -2,6 +2,7 @@
  * Created by giylmi on 13.03.2015.
  */
 $(document).ready(function () {
+
     var compositionId = JS_DATA['compositionId'];
     var cache = {};
     var $gallery = $('.js-gallery');
@@ -18,8 +19,8 @@ $(document).ready(function () {
 
     enablePartAutocomplete();
 
-
     loadVideos(1, $sort.val(), $selector.data('type'), $partId.val());
+
     function bindClearPart() {
         $('.js-clear-part').on('click', function () {
             if ($partAutocomplete.val() == '') return;
@@ -109,8 +110,24 @@ $(document).ready(function () {
             success: function (data) {
                 if (page == 1) $gallery.html('');
                 $gallery.append(data);
+                plyr.setup({});
+                bindVideoEvents();
                 bindLoadMoreBtn();
             }
+        });
+    }
+
+    function bindVideoEvents(){
+        var $videos = $('.player');
+        $videos.each(function (i, e) {
+            var media = e.plyr.media;
+            media.addEventListener('play', function (e) {
+                $videos.each(function (i, e) {
+                    var anotherMedia = e.plyr.media;
+                    if (anotherMedia != media)
+                        anotherMedia.pause();
+                });
+            });
         });
     }
 });

@@ -47,5 +47,19 @@
     </div>
 
 </section>
+<script>
+    (function(d,p){
+        var a=new XMLHttpRequest(),
+                b=d.body;
+        a.open("GET",p,!0);
+        a.send();
+        a.onload=function(){
+            var c=d.createElement("div");
+            c.style.display="none";
+            c.innerHTML=a.responseText;
+            b.insertBefore(c,b.childNodes[0])
+        }
+    })(document,"/resources/plyr/sprite.svg");
+</script>
 </#macro>
 <@m_page title="${composition.name}" customScripts=["js/composition.site.js", "plyr/plyr.js"] customStyles=["plyr/plyr.css"]/>
