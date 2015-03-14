@@ -7,7 +7,7 @@
         <div class="intro-text">
             <!--<div class="intro-lead-in">проект</div>-->
             <div class="intro-heading">IT IS Tuqay</div>
-            <a href="#tuqai" class="page-scroll btn btn-xl">Узнать больше</a>
+            <a href="#tuqai" class="page-scroll btn btn-xl"><@spring.message code="site.knowmore"/></a>
         </div>
     </div>
 </header>
@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Габдулла Тукай</h2>
+                <h2 class="section-heading"><@spring.message code="site.gabdulla.tukay"/></h2>
 
                 <h3 class="section-subheading text-muted">Татарский народный поэт, литературный критик, публицист,
                     общественный деятель и переводчик.</h3>
@@ -134,38 +134,5 @@
 
     </div>
 </section>
-
-<#--<div class="portfolio-modal modal fade" id="loinModal" tabindex="-1" role="dialog" aria-hidden="true">-->
-    <#--<div class="modal-content">-->
-        <#--<div class="close-modal" data-dismiss="modal">-->
-            <#--<div class="lr">-->
-                <#--<div class="rl">-->
-                <#--</div>-->
-            <#--</div>-->
-        <#--</div>-->
-        <#--<div class="container">-->
-            <#--<div class="row">-->
-                <#--<div class="col-lg-8 col-lg-offset-2">-->
-                    <#--<div class="modal-body">-->
-                        <#--<!-- Project Details Go Here &ndash;&gt;-->
-                        <#--<h2>Загрузить видео</h2>-->
-                        <#--<p class="item-intro text-muted">Ваш отрывок:</p>-->
-                        <#--<p class="text-center text_p2">Есть деревня за Казанью под названием Кырлай,<br>-->
-                            <#--Запоёшь там - сразу куры подпевают, так и знай.<br>-->
-                            <#--Хоть рождён в другом я месте, но и тут когда-то жил,<br>-->
-                            <#--В поле я ходил за плугом, сеял, жал - и не тужил.<br>-->
-                            <#--Там со всех сторон деревни - буду вечно помнить - лес,<br>-->
-                            <#--По лугам трава как бархат, а вверху - лазурь небес.<br></p>-->
-                        <#--<form class="video">-->
-                            <#--<input type="text" placeholder="фио" class="form-group form-control">-->
-                            <#--<input type="file" class="form-group form-control">-->
-                            <#--<button type="submit" class="btn btn-primary" data-dismiss="modal">Загрузить</button>-->
-                        <#--</form>-->
-                    <#--</div>-->
-                <#--</div>-->
-            <#--</div>-->
-        <#--</div>-->
-    <#--</div>-->
-<#--</div>-->
 </#macro>
 <@m_page title="Главная страница" isLanding=true/>
