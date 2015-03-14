@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
 
     <title>${title} | IT IS TUQAI</title>
@@ -25,7 +25,8 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.theme.min.css"/>
     <#list customStyles as style>
         <link rel="stylesheet" href="/resources/${style}"/>
     </#list>
@@ -53,9 +54,16 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="/resources/js/agency.js"></script>
+    <script src="/resources/js/params.jquery.js"></script>
+    <script src="/resources/jquery-ui/jquery-ui.min.js"></script>
     <#list customScripts as script>
         <script src="/resources/${script}"></script>
     </#list>
+
+    <script>
+        window.JS_DATA = ${__js_data__!'{}'};
+    </script>
+
 </head>
 
 <body id="page-top" class="index">

@@ -81,7 +81,7 @@ public class CompositionServiceImpl implements CompositionService {
                 count++;
                 text = text + "\n" + s;
                 if (count == 4) {
-                    savePart(composition, n, text);
+                    savePart(composition, ++n, text);
                     text = "";
                     count = 0;
                 }
@@ -94,7 +94,7 @@ public class CompositionServiceImpl implements CompositionService {
 
     public void savePart(Composition composition, long n, String text) {
         Part part = new Part();
-        part.setNumber(++n);
+        part.setNumber(n);
         part.setText(text);
         part.setComposition(composition);
         partsDao.save(part);

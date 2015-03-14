@@ -1,10 +1,12 @@
 package net.itistukai.web.config;
 
 import freemarker.template.TemplateException;
+import net.itistukai.web.converter.StringToSortTypeConverter;
 import net.itistukai.web.interceptor.JsDataInjectionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.validation.DefaultMessageCodesResolver;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -100,6 +102,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JsDataInjectionInterceptor());
 //        registry.addInterceptor(new StaticMappingInjectionInterceptor());
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new StringToSortTypeConverter());
     }
 
     @Bean
