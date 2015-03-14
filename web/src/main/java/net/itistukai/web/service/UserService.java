@@ -15,4 +15,6 @@ public interface UserService {
     User registerUser(UserForm user);
 
     Boolean userExists(UserForm userForm);
+
+    User findUser(String login);
 }

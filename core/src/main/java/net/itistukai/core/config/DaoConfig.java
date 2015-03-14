@@ -54,7 +54,7 @@ public class DaoConfig {
     public EntityManagerFactory entityManagerFactory() throws PropertyVetoException {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setGenerateDdl(false);
         vendorAdapter.setShowSql(true);
         String databasePlatform = env.getProperty("jdbc.dialect");
         if(databasePlatform == null || databasePlatform.isEmpty()){

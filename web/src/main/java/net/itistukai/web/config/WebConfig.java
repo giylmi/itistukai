@@ -3,20 +3,14 @@ package net.itistukai.web.config;
 import freemarker.template.TemplateException;
 import net.itistukai.web.interceptor.JsDataInjectionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.DefaultMessageCodesResolver;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
@@ -32,7 +26,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"net.itistukai.web.controller"})
-@Import({ValidatorsConfig.class, ServiceConfig.class})
+@Import({ValidatorsConfig.class, ServiceConfig.class, WebSecurityConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean(name = "multipartResolver")
@@ -74,7 +68,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/")
+                .setCachePeriod(86400);
     }
 
     @Bean
@@ -94,7 +90,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public LocaleResolver localeResolver(){
+    public LocaleResolver localeResolver() {
         FixedLocaleResolver localeResolver = new FixedLocaleResolver();
         localeResolver.setDefaultLocale(Locale.forLanguageTag("ru"));
         return localeResolver;
@@ -107,7 +103,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public static WebApplicationContextAware applicationContextAware(){
+    public static WebApplicationContextAware applicationContextAware() {
         return new WebApplicationContextAware();
     }
 }

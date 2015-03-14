@@ -159,6 +159,23 @@
                 <version>3.0.0.CR1</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -204,6 +221,7 @@
         <junit.version>4.11</junit.version>
         <postgresql.version>9.1-901-1.jdbc4</postgresql.version>
         <jInstagram.version>1.0.10</jInstagram.version>
+        <spring-security.version>3.2.5.RELEASE</spring-security.version>
     </properties>
 
     <profiles>
