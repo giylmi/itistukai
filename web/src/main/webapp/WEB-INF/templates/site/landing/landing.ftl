@@ -28,17 +28,7 @@
                 <img src="/resources/img/imgB.jpg" class="img_t">
             </div>
             <div class="col-sm-6">
-                <p class="text_t">26 апреля исполнится 129 лет со дня рождения величайшего татарского поэта Габдуллы
-                    Тукая.
-                    Поэт, с тяжелой судьбой, сильным характером, и, безусловно, имевший великий талант писательского
-                    дела.
-                    Его стихотворения «И туган тел, и матур», «Авылым», поэмы «Идегэй», «Шурале», многочисленные сказки,
-                    переводы, публицистические материалы золотой нитью проносятся по истории татарской литературы.
-                    Ко дню рождения Габдуллы Тукая, мы бы хотели, чтобы одна из любимых читателями поэм «Шурале»
-                    прозвучала
-                    по всему миру. Ценители творчества Тукая и татарской литературы, любители «Шурале», и просто, те,
-                    кто
-                    хочет нас поддержать принимайте участие в нашем флешмобе “IT IS Tuqay”.</p>
+                <p class="text_t"><@spring.message code="site.abouttukai"/></p>
             </div>
         </div>
     </div>
@@ -58,13 +48,9 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <p>“IT IS Tuqay” – проект Высшей школы ИТИС Казанского
-                    Федерального Университета. Он создан с целью популяризации творчества великого татарского поэта
-                    Габдуллы Тукая.</p>
+                <p><@spring.message code="site.itistuqaiinfo"/></p>
                 <p>
-                    Проект представляет собой флешмоб, для участия в котором желающий должен опубликовать в <a href="http://instagram.com" target="_blank">Инстаграме</a>
-                    видео, на котором он читает строчку из произведения Габдуллы Тукая. Все видео будут собираться в единую галерею - таким образом, шаг за шагом, мы получим полное произведение голосами и лицами участников.
-                    А к дню рождения великого поэта будет представлен смонтированный фильм с наилучшими прочтениями отрывков.
+                    <@spring.message code="site.flashmobinfo"/>
                 </p>
             </div>
             <div class="col-sm-6">
@@ -79,7 +65,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Правила флешмоба</h2>
+                <h2 class="section-heading"><@spring.message code="site.flashmobrules"/></h2>
 
                 <h3 class="section-subheading text-muted"></h3>
             </div>
@@ -89,10 +75,7 @@
                 <img src="/resources/img/shu3.png" class="img_t">
             </div>
             <div class="col-sm-6">
-                <p class="text_t">Поэма «Шурале» - одна из самых колоритных произведений Тукая.
-                    Именно, она
-
-                    станет отправной точкой флешмоба.</p>
+                <p class="text_t"><@spring.message code="site.shurale"/></p>
                 <ol>
                     <li>Запишите видео с прочтением части произведения. Свою часть можно получить <a class="page-scroll" href="#join">тут</a></li>
                     <li>Опубликуйте видео в <a href="http://instagram.com" target="_blank">Инстаграме</a>  c хэштегами проекта и части произведения</li>
@@ -109,7 +92,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Принять участие</h2>
+                <h2 class="section-heading"><@spring.message code="site.flashmobjoin"/></h2>
 
                 <h3 class="section-subheading text-muted"></h3>
             </div>
@@ -129,10 +112,11 @@
                 </p>
             </div>
             <div class="text-center">
-                <a href="/composition" class="btn btn-xl"> Галерея</a></div>
+                <a href="/composition" class="btn btn-xl"> <@spring.message code="site.gallery"/></a></div>
         </div>
 
     </div>
 </section>
 </#macro>
-<@m_page title="Главная страница" isLanding=true/>
+<#assign title><@spring.message code="site.landing"/></#assign>
+<@m_page title=title isLanding=true/>

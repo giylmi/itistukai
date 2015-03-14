@@ -26,14 +26,14 @@
                     <#--</div>-->
                     <div class="col-xs-12 col-lg-4 form-group">
                         <select class="form-control form-group js-sort">
-                            <option <#if sort?? && sort.value == "date_desc">selected</#if> value="date_desc">по дате добавления, сначала новые</option>
-                            <option <#if sort?? && sort.value == "part.number_asc">selected</#if> value="part.number_asc">по порядку</option>
+                            <option <#if sort?? && sort.value == "date_desc">selected</#if> value="date_desc"><@spring.message code="site.date_desc"/></option>
+                            <option <#if sort?? && sort.value == "part.number_asc">selected</#if> value="part.number_asc"><@spring.message code="site.part.number_asc"/></option>
                         </select>
                     </div>
                     <div class="col-lg-3 hidden-xs">
                         <ul class="nav nav-pills">
-                            <li class="js-view-type-selector-wrapper<#if viewType=="grid"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="grid">Сетка</a></li>
-                            <li class="js-view-type-selector-wrapper<#if viewType=="feed"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="feed">Лента</a></li>
+                            <li class="js-view-type-selector-wrapper<#if viewType=="grid"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="grid"><@spring.message code="site.grid"/></a></li>
+                            <li class="js-view-type-selector-wrapper<#if viewType=="feed"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="feed"><@spring.message code="site.feed"/></a></li>
                         </ul>
                     </div>
                 </form>

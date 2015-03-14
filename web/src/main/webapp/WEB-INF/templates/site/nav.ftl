@@ -22,6 +22,8 @@
             <a class="navbar-brand page-scroll" href="${navHref("#page-top", isLanding)}">
                 <img src="/resources/img/sh_2.png" class="logo">
             </a>
+            <a href="?lang=ru"><img src="/resources/img/Russia_Flag-icon.png"></a>
+            <a href="?lang=en"><img src="/resources/img/english_flag.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

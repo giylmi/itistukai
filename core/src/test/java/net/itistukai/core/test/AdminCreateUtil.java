@@ -26,7 +26,7 @@ public class AdminCreateUtil {
     @Test
     public void createAdmin() throws Exception {
         User user = new User();
-        user.setLogin("admin");
+        user.setLogin("giylmi");
         String salt = UUID.randomUUID().toString();
         String pswd = "admin";
         String pwd = DigestUtils.md5DigestAsHex((pswd + salt).getBytes());

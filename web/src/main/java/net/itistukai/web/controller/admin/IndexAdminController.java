@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("admin")
 public class IndexAdminController {
 
-    @RequestMapping("")
+    @RequestMapping
     public String hello() {
         return "redirect:/admin/users";
     }
