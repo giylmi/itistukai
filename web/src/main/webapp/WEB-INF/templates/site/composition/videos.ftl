@@ -2,7 +2,7 @@
 <#import "/spring.ftl" as spring/>
 <#if videos?? && videos?has_content>
     <#list videos as video>
-    <div class="col-xs 12 <#if viewType=="grid">col-md-4 col-lg-4<#else>col-md-8 col-md-push-2 col-lg-8 col-lg-push-2</#if>">
+    <div class="js-video-wrapper col-xs 12 <#if viewType=="grid">col-md-4 col-lg-4<#else>col-md-8 col-md-push-2 col-lg-8 col-lg-push-2</#if>">
         <div class="video_block">
             <div class="player">
                 <video poster="${video.preloaderUrl}" controls crossorigin>

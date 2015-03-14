@@ -75,7 +75,14 @@ $(document).ready(function () {
             $viewTypeWrapper.removeClass('active');
             $wrapper.addClass('active');
             var type = $selector.data('type');
-            loadVideos(1);
+            var $videos = $('.js-video-wrapper');
+            if (type == 'grid') {
+                $videos.removeClass('col-md-8 col-md-push-2 col-lg-8 col-lg-push-2');
+                $videos.addClass('col-md-4 col-lg-4');
+            } else {
+                $videos.removeClass('col-md-4 col-lg-4');
+                $videos.addClass('col-md-8 col-md-push-2 col-lg-8 col-lg-push-2');
+            }
             history.pushState(null, null, jQuery.param.querystring(window.location.href, 'viewType=' + type));
         });
     }
@@ -121,6 +128,7 @@ $(document).ready(function () {
         var $videos = $('.player');
         $videos.each(function (i, e) {
             var media = e.plyr.media;
+            media.removeEventListener('play');
             media.addEventListener('play', function (e) {
                 $videos.each(function (i, e) {
                     var anotherMedia = e.plyr.media;
