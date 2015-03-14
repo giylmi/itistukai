@@ -28,7 +28,6 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"net.itistukai.web.controller"})
-@Import({ValidatorsConfig.class, ServiceConfig.class, WebSecurityConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean(name = "multipartResolver")
@@ -109,8 +108,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addConverter(new StringToSortTypeConverter());
     }
 
-    @Bean
-    public static WebApplicationContextAware applicationContextAware() {
-        return new WebApplicationContextAware();
-    }
 }

@@ -16,7 +16,7 @@ import javax.servlet.Filter;
 public class WebappInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{CoreConfig.class};
+        return new Class<?>[]{ValidatorsConfig.class, ServiceConfig.class, WebSecurityConfig.class, CoreConfig.class};
     }
 
     @Override
