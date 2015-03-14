@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring/>
 <#function navHref href isLanding>
     <#if !isLanding>
         <#return "/" + href/>
@@ -18,7 +19,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">
+            <a class="navbar-brand page-scroll" href="${navHref("#page-top", isLanding)}">
                 <img src="/resources/img/sh_2.png" class="logo">
             </a>
         </div>
@@ -27,22 +28,22 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
-                    <a href="#page-top"></a>
+                    <a href="${navHref("#page-top", isLanding)}"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#tuqai", isLanding)}">Габдулла Тукай</a>
+                    <a class="page-scroll" href="${navHref("#tuqai", isLanding)}"><@spring.message code="site.gabdulla.tukay"/></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#project", isLanding)}">О проекте</a>
+                    <a class="page-scroll" href="${navHref("#project", isLanding)}"><@spring.message code="site.about"/></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#rules", isLanding)}">Правила</a>
+                    <a class="page-scroll" href="${navHref("#rules", isLanding)}"><@spring.message code="site.rules"/></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#join", isLanding)}">Участие</a>
+                    <a class="page-scroll" href="${navHref("#join", isLanding)}"><@spring.message code="site.join"/></a>
                 </li>
                 <li>
-                    <a href="/composition">Галерея</a>
+                    <a href="/composition"><@spring.message code="site.gallery"/></a>
                 </li>
             </ul>
         </div>
