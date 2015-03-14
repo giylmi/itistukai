@@ -5,11 +5,11 @@ import net.itistukai.core.dao.VideoDao;
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.web.service.VideosService;
+import net.itistukai.web.sort.SortType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class VideosServiceImpl implements VideosService {
 
     @Override
     public Page<Video> getVideosByStatus(VideoStatus status, int page) {
-        PageRequest pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, Sort.Direction.DESC, "date");
+        PageRequest pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, SortType.BY_DATE_DESC.getDirection(), SortType.BY_DATE_DESC.getFieldName());
         return videoDao.findAllByStatus(status, pageable);
     }
 
@@ -65,8 +65,10 @@ public class VideosServiceImpl implements VideosService {
     }
 
     @Override
-    public Page getGalleryVideos(int page) {
-        Pageable pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, Sort.Direction.DESC, "date");
-        return videoDao.findAllByStatusNot(VideoStatus.BANNED, pageable);
+    public Page getGalleryVideos(int page, Long partId, SortType sort) {
+        Pageable pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, sort.getDirection(), sort.getFieldName());
+        if (partId == null)
+            return videoDao.findAllByStatusNot(VideoStatus.BANNED, pageable);
+        else return videoDao.findAllByStatusNotAndPartId(VideoStatus.BANNED, pageable, partId);
     }
 }

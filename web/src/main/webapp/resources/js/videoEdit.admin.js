@@ -50,7 +50,7 @@ $(document).ready(function () {
             source: function (request, response) {
                 var term = request.term;
                 var compositionId = $compositionId.val();
-                if (compositionId in cache && term in cache[$compositionId.val()]) {
+                if (compositionId in cache && term in cache[compositionId]) {
                     response(cache[compositionId] [compositionId]);
                     return;
                 }

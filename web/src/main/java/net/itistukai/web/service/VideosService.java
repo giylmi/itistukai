@@ -2,6 +2,7 @@ package net.itistukai.web.service;
 
 import net.itistukai.core.domain.core.Video;
 import net.itistukai.core.domain.core.VideoStatus;
+import net.itistukai.web.sort.SortType;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -27,5 +28,5 @@ public interface VideosService {
 
     Video saveVideo(Video video);
 
-    Page getGalleryVideos(int page);
+    Page getGalleryVideos(int page, Long partId, SortType sort);
 }

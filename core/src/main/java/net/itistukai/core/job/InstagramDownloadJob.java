@@ -17,6 +17,7 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ import java.util.List;
 
 @EnableScheduling
 @Service
+@Profile("uploadOn")
 public class InstagramDownloadJob{
 
     private Logger logger = LoggerFactory.getLogger(InstagramDownloadJob.class);
@@ -46,7 +48,7 @@ public class InstagramDownloadJob{
     @Autowired
     PartsDao partsDao;
 
-        @Scheduled(fixedDelay = 60000)
+    @Scheduled(fixedDelay = 60000)
     public void execute(){
         try {
             logger.info("request to instagram by delay");
