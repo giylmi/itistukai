@@ -17,13 +17,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <form class="row video_pan">
-                    <div class="col-xs-12 col-lg-5 form-group">
-                        <div class="input-group">
-                            <input type="text" value="${(part.text)!}" class="form-control form-group js-part-autocomplete" placeholder="Поиск по фразе">
-                            <a class="input-group-addon js-clear-part"><span aria-hidden="true">&times;</span></a>
-                            <input type="hidden" value="${(part.id)!}" class="js-part-id"/>
-                        </div>
-                    </div>
+                    <#--<div class="col-xs-12 col-lg-5 form-group">-->
+                        <#--<div class="input-group">-->
+                            <#--<input type="text" value="${(part.text)!}" class="form-control form-group js-part-autocomplete" placeholder="Поиск по фразе">-->
+                            <#--<a class="input-group-addon js-clear-part"><span aria-hidden="true">&times;</span></a>-->
+                            <#--<input type="hidden" value="${(part.id)!}" class="js-part-id"/>-->
+                        <#--</div>-->
+                    <#--</div>-->
                     <div class="col-xs-12 col-lg-4 form-group">
                         <select class="form-control form-group js-sort">
                             <option <#if sort?? && sort.value == "date_desc">selected</#if> value="date_desc">по дате добавления, сначала новые</option>
