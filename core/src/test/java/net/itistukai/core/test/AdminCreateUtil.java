@@ -42,6 +42,6 @@ public class AdminCreateUtil {
         String password = "admin_pa$$";
         String salt = UUID.randomUUID().toString();
         System.out.println(salt);
-        System.out.println(DigestUtils.md5DigestAsHex(password.getBytes()));
+        System.out.println(DigestUtils.md5DigestAsHex((password + salt).getBytes()));
     }
 }
