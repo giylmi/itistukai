@@ -4,6 +4,7 @@
 **/.gradle/*
 **/*.properties
 **/build/*
+**/target/*
 
 !**/messages/*.properties
 !**/log4j.properties
