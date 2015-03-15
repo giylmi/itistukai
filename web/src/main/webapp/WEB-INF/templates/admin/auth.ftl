@@ -8,6 +8,9 @@
 </div>
 <div class="row">
     <div class="col-md-6">
+        <#if error!false>
+            <p class="alert alert-danger">Неправильно введен логин или пароль</p>
+        </#if>
         <form action="/admin/login" method="post">
             <div class="form-group">
                 <label for="login">Логин</label>

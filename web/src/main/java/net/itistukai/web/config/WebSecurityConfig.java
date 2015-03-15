@@ -1,9 +1,5 @@
 package net.itistukai.web.config;
 
-import net.itistukai.web.auth.DoubleUrlLoginFailureHandler;
-import net.itistukai.web.auth.DoubleUrlLogoutRequestMatcher;
-import net.itistukai.web.auth.DoubleUrlLogoutSuccessHandler;
-import net.itistukai.web.auth.PathLoginAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,14 +19,14 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 })
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    PathLoginAuthenticationEntryPoint loginEntryPoint;
-    @Autowired
-    DoubleUrlLogoutRequestMatcher doubleUrlLogoutRequestMatcher;
-    @Autowired
-    DoubleUrlLogoutSuccessHandler doubleUrlLogoutSuccessHandler;
-    @Autowired
-    DoubleUrlLoginFailureHandler doubleUrlLoginFailureHandler;
+//    @Autowired
+//    PathLoginAuthenticationEntryPoint loginEntryPoint;
+//    @Autowired
+//    DoubleUrlLogoutRequestMatcher doubleUrlLogoutRequestMatcher;
+//    @Autowired
+//    DoubleUrlLogoutSuccessHandler doubleUrlLogoutSuccessHandler;
+//    @Autowired
+//    DoubleUrlLoginFailureHandler doubleUrlLoginFailureHandler;
 
 
     @Override
@@ -40,18 +36,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http.authorizeRequests().antMatchers("/admin/login/**").anonymous();
-        http.authorizeRequests().antMatchers("/user/login/**").anonymous();
+//        http.authorizeRequests().antMatchers("/user/login/**").anonymous();
         http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
         http
                 .formLogin()
                 .passwordParameter("password")
                 .usernameParameter("login")
-                .failureHandler(doubleUrlLoginFailureHandler)
+                .loginProcessingUrl("/admin/login")
+                .loginPage("/admin/login")
+                        .failureUrl("/admin/login?error=true")
+//                .failureHandler(doubleUrlLoginFailureHandler)
                 .permitAll()
                 .and()
-                .logout().logoutRequestMatcher(doubleUrlLogoutRequestMatcher).logoutSuccessHandler(doubleUrlLogoutSuccessHandler)
+                .logout().logoutUrl("/admin/logout").logoutSuccessUrl("/admin")
+//                .logout().logoutRequestMatcher(doubleUrlLogoutRequestMatcher).logoutSuccessHandler(doubleUrlLogoutSuccessHandler)
                 .permitAll();
-        http.exceptionHandling().authenticationEntryPoint(loginEntryPoint);
+//        http.exceptionHandling().authenticationEntryPoint(loginEntryPoint);
         http.exceptionHandling().accessDeniedPage("/forbidden");
     }
 
