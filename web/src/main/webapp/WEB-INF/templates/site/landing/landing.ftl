@@ -19,8 +19,7 @@
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading"><@spring.message code="site.gabdulla.tukay"/></h2>
 
-                <h3 class="section-subheading text-muted">Татарский народный поэт, литературный критик, публицист,
-                    общественный деятель и переводчик.</h3>
+                <h3 class="section-subheading text-muted"><@spring.message code="site.tukaiinfo"/></h3>
             </div>
         </div>
         <div class="row">
@@ -50,7 +49,7 @@
             <div class="col-sm-6">
                 <p><@spring.message code="site.itistuqaiinfo"/></p>
                 <p>
-                    Проект представляет собой флешмоб, для участия в котором желающий должен опубликовать в <a href="http://instagram.com" target="_blank">Инстаграме</a> видео, на котором он читает строчку из произведения Габдуллы Тукая. Все видео будут собираться в единую галерею - таким образом, шаг за шагом, мы получим полное произведение голосами и лицами участников. А к дню рождения великого поэта будет представлен смонтированный фильм с наилучшими прочтениями отрывков.
+                    <@spring.message code="site.flashmobinfo"/>
                 </p>
             </div>
             <div class="col-sm-6">
@@ -77,10 +76,10 @@
             <div class="col-sm-6">
                 <p class="text_t"><@spring.message code="site.shurale"/></p>
                 <ol>
-                    <li>Запишите видео с прочтением части произведения. Свою часть можно получить <a class="page-scroll" href="#join">тут</a></li>
-                    <li>Опубликуйте видео в <a href="http://instagram.com" target="_blank">Инстаграме</a>  c хэштегами проекта и части произведения</li>
-                    <li>Пригласите своих друзей так же поучаствовать во флешмобе</li>
-                    <li>Посмотреть галерею опубликованных видео Вы можете <a href="/composition" target="_blank">здесь</a></li>
+                    <li><@spring.message code="site.rule1"/></li>
+                    <li><@spring.message code="site.rule2"/></li>
+                    <li><@spring.message code="site.rule3"/></li>
+                    <li><@spring.message code="site.rule4"/></li>
                 </ol>
             </div>
 
@@ -101,8 +100,8 @@
             <div class="col-sm-12">
                 <p class="text-center">
                     <ol>
-                        <li>Запишите видео с прочтением части произведения.</li>
-                        <li>Опубликуйте видео в <a href="http://instagram.com" target="_blank">Инстаграме</a>  c хэштегами #itistuqai и #part${(randomPart.id)!}</li>
+                        <li><@spring.message code="site.joinrule1"/></li>
+                        <li><@spring.messageArgs code="site.joinrule2" args=[(randomPart.id)!]/></li>
                     </ol>
                 </p>
             </div>
