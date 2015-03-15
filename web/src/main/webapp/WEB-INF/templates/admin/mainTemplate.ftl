@@ -1,6 +1,6 @@
 <#include "nav.ftl"/>
 <#assign c=JspTaglibs['http://java.sun.com/jstl/core']/>
-<#macro m_page title customStyles=[] customScripts=[]>
+<#macro m_page title hideNav=false customStyles=[] customScripts=[]>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +39,9 @@
     </script>
 </head>
 <body>
-    <@nav></@nav>
+    <#if !hideNav>
+        <@nav></@nav>
+    </#if>
     <div id="page-wrapper">
         <@m_body></@m_body>
     </div>

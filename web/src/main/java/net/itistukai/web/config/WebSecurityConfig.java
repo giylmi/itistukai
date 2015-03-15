@@ -1,5 +1,8 @@
 package net.itistukai.web.config;
 
+import net.itistukai.web.auth.DoubleUrlLoginFailureHandler;
+import net.itistukai.web.auth.DoubleUrlLogoutRequestMatcher;
+import net.itistukai.web.auth.DoubleUrlLogoutSuccessHandler;
 import net.itistukai.web.auth.PathLoginAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,11 +21,16 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 @ComponentScan(basePackages = {
         "net.itistukai.web.auth"
 })
-
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     PathLoginAuthenticationEntryPoint loginEntryPoint;
+    @Autowired
+    DoubleUrlLogoutRequestMatcher doubleUrlLogoutRequestMatcher;
+    @Autowired
+    DoubleUrlLogoutSuccessHandler doubleUrlLogoutSuccessHandler;
+    @Autowired
+    DoubleUrlLoginFailureHandler doubleUrlLoginFailureHandler;
 
 
     @Override
@@ -36,12 +44,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
         http
                 .formLogin()
-                .loginProcessingUrl("/login")
                 .passwordParameter("password")
                 .usernameParameter("login")
+                .failureHandler(doubleUrlLoginFailureHandler)
                 .permitAll()
                 .and()
-                .logout().logoutUrl("/logout")
+                .logout().logoutRequestMatcher(doubleUrlLogoutRequestMatcher).logoutSuccessHandler(doubleUrlLogoutSuccessHandler)
                 .permitAll();
         http.exceptionHandling().authenticationEntryPoint(loginEntryPoint);
         http.exceptionHandling().accessDeniedPage("/forbidden");
