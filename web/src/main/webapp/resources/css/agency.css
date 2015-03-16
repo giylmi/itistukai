@@ -913,3 +913,15 @@ body {
 .not_mrg{
     padding-top: 10px;
 }
+@media (min-width: 768px){
+    .container {
+         width: 100%;
+    }
+}
+.navbar-header.page-scroll a{
+    display: block;
+}
+.lang {
+    float: left;
+    /* margin-top: 5px; */
+}
