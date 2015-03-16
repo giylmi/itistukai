@@ -45,6 +45,9 @@
                 <li>
                     <a class="page-scroll" href="${navHref("#join", isLanding)}"><@spring.message code="site.join"/></a>
                 </li>
+                <#--<li>-->
+                    <#--<a class="page-scroll" href="${navHref("#team", isLanding)}"><@spring.message code="site.team"/></a>-->
+                <#--</li>-->
                 <li>
                     <a href="/composition"><@spring.message code="site.gallery"/></a>
                 </li>

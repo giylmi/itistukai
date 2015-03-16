@@ -11,7 +11,7 @@
 
     <title>${title} | IT IS TUQAI</title>
 
-    <link rel="icon" type="image/ico" href="/resources/img/favicon.ico" />
+    <link rel="icon" type="image/ico" href="/resources/img/favicon.ico"/>
     <!-- Bootstrap Core CSS -->
     <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -37,28 +37,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- jQuery -->
-    <script src="/resources/js/jquery-2.1.3.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="/resources/js/classie.js"></script>
-    <script src="/resources/js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="/resources/js/jqBootstrapValidation.js"></script>
-    <script src="/resources/js/contact_me.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/resources/js/agency.js"></script>
-    <script src="/resources/js/params.jquery.js"></script>
-    <script src="/resources/jquery-ui/jquery-ui.min.js"></script>
-    <#list customScripts as script>
-        <script src="/resources/${script}"></script>
-    </#list>
 
     <script>
         window.JS_DATA = ${__js_data__!'{}'};
@@ -83,6 +62,29 @@
     </div>
 </footer>
 
+
+<!-- jQuery -->
+<script src="/resources/js/jquery-2.1.3.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="/resources/js/classie.js"></script>
+<script src="/resources/js/cbpAnimatedHeader.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="/resources/js/jqBootstrapValidation.js"></script>
+<script src="/resources/js/contact_me.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/resources/js/agency.js"></script>
+<script src="/resources/js/params.jquery.js"></script>
+<script src="/resources/jquery-ui/jquery-ui.min.js"></script>
+    <#list customScripts as script>
+    <script src="/resources/${script}"></script>
+    </#list>
 </body>
 
 </html>
