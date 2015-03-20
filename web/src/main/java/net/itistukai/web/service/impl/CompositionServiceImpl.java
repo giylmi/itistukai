@@ -124,6 +124,7 @@ public class CompositionServiceImpl implements CompositionService {
     }
 
     @Override
+    @Transactional
     public Composition getTheOne(){
         Composition composition = compositionDao.findAll().get(0);
         Hibernate.initialize(composition.getParts());
