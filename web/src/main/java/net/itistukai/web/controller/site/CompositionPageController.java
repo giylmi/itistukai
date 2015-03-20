@@ -31,7 +31,7 @@ public class CompositionPageController {
                                   @RequestParam(required = false, defaultValue = "date_desc") SortType sort,
                                   @RequestParam(required = false, defaultValue = "grid") String viewType,
                                   @RequestParam(required = false) Long partId){
-        Composition composition = compositionService.getAll().get(0);
+        Composition composition = compositionService.getTheOne();
         Part part = null;
         for (Part compositionPart: composition.getParts())
             if (compositionPart.getId().equals(partId)) {
