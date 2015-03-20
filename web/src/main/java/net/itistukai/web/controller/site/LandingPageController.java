@@ -18,7 +18,7 @@ public class LandingPageController {
 
     @RequestMapping
     public String landingPage(Model model){
-        Composition shurale = compositionService.getTheOne();
+        Composition shurale = compositionService.getAll().get(0);
         model.addAttribute("composition", shurale);
         Collections.shuffle(shurale.getParts());
         model.addAttribute("randomPart", shurale.getParts().get(0));
