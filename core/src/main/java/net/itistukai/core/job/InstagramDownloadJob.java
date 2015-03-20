@@ -48,7 +48,7 @@ public class InstagramDownloadJob{
     @Autowired
     PartsDao partsDao;
 
-    @Scheduled(fixedDelay = 60000)
+    @Scheduled(fixedDelay = 30000)
     public void execute(){
         try {
             logger.info("request to instagram by delay");

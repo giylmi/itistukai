@@ -36,4 +36,12 @@ public class AdminCreateUtil {
         user.setEmail("blabla@gmail.com");
         userDao.save(user);
     }
+
+    @Test
+    public void md5Password(){
+        String password = "admin_pa$$";
+        String salt = UUID.randomUUID().toString();
+        System.out.println(salt);
+        System.out.println(DigestUtils.md5DigestAsHex((password + salt).getBytes()));
+    }
 }
