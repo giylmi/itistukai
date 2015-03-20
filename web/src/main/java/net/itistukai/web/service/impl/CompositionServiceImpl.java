@@ -122,4 +122,11 @@ public class CompositionServiceImpl implements CompositionService {
     public List<Composition> getAll() {
         return compositionDao.findAll();
     }
+
+    @Override
+    public Composition getTheOne(){
+        Composition composition = compositionDao.findAll().get(0);
+        Hibernate.initialize(composition.getParts());
+        return composition;
+    }
 }
