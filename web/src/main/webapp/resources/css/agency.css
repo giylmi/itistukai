@@ -633,11 +633,17 @@ section h3.section-subheading {
 .team-member {
     margin-bottom: 50px;
     text-align: center;
-}
 
+}
 .team-member img {
-    margin: 0 auto;
-    border: 7px solid #fff;
+    width: 336px;
+    /*position: absolute;*/
+    /*margin: 0 auto;*/
+    /*border: 7px solid #fff;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin-right: -50%;*/
+    /*transform: translate(-50%, -50%)*/
 }
 
 .team-member h4 {
