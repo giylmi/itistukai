@@ -24,6 +24,7 @@
             </a>
             <a href="?lang=ru"><img width="30" height="20" src="/resources/img/Russia_Flag-icon.png"></a>
             <a href="?lang=en"><img width="30" height="20" src="/resources/img/english_flag.png"></a>
+            <a href="?lang=tat"><img width="30" height="20" src="/resources/img/tat_flag.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,6 +45,9 @@
                 <li>
                     <a class="page-scroll" href="${navHref("#join", isLanding)}"><@spring.message code="site.join"/></a>
                 </li>
+                <#--<li>-->
+                    <#--<a class="page-scroll" href="${navHref("#team", isLanding)}"><@spring.message code="site.team"/></a>-->
+                <#--</li>-->
                 <li>
                     <a href="/composition"><@spring.message code="site.gallery"/></a>
                 </li>
