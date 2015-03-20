@@ -21,4 +21,6 @@ public interface CompositionService {
     Composition getOneByName(String s);
 
     List<Composition> getAll();
+
+    Composition getTheOne();
 }
