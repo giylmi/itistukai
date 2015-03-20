@@ -116,57 +116,74 @@
 
     </div>
 </section>
-<#--<section id="team">-->
-    <#--<div class="container">-->
-        <#--<div class="row">-->
-            <#--<div class="col-lg-12 text-center">-->
-                <#--<h2 class="section-heading"><@spring.message code="site.team"/></h2>-->
-            <#--</div>-->
-        <#--</div>-->
-        <#--<div class="row">-->
-            <#--<div class="col-sm-4">-->
-                <#--<div class="team-member">-->
-                    <#--<img src="/resources/img/team/da.jpg" class="img-responsive img-circle" alt="">-->
-                    <#--<h4><@spring.message code="site.team.da"/></h4>-->
-                    <#--<p class="text-muted"><@spring.message code="site.team.da.reg"/></p>-->
-
-                <#--</div>-->
-            <#--</div>-->
-            <#--<div class="col-sm-4">-->
-                <#--<div class="team-member">-->
-                    <#--<img src="/resources/img/team/vs.jpg" class="img-responsive img-circle" alt="">-->
-                    <#--<h4><@spring.message code="site.team.vs"/></h4>-->
-                    <#--<p class="text-muted"><@spring.message code="site.team.vs.reg"/></p>-->
-
-                <#--</div>-->
-            <#--</div>-->
-            <#--<div class="col-sm-4">-->
-                <#--<div class="team-member">-->
-                    <#--<img src="/resources/img/team/ag.jpg" class="img-responsive img-circle" alt="">-->
-                    <#--<h4><@spring.message code="site.team.ag"/></h4>-->
-                    <#--<p class="text-muted"><@spring.message code="site.team.ag.reg"/></p>-->
-
-                <#--</div>-->
-            <#--</div>-->
-        <#--</div>-->
-        <#--<div class="col-sm-4">-->
-            <#--<div class="team-member">-->
-                <#--<img src="img/team/1.jpg" class="img-responsive img-circle" alt="">-->
-                <#--<h4>Kay Garland</h4>-->
-                <#--<p class="text-muted">Lead Designer</p>-->
-
-            <#--</div>-->
-        <#--</div>-->
-        <#--<div class="col-sm-4">-->
-            <#--<div class="team-member">-->
-                <#--<img src="img/team/2.jpg" class="img-responsive img-circle" alt="">-->
-                <#--<h4>Larry Parker</h4>-->
-                <#--<p class="text-muted">Lead Marketer</p>-->
-
-            <#--</div>-->
-        <#--</div>-->
-    <#--</div>-->
-<#--</section>-->
+<section id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading"><@spring.message code="site.team"/></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-sm-push-2">
+                <div class="team-member">
+                    <div>
+                        <img src="/resources/img/team/da.jpg" class="center-block img-responsive img-circle" alt="">
+                    </div>
+                    <h4><@spring.message code="site.team.da"/></h4>
+                    <p class="text-muted"><@spring.message code="site.team.da.reg"/></p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-sm-push-2">
+                <div class="team-member">
+                    <div>
+                        <img src="/resources/img/team/vs.jpg" class="center-block img-responsive img-circle" alt="">
+                    </div>
+                    <h4><@spring.message code="site.team.vs"/></h4>
+                    <p class="text-muted"><@spring.message code="site.team.vs.reg"/></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading"><@spring.message code="site.team.dev"/></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <div class="team-member">
+                    <div>
+                        <img src="/resources/img/team/ag.jpg" class="center-block img-responsive img-circle" alt="">
+                    </div>
+                    <h4><@spring.message code="site.team.ag"/></h4>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="team-member">
+                    <div>
+                        <img src="/resources/img/team/am.jpg" class="center-block img-responsive img-circle" alt="">
+                    </div>
+                    <h4><@spring.message code="site.team.am"/></h4>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="team-member">
+                    <div>
+                        <img src="/resources/img/team/rs.jpg" class="center-block img-responsive img-circle" alt="">
+                    </div>
+                    <h4><@spring.message code="site.team.rs"/></h4>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="team-member ">
+                    <div>
+                        <img src="/resources/img/team/pb.jpg" class="center-block img-responsive img-circle" alt="">
+                    </div>
+                    <h4><@spring.message code="site.team.pb"/></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </#macro>
 <#assign title><@spring.message code="site.landing"/></#assign>
 <@m_page title=title isLanding=true/>
