@@ -117,4 +117,9 @@ public class CompositionServiceImpl implements CompositionService {
         Hibernate.initialize(allByName.get(0).getParts());
         return allByName.get(0);
     }
+
+    @Override
+    public List<Composition> getAll() {
+        return compositionDao.findAll();
+    }
 }
