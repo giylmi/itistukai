@@ -3,6 +3,8 @@ package net.itistukai.web.service;
 import net.itistukai.core.domain.core.Composition;
 import net.itistukai.web.form.CompositionForm;
 
+import java.util.List;
+
 /**
  * Created by giylmi on 03.03.2015.
  */
@@ -17,4 +19,6 @@ public interface CompositionService {
     Long countArchived();
 
     Composition getOneByName(String s);
+
+    List<Composition> getAll();
 }
