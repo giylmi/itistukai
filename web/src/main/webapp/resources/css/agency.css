@@ -929,5 +929,17 @@ body {
 }
 .lang {
     float: left;
-    /* margin-top: 5px; */
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.lang_dropdown {
+    position: absolute;
+    display:none;
+    padding: 10px;
+    background-color: rgba(17, 173, 202, 0.60);
+    margin-top: 15px;
+    margin-left: -20px;
+}
+.lang_dropdown a {
+    padding: 5px;
 }
