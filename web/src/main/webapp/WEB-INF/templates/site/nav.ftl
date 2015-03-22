@@ -22,9 +22,18 @@
             <a class="navbar-brand page-scroll" href="${navHref("#page-top", isLanding)}">
                 <img src="/resources/img/sh_2.png" class="logo">
             </a>
-            <a href="?lang=ru"><img width="30" height="20" src="/resources/img/Russia_Flag-icon.png"></a>
-            <a href="?lang=en"><img width="30" height="20" src="/resources/img/english_flag.png"></a>
-            <a href="?lang=tat"><img width="30" height="20" src="/resources/img/tat_flag.png"></a>
+
+            <div class="lang">
+                <a href="#" id="lang">
+                    <img width="30" height="20" src="/resources/img/df_lang.png">
+                </a>
+
+                <div class="lang_dropdown">
+                    <a href="?lang=ru"><img width="30" height="20" src="/resources/img/Russia_Flag-icon.png"></a>
+                    <a href="?lang=en"><img width="30" height="20" src="/resources/img/english_flag.png"></a>
+                    <a href="?lang=tat"><img width="30" height="20" src="/resources/img/tat_flag.png"></a>
+                </div>
+            </div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -34,13 +43,16 @@
                     <a href="${navHref("#page-top", isLanding)}"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#tuqai", isLanding)}"><@spring.message code="site.gabdulla.tukay"/></a>
+                    <a class="page-scroll"
+                       href="${navHref("#tuqai", isLanding)}"><@spring.message code="site.gabdulla.tukay"/></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#project", isLanding)}"><@spring.message code="site.about"/></a>
+                    <a class="page-scroll"
+                       href="${navHref("#project", isLanding)}"><@spring.message code="site.about"/></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="${navHref("#rules", isLanding)}"><@spring.message code="site.rules"/></a>
+                    <a class="page-scroll"
+                       href="${navHref("#rules", isLanding)}"><@spring.message code="site.rules"/></a>
                 </li>
                 <li>
                     <a class="page-scroll" href="${navHref("#join", isLanding)}"><@spring.message code="site.join"/></a>
