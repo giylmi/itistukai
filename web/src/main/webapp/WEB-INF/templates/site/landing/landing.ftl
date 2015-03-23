@@ -124,7 +124,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-4 col-sm-push-2">
+            <#--col-sm-4 col-sm-push-2-->
+            <div class="col-xs-12 ">
                 <div class="team-member">
                     <div>
                         <img src="/resources/img/team/da.jpg" class="center-block img-responsive img-circle" alt="">
@@ -133,15 +134,15 @@
                     <p class="text-muted"><@spring.message code="site.team.da.reg"/></p>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-sm-push-2">
-                <div class="team-member">
-                    <div>
-                        <img src="/resources/img/team/vs.jpg" class="center-block img-responsive img-circle" alt="">
-                    </div>
-                    <h4><@spring.message code="site.team.vs"/></h4>
-                    <p class="text-muted"><@spring.message code="site.team.vs.reg"/></p>
-                </div>
-            </div>
+            <#--<div class="col-xs-12 col-sm-4 col-sm-push-2">-->
+                <#--<div class="team-member">-->
+                    <#--<div>-->
+                        <#--<img src="/resources/img/team/vs.jpg" class="center-block img-responsive img-circle" alt="">-->
+                    <#--</div>-->
+                    <#--<h4><@spring.message code="site.team.vs"/></h4>-->
+                    <#--<p class="text-muted"><@spring.message code="site.team.vs.reg"/></p>-->
+                <#--</div>-->
+            <#--</div>-->
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
