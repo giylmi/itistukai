@@ -4,6 +4,7 @@ import net.itistukai.core.domain.core.Video;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 /**
@@ -14,7 +15,7 @@ import javax.persistence.ManyToOne;
 public class InstagramVideo extends Video {
     private String instagramUrl;
     private String instagramId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private InstagramUser instagramUser;
 
     public InstagramUser getInstagramUser() {
