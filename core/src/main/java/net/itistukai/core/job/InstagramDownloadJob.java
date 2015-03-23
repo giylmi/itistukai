@@ -65,7 +65,6 @@ public class InstagramDownloadJob{
             boolean found = false;
             List<MediaFeedData> mediaFeeds = Lists.reverse(feed.getData());
             for (MediaFeedData mediaFeedData: mediaFeeds) {
-                if (found) break;
                 if (mediaFeedData.getType().equals("video")) {
                     InstagramVideo instagramVideo = instagramVideoDao.getByInstagramId(mediaFeedData.getId());
                     if (instagramVideo != null) {
