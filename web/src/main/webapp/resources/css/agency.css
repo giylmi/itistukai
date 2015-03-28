@@ -974,6 +974,8 @@ a.input-group-addon.js-clear-part:focus{
 .photo_block{
     width: 336px;
     height: 336px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .video_text_block {
     position: absolute;
