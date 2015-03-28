@@ -1,6 +1,9 @@
 package net.itistukai.core.job;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import net.itistukai.core.Constants;
 import net.itistukai.core.dao.InstagramUserDao;
 import net.itistukai.core.dao.InstagramVideoDao;
@@ -10,9 +13,13 @@ import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.core.domain.instagram.InstagramUser;
 import net.itistukai.core.domain.instagram.InstagramVideo;
 import org.jinstagram.Instagram;
+import org.jinstagram.entity.relationships.RelationshipFeed;
 import org.jinstagram.entity.tags.TagMediaFeed;
 import org.jinstagram.entity.users.feed.MediaFeedData;
+import org.jinstagram.entity.users.feed.UserFeed;
+import org.jinstagram.entity.users.feed.UserFeedData;
 import org.jinstagram.exceptions.InstagramException;
+import org.jinstagram.model.Relationship;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +30,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by giylmi on 03.03.2015.
@@ -54,9 +63,53 @@ public class InstagramDownloadJob{
             logger.info("request to instagram by delay");
             TagMediaFeed feed = instagram.getRecentMediaTags(Constants.MAIN_HASHTAG);
             processFeed(feed);
+
+            logger.info("checking for new followers");
+            String id = instagram.getCurrentUserInfo().getData().getId();
+            Set<String> followedByIds = getFollowedByIds(id);
+            Set<String> followedIds = getFollowedIds(id);
+            for (String userId: Sets.difference(followedByIds, followedIds)) {
+                RelationshipFeed relationshipFeed = instagram.getUserRelationship(userId);
+                if (!relationshipFeed.getData().getOutgoingStatus().equals("requested")) {
+                    logger.info("follow " + userId);
+                    instagram.setUserRelationship(userId, Relationship.FOLLOW);
+                }
+            }
         } catch (InstagramException e) {
             e.printStackTrace();
         }
+    }
+
+    public Set<String> getFollowedIds(String id) throws InstagramException {
+        Set<String> followedIds = new HashSet<>();
+        UserFeed userFollowList = instagram.getUserFollowList(id);
+        addIds(followedIds, userFollowList);
+        while (userFollowList.getPagination().hasNextPage()) {
+            userFollowList = instagram.getUserFollowListNextPage(userFollowList.getPagination());
+            addIds(followedIds, userFollowList);
+        }
+        return followedIds;
+    }
+
+    public Set<String> getFollowedByIds(String id) throws InstagramException {
+        Set<String> userFollowedByIds = new HashSet<>();
+        UserFeed userFollowedByList = instagram.getUserFollowedByList(id);
+        addIds(userFollowedByIds, userFollowedByList);
+        while (userFollowedByList.getPagination().hasNextPage()) {
+            userFollowedByList = instagram.getUserFollowedByListNextPage(userFollowedByList.getPagination());
+            addIds(userFollowedByIds, userFollowedByList);
+        }
+        return userFollowedByIds;
+    }
+
+    private void addIds(Set<String> set, UserFeed userFeed) {
+        Function<UserFeedData, String> feedToId = new Function<UserFeedData, String>() {
+            @Override
+            public String apply(UserFeedData userFeedData) {
+                return userFeedData.getId();
+            }
+        };
+        set.addAll(Lists.newArrayList(Iterables.transform(userFeed.getUserList(), feedToId)));
     }
 
     private void processFeed(TagMediaFeed feed) throws InstagramException {
