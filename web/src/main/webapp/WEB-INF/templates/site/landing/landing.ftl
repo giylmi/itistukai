@@ -128,18 +128,18 @@
             <#--col-sm-4 col-sm-push-2-->
             <div class="col-xs-12 col-sm-3 col-sm-push-3">
                 <div class="team-member">
-                    <div>
-                        <img src="/resources/img/team/da.jpg" class="center-block img-responsive img-circle" alt="">
+                    <div style="background: url('/resources/img/team/da.jpg')" class="center-block img-responsive img-circle photo_block">
                     </div>
+
                     <h4><@spring.message code="site.team.da"/></h4>
                     <p class="text-muted"><@spring.message code="site.team.da.reg"/></p>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 col-sm-push-3">
                 <div class="team-member">
-                    <div>
-                        <img src="/resources/img/team/ag.jpg" class="center-block img-responsive img-circle" alt="">
+                    <div style="background: url('/resources/img/team/ag.jpg')" class="center-block img-responsive img-circle photo_block">
                     </div>
+
                     <h4><@spring.message code="site.team.ag"/></h4>
                 </div>
             </div>
@@ -148,25 +148,24 @@
         <div class="row">
             <div class="col-xs-12 col-sm-3 col-sm-push-1">
                 <div class="team-member">
-                    <div>
-                        <img src="/resources/img/team/am.jpg" class="center-block img-responsive img-circle" alt="">
+                    <div style="background: url('/resources/img/team/am.jpg')" class="center-block img-responsive img-circle photo_block">
                     </div>
+
                     <h4><@spring.message code="site.team.am"/></h4>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 col-sm-push-2">
                 <div class="team-member">
-                    <div>
-                        <img src="/resources/img/team/rs.jpg" class="center-block img-responsive img-circle" alt="">
+                    <div style="background: url('/resources/img/team/rs.jpg')" class="center-block img-responsive img-circle photo_block">
                     </div>
                     <h4><@spring.message code="site.team.rs"/></h4>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 col-sm-push-3">
                 <div class="team-member ">
-                    <div>
-                        <img src="/resources/img/team/pb.jpg" class="center-block img-responsive img-circle" alt="">
+                    <div style="background: url('/resources/img/team/pb.jpg')" class="center-block img-responsive img-circle photo_block">
                     </div>
+
                     <h4><@spring.message code="site.team.pb"/></h4>
                 </div>
             </div>

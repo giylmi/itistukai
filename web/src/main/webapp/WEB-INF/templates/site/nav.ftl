@@ -24,7 +24,7 @@
             </a>
 
             <div class="lang">
-                <a href="#" id="lang">
+                <a href="" id="lang">
                     <img width="30" height="20" src="/resources/img/df_lang.png">
                 </a>
 
