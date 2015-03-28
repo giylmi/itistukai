@@ -975,3 +975,26 @@ a.input-group-addon.js-clear-part:focus{
     width: 336px;
     height: 336px;
 }
+.video_text_block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 3;
+    color: white;
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    font-size: 14px;
+}
+.stopped .video_text_block {
+    opacity: 1;
+}
+.playing .video_text_block {
+    opacity: 0;
+}
+.player-video-wrapper{
+
+}
