@@ -137,7 +137,12 @@ public class VKDownloadJob {
             ArrayList<String> consoleOutput = Shell.execute(parseCommand);
             if (consoleOutput.size() > 0) {
                 String line = consoleOutput.get(consoleOutput.size() - 1);
-                return extractUrls(line).get(0);
+                List<String> qualityUrl = extractUrls(line);
+                int urlIndex = qualityUrl.size() - 1;
+                if (qualityUrl.size() >= 2) {
+                    urlIndex--;
+                }
+                return qualityUrl.get(urlIndex);
             } else {
                 return null;
             }

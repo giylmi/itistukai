@@ -107,9 +107,9 @@ def getURL( page_url , premium = False , user="" , password="", video_password="
 
 def get_mp4_video_link(match0,match1,match2,tipo):
     if match0.endswith("/"):
-        videourl = "%su%s/video/%s.%s" % (match0,match1,match2,tipo)
+        videourl = "%su%s/videos/%s.%s" % (match0,match1,match2,tipo)
     else:
-        videourl = "%s/u%s/video/%s.%s" % (match0,match1,match2,tipo)
+        videourl = "%s/u%s/videos/%s.%s" % (match0,match1,match2,tipo)
     return videourl
 
 if __name__ == '__main__':
