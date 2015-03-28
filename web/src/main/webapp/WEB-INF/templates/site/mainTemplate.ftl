@@ -15,8 +15,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="/resources/css/agency.css" rel="stylesheet">
+
 
     <!-- Custom Fonts -->
     <link href="/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -27,6 +26,8 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.min.css"/>
     <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.theme.min.css"/>
+    <!-- Custom CSS -->
+    <link href="/resources/css/agency.css" rel="stylesheet">
     <#list customStyles as style>
         <link rel="stylesheet" href="/resources/${style}"/>
     </#list>

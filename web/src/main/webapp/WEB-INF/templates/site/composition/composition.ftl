@@ -17,13 +17,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <form class="row video_pan">
-                    <#--<div class="col-xs-12 col-lg-5 form-group">-->
-                        <#--<div class="input-group">-->
-                            <#--<input type="text" value="${(part.text)!}" class="form-control form-group js-part-autocomplete" placeholder="Поиск по фразе">-->
-                            <#--<a class="input-group-addon js-clear-part"><span aria-hidden="true">&times;</span></a>-->
-                            <#--<input type="hidden" value="${(part.id)!}" class="js-part-id"/>-->
-                        <#--</div>-->
-                    <#--</div>-->
+                    <div class="col-xs-12 col-lg-5 form-group">
+                        <div class="input-group">
+                            <input id="search" type="text" value="${(part.text)!}" class="form-control form-group js-part-autocomplete" placeholder="Поиск по фразе">
+                            <a class="input-group-addon js-clear-part"><span aria-hidden="true">&times;</span></a>
+                            <input type="hidden" value="${(part.id)!}" class="js-part-id"/>
+                        </div>
+                    </div>
                     <div class="col-xs-12 col-lg-4 form-group">
                         <select class="form-control form-group js-sort">
                             <option <#if sort?? && sort.value == "date_desc">selected</#if> value="date_desc"><@spring.message code="site.date_desc"/></option>
@@ -37,6 +37,12 @@
                         </ul>
                     </div>
                 </form>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                        Прочитано 43 из 100
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
