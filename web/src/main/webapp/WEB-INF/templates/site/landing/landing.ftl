@@ -102,6 +102,7 @@
                     <ol>
                         <li><@spring.message code="site.joinrule1"/></li>
                         <li><@spring.messageArgs code="site.joinrule2" args=[(randomPart.id)!]/></li>
+                        <li><@spring.message code="site.joinrule3"/></li>
                     </ol>
                 </p>
             </div>
