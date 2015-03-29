@@ -962,6 +962,7 @@ a.input-group-addon.js-clear-part:focus{
     border-radius: 5px;
     list-style: none;
     padding: 0;
+    z-index: 4;
 }
 .ui-menu-item{
     padding: 5px;
@@ -988,8 +989,13 @@ a.input-group-addon.js-clear-part:focus{
     display: block;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     font-size: 14px;
+    max-height: 88%;
+    overflow: hidden;
+}
+.video_text_block p{
+    line-height: 1.35;
 }
 .stopped .video_text_block {
     opacity: 1;
