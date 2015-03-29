@@ -60,7 +60,7 @@ public class VKDownloadJob {
     @Scheduled(fixedDelay = 30000)
     public void execute() {
         try {
-            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + "video";
+            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + "video" + "&count=200";
             VkFeedsResponse response = Requests.requestForObject(urlStr, VkFeedsResponse.class);
             List<VkVideoAttachment> videos = new LinkedList<>();
 
