@@ -128,7 +128,7 @@ $(document).ready(function () {
                     bindLoadMoreBtn();
 
                     $('.js-video-text').on('click', function (e) {
-                        var $this = $(e.target);
+                        var $this = $(e.originalEvent.target);
                         if (!$this.hasClass('js-is-link')) {
                             var jsVideo = $this.parents('.js-video-wrapper').find('.js-video');
                             if ($this.parents('.player').hasClass('playing'))
