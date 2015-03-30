@@ -127,10 +127,15 @@ $(document).ready(function () {
                     bindVideoEvents();
                     bindLoadMoreBtn();
 
-                    $('.js-video-text').on('click', function () {
-                        var $this = $(this);
-                        if (!$this.hasClass('js-is-link'))
-                            $this.parents('.js-video-wrapper').find('.js-video').trigger('play');
+                    $('.js-video-text').on('click', function (e) {
+                        var $this = $(e.target);
+                        if (!$this.hasClass('js-is-link')) {
+                            var jsVideo = $this.parents('.js-video-wrapper').find('.js-video');
+                            if ($this.parents('.player').hasClass('playing'))
+                                jsVideo.trigger('pause');
+                            else
+                                jsVideo.trigger('play');
+                        }
                     });
                 }
             }

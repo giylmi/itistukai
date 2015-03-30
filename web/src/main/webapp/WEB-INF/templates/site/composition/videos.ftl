@@ -9,14 +9,14 @@
                     <p>
                     ${(video.part.htmlText())!}
                     </p>
-                    <div class="media">
+                    <div class="media js-media">
                         <div class="media-left">
-                            <a href="${(video.instagramUser.userName)!"#"}">
+                            <a target="_blank" class="js-is-link" href="https://instagram.com/${(video.instagramUser.userName)!"#"}">
                                 <img class="media-object" src="${(video.instagramUser.profilePicture)!}" alt="" style="width: 64px;height: 64px"/>
                             </a>
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading"><a href="${(video.instagramUser.userName)!"#"}">
+                            <h4 class="media-heading"><a class="js-is-link" target="_blank" href="https://instagram.com/${(video.instagramUser.userName)!"#"}">
                                 ${(video.instagramUser.fullName)!""}
                             </a></h4>
                             <#if video.instagramUrl??>
