@@ -1,4 +1,4 @@
-package net.itistukai.core.response;
+package net.itistukai.core.response.search;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Attachment {
     private String type;
 
-    private VkVideo video;
+    private VkVideoAttachment video;
 
     public String getType() {
         return type;
@@ -20,11 +20,11 @@ public class Attachment {
         this.type = type;
     }
 
-    public VkVideo getVideo() {
+    public VkVideoAttachment getVideo() {
         return video;
     }
 
-    public void setVideo(VkVideo video) {
+    public void setVideo(VkVideoAttachment video) {
         this.video = video;
     }
 }

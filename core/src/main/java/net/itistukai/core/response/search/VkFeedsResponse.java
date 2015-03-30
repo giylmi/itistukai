@@ -1,4 +1,4 @@
-package net.itistukai.core.response;
+package net.itistukai.core.response.search;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
