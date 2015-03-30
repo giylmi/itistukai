@@ -12,7 +12,7 @@
                     <div class="media js-media">
                         <div class="media-left">
                             <a target="_blank" class="js-is-link" href="https://instagram.com/${(video.instagramUser.userName)!"#"}">
-                                <img class="media-object" src="${(video.instagramUser.profilePicture)!}" alt="" style="width: 64px;height: 64px"/>
+                                <img class="media-object js-is-link" src="${(video.instagramUser.profilePicture)!}" alt="" style="width: 64px;height: 64px"/>
                             </a>
                         </div>
                         <div class="media-body">
