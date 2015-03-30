@@ -28,7 +28,7 @@
     </div>
     </#list>
     <#if hasNext!false>
-    <button class="btn btn-link btn-block btn-lg js-more-videos"
+    <button class="btn btn-link btn-lg btn-block js-more-videos"
             data-page="${page}"><@spring.message code="site.morevideo"/></button>
     </#if>
 <#else>

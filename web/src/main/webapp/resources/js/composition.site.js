@@ -117,9 +117,22 @@ $(document).ready(function () {
             success: function (data) {
                 if (page == 1) $gallery.html('');
                 $gallery.append(data);
-                plyr.setup({});
-                bindVideoEvents();
-                bindLoadMoreBtn();
+                var userAgent = window.navigator.userAgent;
+
+                if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+                    // iPad or iPhone
+                    $('.js-video-text').remove();
+                } else {
+                    plyr.setup({});
+                    bindVideoEvents();
+                    bindLoadMoreBtn();
+
+                    $('.js-video-text').on('click', function () {
+                        var $this = $(this);
+                        if (!$this.hasClass('js-is-link'))
+                            $this.parents('.js-video-wrapper').find('.js-video').trigger('play');
+                    });
+                }
             }
         });
     }
