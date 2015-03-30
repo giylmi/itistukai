@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 public class InstagramVideo extends Video {
     private String instagramUrl;
     private String instagramId;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private InstagramUser instagramUser;
 
     public InstagramUser getInstagramUser() {

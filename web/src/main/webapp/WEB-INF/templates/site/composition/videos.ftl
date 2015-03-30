@@ -5,16 +5,27 @@
     <div class="js-video-wrapper col-xs 12 <#if viewType=="grid">col-md-4 col-lg-4<#else>col-md-8 col-md-push-2 col-lg-8 col-lg-push-2</#if>">
         <div class="video_block">
             <div class="player">
-                <div class="video_text_block">
-                    <p><br>Зур бу урман: читләре күренмидер, диңгез кеби,
-                        <br>Биниһая, бихисаптыр, гаскәри Чыңгыз кеби.
-                        <br>Кылт итеп искә төшәдер намнары, дәүләтләре
-                        <br>Карт бабайларның, моны күрсәң, бөтен
-                        сауләтләре.
+                <div class="video_text_block js-video-text">
+                    <p>
+                    ${(video.part.htmlText())!}
                     </p>
-                    <a href="dsfsdf">vk.com/fsdafa</a>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="${(video.instagramUser.userName)!"#"}">
+                                <img class="media-object" src="${(video.instagramUser.profilePicture)!}" alt="" style="width: 64px;height: 64px"/>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="${(video.instagramUser.userName)!"#"}">
+                                ${(video.instagramUser.fullName)!""}
+                            </a></h4>
+                            <#if video.instagramUrl??>
+                                <a class="js-is-link" target="_blank" href="${video.instagramUrl}"><@spring.message code="site.lookat.instagram"/></a>
+                            </#if>
+                        </div>
+                    </div>
                 </div>
-                <video poster="${video.preloaderUrl}" controls crossorigin>
+                <video class="js-video" poster="${video.preloaderUrl}" controls="true" crossorigin>
                     <!-- Video files -->
                     <source src="${video.url}" type="video/mp4">
                 </video>

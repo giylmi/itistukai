@@ -40,7 +40,7 @@
                 <div class="progress">
                     <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
                          aria-valuenow="${readParts}" aria-valuemin="0" aria-valuemax="${composition.parts?size}" style="width:40%">
-                        Прочитано ${readParts} из ${composition.parts?size}
+                        <@spring.messageArgs code="site.read" args=[readParts, composition.parts?size]/>
                     </div>
                 </div>
             </div>
