@@ -1,1 +1,0 @@
-INSERT INTO public.users (id, email, login, password, firstname, lastname, middlename, role, salt) VALUES (1, 'admin', 'admin', '0a4bf9bf476faf5961373c3a24a3cdfa', 'admin', 'admin', 'admin', 0, '91c5adfb-867d-4af0-80a5-2949b625ab58');
