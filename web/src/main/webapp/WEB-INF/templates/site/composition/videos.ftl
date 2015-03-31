@@ -6,6 +6,7 @@
         <div class="video_block">
             <div class="player">
                 <div class="video_text_block js-video-text">
+                    <small class="small">${(video.part.number)!}</small>
                     <p>
                     ${(video.part.htmlText())!}
                     </p>
