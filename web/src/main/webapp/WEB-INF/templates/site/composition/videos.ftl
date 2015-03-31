@@ -6,8 +6,12 @@
         <div class="video_block">
             <div class="player">
                 <div class="video_text_block js-video-text">
+                    <small class="small">1</small>
                     <p>
-                    ${(video.part.htmlText())!}
+                        Нәкъ Казан артында бардыр бер авыл — «Кырлай» диләр; <br/>
+                        Җырлаганда көй өчен, «тавыклары җырлай», диләр. <br/>
+                        Гәрчә анда тугъмасам да, мин бераз торган идем; <br/>
+                        Җирне әз-мәз тырмалап, чәчкән идем, урган идем. <br/>
                     </p>
                     <div class="media js-media">
                         <div class="media-left">
