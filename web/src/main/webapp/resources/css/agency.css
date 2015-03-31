@@ -1002,7 +1002,7 @@ a.input-group-addon.js-clear-part:focus{
     opacity: 1;
 }
 .playing .video_text_block {
-    opacity: 0;
+    display: none;
 }
 .player-video-wrapper{
 
