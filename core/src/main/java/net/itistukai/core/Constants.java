@@ -11,4 +11,7 @@ public interface Constants {
     public static String MAIN_HASHTAG = "itistuqay";
 
     public static Integer VIDEOS_PAGE_SIZE = 15;
+    public static final String REPLY_NODATA_PARAM = "noData";
+    public static final Integer REPLY_PAGE_SIZE = 15;
+    public static final String REPLIES_ATTR = "replies";
 }

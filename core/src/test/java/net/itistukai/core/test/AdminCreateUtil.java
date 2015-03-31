@@ -4,6 +4,7 @@ import net.itistukai.core.config.DaoConfig;
 import net.itistukai.core.dao.UserDao;
 import net.itistukai.core.domain.core.User;
 import net.itistukai.core.domain.core.UserRole;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class AdminCreateUtil {
     UserDao userDao;
 
     @Test
+    @Ignore
     public void createAdmin() throws Exception {
         User user = new User();
         user.setLogin("giylmi");
@@ -38,6 +40,7 @@ public class AdminCreateUtil {
     }
 
     @Test
+    @Ignore
     public void md5Password(){
         String password = "admin_pa$$";
         String salt = UUID.randomUUID().toString();

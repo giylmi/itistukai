@@ -5,6 +5,7 @@ import net.itistukai.core.dao.UserDao;
 import net.itistukai.core.domain.core.PersonalInformation;
 import net.itistukai.core.domain.core.User;
 import net.itistukai.core.domain.core.UserRole;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class UserDaoTest {
     UserDao userDao;
 
     @Test
+    @Ignore
     public void allUsers(){
 //        List<User> users = userDao.all();
 //        assertNotNull(users);
@@ -32,6 +34,7 @@ public class UserDaoTest {
     }
 
     @Test
+    @Ignore
     public void allAdmins(){
 //        UserDao.UserQueryParameters params = UserDao.UserQueryParameters.builder().withRole(Arrays.asList(UserRole.ADMIN)).build();
 //        List<User> users = userDao.all(params);
@@ -43,6 +46,7 @@ public class UserDaoTest {
 
     @Test
     @Transactional
+    @Ignore
     public void registerUser(){
         User user = new User();
         user.setLogin("test");
