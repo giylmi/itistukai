@@ -51,7 +51,8 @@ public class VkUtils {
                         String pair = paramPairs[i];
                         if (pair.startsWith(quality.getKey())) {
                             System.out.println();
-                            return pair.substring(quality.getKey().length() + 1);
+                            int lastIndex = pair.indexOf('?');
+                            return pair.substring(quality.getKey().length() + 1, (lastIndex == -1 ? pair.length() : lastIndex));
                         }
                     }
                     System.out.println(value);
