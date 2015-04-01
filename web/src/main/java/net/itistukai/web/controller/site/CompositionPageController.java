@@ -33,6 +33,7 @@ public class CompositionPageController {
     public String compositionPage(Model model,
                                   @RequestParam(required = false, defaultValue = "date_desc") SortType sort,
                                   @RequestParam(required = false, defaultValue = "grid") String viewType,
+                                  @RequestParam(required = false, defaultValue = "false", value = "hideRepeat") String hideRepeatStr,
                                   @RequestParam(required = false) Long partId){
         Composition composition = compositionService.getTheOne();
         Part part = null;
@@ -47,6 +48,8 @@ public class CompositionPageController {
         model.addAttribute("viewType", viewType);
         model.addAttribute("js_compositionId", composition.getId());
         model.addAttribute("part", part);
+        boolean hideRepeat = extractHideRepeat(hideRepeatStr);
+        model.addAttribute("hideRepeat", hideRepeat);
         return "site/composition/composition";
     }
 
@@ -54,14 +57,25 @@ public class CompositionPageController {
     public String videos(Model model,
                          @RequestParam(required = false, defaultValue = "date_desc") SortType sort,
                          @RequestParam(required = false, defaultValue = "grid") String viewType,
+                         @RequestParam(required = false, defaultValue = "false", value = "hideRepeat") String hideRepeatStr,
                          @RequestParam(required = false) Long partId,
                          @RequestParam(required = false, defaultValue = "1") int page){
-        Page galleryVideos = videosService.getGalleryVideos(page, partId, sort);
+        boolean hideRepeat = extractHideRepeat(hideRepeatStr);
+        Page galleryVideos = videosService.getGalleryVideos(page, partId, hideRepeat, sort);
         model.addAttribute("hasNext", galleryVideos.hasNext());
         model.addAttribute("page", page + 1);
         model.addAttribute("videos", galleryVideos.getContent());
         model.addAttribute("viewType", viewType);
         model.addAttribute("partId", partId);
+        model.addAttribute("hideRepeat", hideRepeat);
         return "site/composition/videos";
+    }
+
+    private boolean extractHideRepeat(String hideRepeatStr) {
+        boolean hideRepeat;
+        try {
+            hideRepeat = Boolean.valueOf(hideRepeatStr);
+        } catch (Exception e) { hideRepeat = false; }
+        return hideRepeat;
     }
 }

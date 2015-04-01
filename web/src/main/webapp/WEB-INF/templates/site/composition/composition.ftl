@@ -30,11 +30,15 @@
                             <option <#if sort?? && sort.value == "part.number_asc">selected</#if> value="part.number_asc"><@spring.message code="site.part.number_asc"/></option>
                         </select>
                     </div>
-                    <div class="col-lg-3 hidden-xs">
-                        <ul class="nav nav-pills">
+                    <div class="col-lg-3">
+                        <ul class="nav nav-pills hidden-xs">
                             <li class="js-view-type-selector-wrapper<#if viewType=="grid"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="grid"><@spring.message code="site.grid"/></a></li>
                             <li class="js-view-type-selector-wrapper<#if viewType=="feed"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="feed"><@spring.message code="site.feed"/></a></li>
                         </ul>
+                        <label>
+                            Без повторений
+                            <input <#if hideRepeat!false>checked="checked"</#if> type="checkbox" name="hideRepeat" class=" js-hide-repeat checkbox checkbox-inline form-control"/>
+                        </label>
                     </div>
                 </form>
                 <div class="progress">
