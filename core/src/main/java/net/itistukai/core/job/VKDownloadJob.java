@@ -8,13 +8,11 @@ import net.itistukai.core.response.search.*;
 import net.itistukai.core.response.video.VideoGetResponse;
 import net.itistukai.core.response.video.VkVideoInfo;
 import net.itistukai.core.util.Requests;
-import net.itistukai.core.util.Shell;
+import net.itistukai.core.util.VkUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -30,17 +28,12 @@ import java.util.regex.Pattern;
 
 @EnableScheduling
 @Service
-@PropertySource("classpath:app-local.properties")
 public class VKDownloadJob {
 
     private static String HASH_TAG_REGEX = "[##]+([A-Za-z0-9-_]+)";
     private static Pattern HASH_TAG_PATTERN = Pattern.compile(HASH_TAG_REGEX);
 
     private Logger logger = LoggerFactory.getLogger(VKDownloadJob.class);
-
-    @Autowired
-    private Environment env;
-
 
     @Autowired
     VideoDao videoDao;
@@ -112,9 +105,7 @@ public class VKDownloadJob {
                     vkVideo.setPart(partsDao.findAll().iterator().next());
                 }
                 vkVideo.setPreloaderUrl(videoInfo.getImage());
-                //TODO this mehtod extract real url, but it didn't work
-                // 404 for any vk video... wrote to VK Support
-                vkVideo.setUrl(getVideoSource(videoInfo));
+                vkVideo.setUrl(VkUtils.parseVideoUrl(videoInfo.getPlayer()));
                 if (vkVideo.getUrl() == null) {
                     continue;
                 }
@@ -129,40 +120,6 @@ public class VKDownloadJob {
             e.printStackTrace();
         }
 
-    }
-
-    private String getVideoSource(VkVideoInfo videoInfo) {
-        try {
-            String parseCommand = String.format(env.getProperty("vk.parse.script"), videoInfo.getPlayer());
-            ArrayList<String> consoleOutput = Shell.execute(parseCommand);
-            if (consoleOutput.size() > 0) {
-                String line = consoleOutput.get(consoleOutput.size() - 1);
-                List<String> qualityUrl = extractUrls(line);
-                int urlIndex = qualityUrl.size() - 1;
-                if (qualityUrl.size() >= 2) {
-                    urlIndex--;
-                }
-                return qualityUrl.get(urlIndex);
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public static List<String> extractUrls(String text) {
-        List<String> containedUrls = new ArrayList<String>();
-        String urlRegex = "((https?|ftp|gopher|telnet|file):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
-        Pattern pattern = Pattern.compile(urlRegex, Pattern.CASE_INSENSITIVE);
-        Matcher urlMatcher = pattern.matcher(text);
-
-        while (urlMatcher.find()) {
-            containedUrls.add(text.substring(urlMatcher.start(0),
-                    urlMatcher.end(0)));
-        }
-
-        return containedUrls;
     }
 
     private String getRequestName(VkVideoAttachment video) {
