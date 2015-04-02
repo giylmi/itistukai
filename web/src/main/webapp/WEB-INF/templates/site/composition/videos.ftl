@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <video class="js-video" poster="${video.preloaderUrl}" controls="true" crossorigin>
+                <video class="js-video" poster="${video.preloaderUrl}" controls="true">
                     <!-- Video files -->
                     <source src="${video.url}" type="video/mp4">
                 </video>
