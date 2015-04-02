@@ -13,6 +13,7 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ import java.util.regex.Pattern;
 
 @EnableScheduling
 @Service
+@Profile("uploadOn")
 public class VKDownloadJob {
 
     private static String HASH_TAG_REGEX = "[##]+([A-Za-z0-9-_]+)";
@@ -53,7 +55,7 @@ public class VKDownloadJob {
     @Scheduled(fixedDelay = 30000)
     public void execute() {
         try {
-            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + "video" + "&count=200";
+            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + Constants.MAIN_HASHTAG + "&count=200";
             VkFeedsResponse response = Requests.requestForObject(urlStr, VkFeedsResponse.class);
             List<VkVideoAttachment> videos = new LinkedList<>();
 
@@ -97,12 +99,14 @@ public class VKDownloadJob {
                 try {
                     Matcher matcher = HASH_TAG_PATTERN.matcher(videoInfo.getDescription());
                     String partHashTag = matcher.group();
+                    if (!partHashTag.startsWith("part")) {
+                        continue;
+                    }
                     Long partId = Long.parseLong(partHashTag.replaceAll("[\\D]", ""));
                     vkVideo.setPart(partsDao.findOne(partId));
                 } catch (Exception e) {
-                    //TODO remove this and just continue
-                    //continue;
-                    vkVideo.setPart(partsDao.findAll().iterator().next());
+                    continue;
+                    //vkVideo.setPart(partsDao.findAll().iterator().next());
                 }
                 vkVideo.setPreloaderUrl(videoInfo.getImage());
                 vkVideo.setUrl(VkUtils.parseVideoUrl(videoInfo.getPlayer()));
@@ -114,8 +118,6 @@ public class VKDownloadJob {
                 vkVideo.setStatus(VideoStatus.NEW);
                 vkVideoDao.save(vkVideo);
             }
-
-            //<iframe src="//vk.com/video_ext.php?oid=76751256&id=169875191&hash=6e1048199956affc&sd" width="426" height="240"  frameborder="0"></iframe>
         } catch (Exception e) {
             e.printStackTrace();
         }
