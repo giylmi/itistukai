@@ -1,10 +1,16 @@
 package net.itistukai.core.job;
 
 import net.itistukai.core.Constants;
-import net.itistukai.core.dao.*;
+import net.itistukai.core.dao.InstagramUserDao;
+import net.itistukai.core.dao.PartsDao;
+import net.itistukai.core.dao.VideoDao;
+import net.itistukai.core.dao.VkVideoDao;
 import net.itistukai.core.domain.core.VideoStatus;
 import net.itistukai.core.domain.vk.VkVideo;
-import net.itistukai.core.response.search.*;
+import net.itistukai.core.response.search.Attachment;
+import net.itistukai.core.response.search.Feed;
+import net.itistukai.core.response.search.VkFeedsResponse;
+import net.itistukai.core.response.search.VkVideoAttachment;
 import net.itistukai.core.response.video.VideoGetResponse;
 import net.itistukai.core.response.video.VkVideoInfo;
 import net.itistukai.core.util.Requests;
@@ -19,7 +25,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

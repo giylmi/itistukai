@@ -2,7 +2,10 @@ package net.itistukai.core.domain.vk;
 
 import net.itistukai.core.domain.core.Video;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by ainurminibaev on 28.03.15.

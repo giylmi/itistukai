@@ -36,7 +36,7 @@
                             <li class="js-view-type-selector-wrapper<#if viewType=="feed"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="feed"><@spring.message code="site.feed"/></a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-4 hidden-xs">
+                    <div class="col-xs-12 col-lg-4">
                         <label class="repeat_show">
                             <input <#if hideRepeat!false>checked="checked"</#if> type="checkbox" name="hideRepeat" class=" js-hide-repeat">
                             <span class="repeat_label">Скрыть повторяющиеся фрагменты</span>

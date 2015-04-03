@@ -10,5 +10,5 @@ import org.springframework.data.domain.Pageable;
  */
 public interface VideoCustomDao {
 
-    Page<Video> findAllByStatusNotGroupByPartId(VideoStatus status, Pageable pageable);
+    Page<Video> findGalleryVideosUniqueParted(VideoStatus status, Pageable pageable);
 }

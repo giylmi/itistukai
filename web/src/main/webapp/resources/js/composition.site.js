@@ -150,18 +150,10 @@ $(document).ready(function () {
                 var $data = $(data);
                 var jsMoreVideosBtn = $data.find('.js-more-videos');
                 $moreVideosHolder.html(jsMoreVideosBtn?jsMoreVideosBtn:'');
-                //$data.remove(jsMoreVideosBtn);
                 $gallery.append($data.find('.js-video-wrapper'));
-                //var userAgent = window.navigator.userAgent;
-                //
-                //if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
-                //    iPad or iPhone
-                    //$('.js-video-text').remove();
-                //} else {
-                    plyr.setup({});
-                    bindVideoEvents();
-                    //bindLoadMoreBtn();
-                //}
+
+                plyr.setup({});
+                bindVideoEvents();
             }
         });
     }
