@@ -53,6 +53,7 @@
             <div class="js-gallery">
 
             </div>
+            <div class="js-more-videos-holder"></div>
         </div>
     </div>
 

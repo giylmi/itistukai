@@ -1,6 +1,7 @@
 <#-- @ftlvariable name="video" type="net.itistukai.core.domain.core.Video"-->
 <#import "/spring.ftl" as spring/>
 <#if videos?? && videos?has_content>
+<div>
     <#list videos as video>
     <div class="js-video-wrapper col-xs 12 <#if viewType=="grid">col-md-4 col-lg-4<#else>col-md-8 col-md-push-2 col-lg-8 col-lg-push-2</#if>">
         <div class="video_block">
@@ -26,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <video class="js-video" poster="${video.preloaderUrl}" controls="true" crossorigin>
+                <video class="js-video" poster="${video.preloaderUrl}" controls="true">
                     <!-- Video files -->
                     <source src="${video.url}" type="video/mp4">
                 </video>
@@ -40,9 +41,10 @@
     </div>
     </#list>
     <#if hasNext!false>
-    <button class="btn btn-link btn-lg btn-block js-more-videos"
+    <button type="button" class="btn btn-link btn-lg btn-block js-more-videos"
             data-page="${page}"><@spring.message code="site.morevideo"/></button>
     </#if>
+</div>
 <#else>
     <#if partId??>
     <p><@spring.message code="site.novideoswithpart"/></p>
