@@ -38,8 +38,8 @@
                     </div>
                     <div class="col-xs-12 col-lg-4">
                         <label class="repeat_show">
-                            <input type="checkbox">
-                            <span class="repeat_label">Показывать повторяющиеся фрагменты</span>
+                            <input <#if hideRepeat!false>checked="checked"</#if> type="checkbox" name="hideRepeat" class=" js-hide-repeat">
+                            <span class="repeat_label">Скрыть повторяющиеся фрагменты</span>
                         </label>
                     </div>
                 </form>
