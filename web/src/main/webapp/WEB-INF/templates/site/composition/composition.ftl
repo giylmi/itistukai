@@ -17,24 +17,30 @@
         <div class="row">
             <div class="col-lg-12">
                 <form class="row video_pan">
-                    <div class="col-xs-12 col-lg-5 form-group">
+                    <div class="col-xs-12 col-lg-3 form-group">
                         <div class="input-group">
                             <input id="search" type="text" value="${(part.text)!}" class="form-control form-group js-part-autocomplete" placeholder="Поиск по фразе">
                             <a class="input-group-addon js-clear-part"><span aria-hidden="true">&times;</span></a>
                             <input type="hidden" value="${(part.id)!}" class="js-part-id"/>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-lg-4 form-group">
+                    <div class="col-xs-12 col-lg-3 form-group">
                         <select class="form-control form-group js-sort">
                             <option <#if sort?? && sort.value == "date_desc">selected</#if> value="date_desc"><@spring.message code="site.date_desc"/></option>
                             <option <#if sort?? && sort.value == "part.number_asc">selected</#if> value="part.number_asc"><@spring.message code="site.part.number_asc"/></option>
                         </select>
                     </div>
-                    <div class="col-lg-3 hidden-xs">
+                    <div class="col-lg-2 hidden-xs">
                         <ul class="nav nav-pills">
                             <li class="js-view-type-selector-wrapper<#if viewType=="grid"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="grid"><@spring.message code="site.grid"/></a></li>
                             <li class="js-view-type-selector-wrapper<#if viewType=="feed"> active</#if>" role="presentation"><a class="js-view-type-selector" href="#" data-type="feed"><@spring.message code="site.feed"/></a></li>
                         </ul>
+                    </div>
+                    <div class="col-lg-4 hidden-xs">
+                        <label class="repeat_show">
+                            <input type="checkbox">
+                            <span class="repeat_label">Показывать повторяющиеся фрагменты</span>
+                        </label>
                     </div>
                 </form>
                 <div class="progress">
