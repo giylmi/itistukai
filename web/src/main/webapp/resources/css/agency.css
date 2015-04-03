@@ -1017,3 +1017,13 @@ a.input-group-addon.js-clear-part:focus{
     vertical-align: top;
 }
 
+.btn-block{display: inline-block;}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : portrait) {
+    .video_text_block {
+        max-height: 100%;
+    }
+}
