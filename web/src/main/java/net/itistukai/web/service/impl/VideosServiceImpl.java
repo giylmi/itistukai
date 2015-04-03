@@ -8,9 +8,11 @@ import net.itistukai.web.service.VideosService;
 import net.itistukai.web.sort.SortType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -65,10 +67,18 @@ public class VideosServiceImpl implements VideosService {
     }
 
     @Override
-    public Page getGalleryVideos(int page, Long partId, SortType sort) {
+    @Transactional
+    public Page getGalleryVideos(int page, Long partId, boolean hideRepeat, SortType sort) {
+
         Pageable pageable = new PageRequest(page - 1, Constants.VIDEOS_PAGE_SIZE, sort.getDirection(), sort.getFieldName());
-        if (partId == null)
-            return videoDao.findAllByStatusNot(VideoStatus.BANNED, pageable);
-        else return videoDao.findAllByStatusNotAndPartId(VideoStatus.BANNED, pageable, partId);
+        Page<Video> videos;
+        if (hideRepeat) {
+            videos = videoDao.findGalleryVideosUniqueParted(VideoStatus.BANNED, pageable);
+        } else {
+            if (partId == null) {
+                videos = videoDao.findAllByStatusNot(VideoStatus.BANNED, pageable);
+            } else videos = videoDao.findAllByStatusNotAndPartId(VideoStatus.BANNED, pageable, partId);
+        }
+        return videos;
     }
 }
