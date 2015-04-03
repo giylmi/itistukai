@@ -1027,3 +1027,10 @@ and (orientation : portrait) {
         max-height: 100%;
     }
 }
+.repeat_label{
+    margin-left: 5px;
+}
+.repeat_show{
+    margin-top: 10px;
+    font-weight: 400;
+}
