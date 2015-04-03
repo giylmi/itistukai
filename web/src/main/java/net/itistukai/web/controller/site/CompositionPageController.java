@@ -3,6 +3,7 @@ package net.itistukai.web.controller.site;
 import net.itistukai.core.domain.core.Composition;
 import net.itistukai.core.domain.core.Part;
 import net.itistukai.web.service.CompositionService;
+import net.itistukai.web.service.PartsService;
 import net.itistukai.web.service.VideosService;
 import net.itistukai.web.sort.SortType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class CompositionPageController {
 
     @Autowired
     VideosService videosService;
+    @Autowired
+    PartsService partsService;
 
     @RequestMapping
     public String compositionPage(Model model,
@@ -38,6 +41,7 @@ public class CompositionPageController {
                 part = compositionPart;
                 break;
             }
+        model.addAttribute("readParts", partsService.getReadPartsCount(composition.getId()));
         model.addAttribute("composition", composition);
         model.addAttribute("sort", sort);
         model.addAttribute("viewType", viewType);

@@ -176,6 +176,12 @@
                 <version>${spring-security.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
             <!--<dependency>-->
                 <!--<groupId>com.vk</groupId>-->
                 <!--<artifactId>androidsdk</artifactId>-->
@@ -222,6 +228,7 @@
         </plugins>
     </build>
     <properties>
+        <jsoup.version>1.8.1</jsoup.version>
         <hibernate.version>4.3.0.Final</hibernate.version>
         <spring-data-jpa.version>1.7.0.RELEASE</spring-data-jpa.version>
         <java.version>1.7</java.version>

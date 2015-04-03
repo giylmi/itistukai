@@ -989,10 +989,11 @@ a.input-group-addon.js-clear-part:focus{
     display: block;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 20px 20px;
     font-size: 14px;
     max-height: 88%;
     overflow: hidden;
+
 }
 .video_text_block p{
     line-height: 1.35;
@@ -1001,8 +1002,28 @@ a.input-group-addon.js-clear-part:focus{
     opacity: 1;
 }
 .playing .video_text_block {
-    opacity: 0;
+    display: none;
 }
 .player-video-wrapper{
 
+}
+
+.media-left, .media>.pull-left {
+    padding-right: 10px;
+}
+
+.media-left, .media-body, .media-right{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.btn-block{display: inline-block;}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : portrait) {
+    .video_text_block {
+        max-height: 100%;
+    }
 }

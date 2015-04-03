@@ -39,8 +39,8 @@
                 </form>
                 <div class="progress">
                     <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                        Прочитано 43 из 100
+                         aria-valuenow="${readParts}" aria-valuemin="0" aria-valuemax="${composition.parts?size}" style="width:${(readParts * 100 / composition.parts?size)?int}%">
+                        <@spring.messageArgs code="site.read" args=[readParts, composition.parts?size]/>
                     </div>
                 </div>
             </div>
@@ -49,6 +49,7 @@
             <div class="js-gallery">
 
             </div>
+            <div class="js-more-videos-holder"></div>
         </div>
     </div>
 

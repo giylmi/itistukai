@@ -13,9 +13,14 @@ $(document).ready(function () {
     var $viewTypeWrapper = $('.js-view-type-selector-wrapper');
 
     var $selector = $viewTypeWrapper.filter('.active').find('.js-view-type-selector');
+
+    var $moreVideosHolder = $('.js-more-videos-holder');
+
     bindSort();
     bindViewType();
     bindClearPart();
+    bindLoadMoreBtn();
+    bindVideoTextEvents();
 
     enablePartAutocomplete();
 
@@ -95,7 +100,7 @@ $(document).ready(function () {
     }
 
     function bindLoadMoreBtn() {
-        $('.js-more-videos').on('click', function () {
+        $('.js-more-videos-holder').on('click', '.js-more-videos', function () {
             var $this = $(this);
             var page = $this.data('page');
             $this.remove();
@@ -116,10 +121,34 @@ $(document).ready(function () {
             url: '/composition/videos',
             success: function (data) {
                 if (page == 1) $gallery.html('');
-                $gallery.append(data);
-                plyr.setup({});
-                bindVideoEvents();
-                bindLoadMoreBtn();
+                var $data = $(data);
+                var jsMoreVideosBtn = $data.find('.js-more-videos');
+                $moreVideosHolder.html(jsMoreVideosBtn?jsMoreVideosBtn:'');
+                //$data.remove(jsMoreVideosBtn);
+                $gallery.append($data.find('.js-video-wrapper'));
+                //var userAgent = window.navigator.userAgent;
+                //
+                //if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+                //    iPad or iPhone
+                    //$('.js-video-text').remove();
+                //} else {
+                    plyr.setup({});
+                    bindVideoEvents();
+                    //bindLoadMoreBtn();
+                //}
+            }
+        });
+    }
+
+    function bindVideoTextEvents() {
+        $('.js-gallery').on('click', '.js-video-text', function (e) {
+            var $this = $(e.originalEvent.target);
+            if (!$this.hasClass('js-is-link')) {
+                var jsVideo = $this.parents('.js-video-wrapper').find('.js-video');
+                if ($this.parents('.player').hasClass('playing'))
+                    jsVideo.trigger('pause');
+                else
+                    jsVideo.trigger('play');
             }
         });
     }
@@ -128,14 +157,15 @@ $(document).ready(function () {
         var $videos = $('.player');
         $videos.each(function (i, e) {
             var media = e.plyr.media;
-            media.removeEventListener('play');
-            media.addEventListener('play', function (e) {
+            var playListener = function (e) {
                 $videos.each(function (i, e) {
                     var anotherMedia = e.plyr.media;
                     if (anotherMedia != media)
                         anotherMedia.pause();
                 });
-            });
+            };
+            media.removeEventListener('play', playListener);
+            media.addEventListener('play', playListener);
         });
     }
 });
