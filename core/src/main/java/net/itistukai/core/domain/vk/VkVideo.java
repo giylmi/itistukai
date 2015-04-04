@@ -2,10 +2,7 @@ package net.itistukai.core.domain.vk;
 
 import net.itistukai.core.domain.core.Video;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by ainurminibaev on 28.03.15.
@@ -17,16 +14,9 @@ public class VkVideo extends Video {
 
     private Long vid;
 
-    @Column(name = "owner_id")
-    private Long ownerId;
-
-    public Long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "vk_owner_id", referencedColumnName = "id")
+    private VkOwner vkOwner;
 
     public Long getVid() {
         return vid;
@@ -34,5 +24,13 @@ public class VkVideo extends Video {
 
     public void setVid(Long vid) {
         this.vid = vid;
+    }
+
+    public VkOwner getVkOwner() {
+        return vkOwner;
+    }
+
+    public void setVkOwner(VkOwner vkOwner) {
+        this.vkOwner = vkOwner;
     }
 }

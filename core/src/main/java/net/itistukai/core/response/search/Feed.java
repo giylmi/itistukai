@@ -18,7 +18,11 @@ public class Feed {
     @JsonProperty("owner_id")
     private Long ownerId;
 
-    List<Attachment> attachments;
+    private List<Attachment> attachments;
+
+    private GroupOwner group;
+
+    private UserOwner user;
 
     public Long getId() {
         return id;
@@ -65,5 +69,21 @@ public class Feed {
     }
 
     public Feed() {
+    }
+
+    public GroupOwner getGroup() {
+        return group;
+    }
+
+    public void setGroup(GroupOwner group) {
+        this.group = group;
+    }
+
+    public UserOwner getUser() {
+        return user;
+    }
+
+    public void setUser(UserOwner user) {
+        this.user = user;
     }
 }

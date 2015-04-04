@@ -1,16 +1,12 @@
 package net.itistukai.core.job;
 
 import net.itistukai.core.Constants;
-import net.itistukai.core.dao.InstagramUserDao;
-import net.itistukai.core.dao.PartsDao;
-import net.itistukai.core.dao.VideoDao;
-import net.itistukai.core.dao.VkVideoDao;
+import net.itistukai.core.dao.*;
 import net.itistukai.core.domain.core.VideoStatus;
+import net.itistukai.core.domain.core.VideoType;
+import net.itistukai.core.domain.vk.VkOwner;
 import net.itistukai.core.domain.vk.VkVideo;
-import net.itistukai.core.response.search.Attachment;
-import net.itistukai.core.response.search.Feed;
-import net.itistukai.core.response.search.VkFeedsResponse;
-import net.itistukai.core.response.search.VkVideoAttachment;
+import net.itistukai.core.response.search.*;
 import net.itistukai.core.response.video.VideoGetResponse;
 import net.itistukai.core.response.video.VkVideoInfo;
 import net.itistukai.core.util.Requests;
@@ -25,16 +21,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/**
- * Created by giylmi on 03.03.2015.
- */
 
 @EnableScheduling
 @Service
@@ -51,7 +40,7 @@ public class VKDownloadJob {
     @Autowired
     VkVideoDao vkVideoDao;
     @Autowired
-    InstagramUserDao instagramUserDao;
+    VkOwnerDao vkOwnerDao;
     @Autowired
     PartsDao partsDao;
 
@@ -64,16 +53,22 @@ public class VKDownloadJob {
     @Scheduled(fixedDelay = 30000)
     public void execute() {
         try {
-            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + Constants.MAIN_HASHTAG + "&count=200";
+            //TODO add pageable search of feed's in case feed count GT 200
+            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + "video" + "&count=200&extended=1";
             VkFeedsResponse response = Requests.requestForObject(urlStr, VkFeedsResponse.class);
             List<VkVideoAttachment> videos = new LinkedList<>();
-
+            Map<Long, Owner> ownerMap = new HashMap<>();
             for (Feed f : response.getResponse()) {
                 if (f.getAttachments() != null) {
                     for (Attachment a : f.getAttachments()) {
                         if (a.getVideo() != null) {
                             if (vkVideoDao.findOneByVid(a.getVideo().getId()) == null) {
                                 videos.add(a.getVideo());
+                                if (f.getGroup() != null) {
+                                    ownerMap.put(a.getVideo().getId(), f.getGroup());
+                                } else if (f.getUser() != null) {
+                                    ownerMap.put(a.getVideo().getId(), f.getUser());
+                                }
                             }
                         }
                     }
@@ -122,9 +117,18 @@ public class VKDownloadJob {
                 if (vkVideo.getUrl() == null) {
                     continue;
                 }
-                vkVideo.setOwnerId(videoInfo.getOwnerId());
                 vkVideo.setVid(videoInfo.getId());
                 vkVideo.setStatus(VideoStatus.NEW);
+                vkVideo.setVideoType(VideoType.VK);
+                Owner owner = ownerMap.get(videoInfo.getId());
+                if (owner != null) {
+                    VkOwner vkOwner = new VkOwner();
+                    vkOwner.setOwnerId(videoInfo.getOwnerId());
+                    vkOwner.setOwnerPhoto(owner.getPhoto());
+                    vkOwner.setOwnerName(owner.getName());
+                    vkOwner = vkOwnerDao.save(vkOwner);
+                    vkVideo.setVkOwner(vkOwner);
+                }
                 vkVideoDao.save(vkVideo);
             }
         } catch (Exception e) {

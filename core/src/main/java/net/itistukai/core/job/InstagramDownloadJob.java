@@ -5,11 +5,9 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import net.itistukai.core.Constants;
-import net.itistukai.core.dao.InstagramUserDao;
-import net.itistukai.core.dao.InstagramVideoDao;
-import net.itistukai.core.dao.PartsDao;
-import net.itistukai.core.dao.VideoDao;
+import net.itistukai.core.dao.*;
 import net.itistukai.core.domain.core.VideoStatus;
+import net.itistukai.core.domain.core.VideoType;
 import net.itistukai.core.domain.instagram.InstagramUser;
 import net.itistukai.core.domain.instagram.InstagramVideo;
 import org.jinstagram.Instagram;
@@ -41,7 +39,7 @@ import java.util.Set;
 @EnableScheduling
 @Service
 @Profile("uploadOn")
-public class InstagramDownloadJob{
+public class InstagramDownloadJob {
 
     private Logger logger = LoggerFactory.getLogger(InstagramDownloadJob.class);
 
@@ -58,7 +56,7 @@ public class InstagramDownloadJob{
     PartsDao partsDao;
 
     @Scheduled(fixedDelay = 30000)
-    public void execute(){
+    public void execute() {
         try {
             logger.info("request to instagram by delay");
             TagMediaFeed feed = instagram.getRecentMediaTags(Constants.MAIN_HASHTAG);
@@ -68,7 +66,7 @@ public class InstagramDownloadJob{
             String id = instagram.getCurrentUserInfo().getData().getId();
             Set<String> followedByIds = getFollowedByIds(id);
             Set<String> followedIds = getFollowedIds(id);
-            for (String userId: Sets.difference(followedByIds, followedIds)) {
+            for (String userId : Sets.difference(followedByIds, followedIds)) {
                 RelationshipFeed relationshipFeed = instagram.getUserRelationship(userId);
                 if (!relationshipFeed.getData().getOutgoingStatus().equals("requested")) {
                     logger.info("follow " + userId);
@@ -117,7 +115,7 @@ public class InstagramDownloadJob{
         if (feed != null) {
             boolean found = false;
             List<MediaFeedData> mediaFeeds = Lists.reverse(feed.getData());
-            for (MediaFeedData mediaFeedData: mediaFeeds) {
+            for (MediaFeedData mediaFeedData : mediaFeeds) {
                 if (mediaFeedData.getType().equals("video")) {
                     InstagramVideo instagramVideo = instagramVideoDao.getByInstagramId(mediaFeedData.getId());
                     if (instagramVideo != null) {
@@ -154,13 +152,14 @@ public class InstagramDownloadJob{
 
         instagramVideo.setDate(new DateTime(1000 * Long.valueOf(mediaFeedData.getCreatedTime())));
         instagramVideo.setStatus(VideoStatus.NEW);
+        instagramVideo.setVideoType(VideoType.INSTAGRAM);
         instagramVideo.setUrl(mediaFeedData.getVideos().getStandardResolution().getUrl());
         instagramVideo.setPreloaderUrl(mediaFeedData.getImages().getStandardResolution().getImageUrl());
     }
 
     private void populatePart(MediaFeedData mediaFeedData, InstagramVideo instagramVideo) {
         List<String> tags = mediaFeedData.getTags();
-        for (String tag: tags)
+        for (String tag : tags)
             if (tag.startsWith("part")) {
                 try {
                     Long number = Long.valueOf(tag.substring(4));

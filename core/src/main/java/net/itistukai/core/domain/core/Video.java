@@ -22,11 +22,22 @@ public abstract class Video {
     private VideoStatus status;
     private String url;
     private String preloaderUrl;
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime date;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "video_type")
+    private VideoType videoType;
 
     public String getPreloaderUrl() {
         return preloaderUrl;
+    }
+
+    @PrePersist
+    public void updateFields() {
+        if (status == null) {
+            status = VideoStatus.NEW;
+        }
     }
 
     public void setPreloaderUrl(String preloaderUrl) {
@@ -71,5 +82,13 @@ public abstract class Video {
 
     public void setStatus(VideoStatus status) {
         this.status = status;
+    }
+
+    public VideoType getVideoType() {
+        return videoType;
+    }
+
+    public void setVideoType(VideoType videoType) {
+        this.videoType = videoType;
     }
 }
