@@ -54,7 +54,7 @@ public class VKDownloadJob {
     public void execute() {
         try {
             //TODO add pageable search of feed's in case feed count GT 200
-            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + "video" + "&count=200&extended=1";
+            String urlStr = Constants.VK_API_PREFIX + "newsfeed.search?q=" + Constants.MAIN_HASHTAG + "&count=200&extended=1";
             VkFeedsResponse response = Requests.requestForObject(urlStr, VkFeedsResponse.class);
             List<VkVideoAttachment> videos = new LinkedList<>();
             Map<Long, Owner> ownerMap = new HashMap<>();

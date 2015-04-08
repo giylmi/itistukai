@@ -58,7 +58,7 @@
                         </p>
                         <@user_block video=video/>
                     </div>
-                    <video class="js-video" poster="${video.preloaderUrl}" controls="true" width="440" height="247">
+                    <video class="js-video" poster="${video.preloaderUrl}" controls="true" width="439" height="439">
                         <!-- Video files -->
                         <source src="${video.url}" type="video/mp4">
                     </video>
