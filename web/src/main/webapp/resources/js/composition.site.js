@@ -17,6 +17,8 @@ $(document).ready(function () {
 
     var $moreVideosHolder = $('.js-more-videos-holder');
 
+    $('.js-movie-player').MoviePlayer();
+
     bindSort();
     bindViewType();
     bindClearPart();

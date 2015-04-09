@@ -80,4 +80,10 @@ public class VideosServiceImpl implements VideosService {
         }
         return videos;
     }
+
+    @Override
+    @Transactional
+    public List<Video> getRandomMovie() {
+        return videoDao.findRandomGalleryVideosUniqueParted();
+    }
 }

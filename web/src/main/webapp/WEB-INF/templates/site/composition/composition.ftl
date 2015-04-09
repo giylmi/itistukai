@@ -52,6 +52,9 @@
             </div>
         </div>
         <div class="row">
+            <div class="js-movie-player"></div>
+        </div>
+        <div class="row">
             <div class="js-gallery">
 
             </div>
@@ -75,4 +78,4 @@
     })(document,"/resources/plyr/sprite.svg");
 </script>
 </#macro>
-<@m_page title="${composition.name}" customScripts=["js/composition.site.js", "plyr/plyr.js"] customStyles=["plyr/plyr.css"]/>
+<@m_page title="${composition.name}" customScripts=["js/composition.site.js", "js/movie-player.js", "plyr/plyr.js"] customStyles=["plyr/plyr.css"]/>

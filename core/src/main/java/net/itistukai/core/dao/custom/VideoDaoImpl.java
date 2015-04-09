@@ -40,6 +40,16 @@ public class VideoDaoImpl implements VideoCustomDao {
         return new PageImpl<Video>(videoList, pageable, total);
     }
 
+    @Override
+    public List<Video> findRandomGalleryVideosUniqueParted() {
+        List<Long> ids = getLongIds();
+        List videoList = getCurrentSession().createCriteria(Video.class).add(Restrictions.in("id", ids))
+                .createAlias("part", "part")
+                .addOrder(Order.asc("part.number"))
+                .list();
+        return videoList;
+    }
+
     private Order transformOrder(Pageable pageable) {
         Sort sort = pageable.getSort();
         Sort.Order order = sort.iterator().next();

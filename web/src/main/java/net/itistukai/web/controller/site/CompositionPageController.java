@@ -1,11 +1,17 @@
 package net.itistukai.web.controller.site;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 import net.itistukai.core.domain.core.Composition;
 import net.itistukai.core.domain.core.Part;
+import net.itistukai.core.domain.core.Video;
 import net.itistukai.web.service.CompositionService;
 import net.itistukai.web.service.PartsService;
 import net.itistukai.web.service.VideosService;
 import net.itistukai.web.sort.SortType;
+import net.itistukai.web.vo.CompositionVO;
+import net.itistukai.web.vo.PartVO;
+import net.itistukai.web.vo.VideoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -13,6 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by adel on 12.03.15.
@@ -69,6 +78,26 @@ public class CompositionPageController {
         model.addAttribute("partId", partId);
         model.addAttribute("hideRepeat", hideRepeat);
         return "site/composition/videos";
+    }
+
+    @RequestMapping(value = "videos/json", method = RequestMethod.POST)
+    @ResponseBody
+    public List<VideoVO> videosJson(){
+        List<Video> videos = videosService.getRandomMovie();
+        return Lists.transform(videos, new Function<Video, VideoVO>() {
+            @Override
+            public VideoVO apply(Video input) {
+                return new VideoVO(input.getUrl(), input.getPreloaderUrl(), getPart(input));
+            }
+
+            private PartVO getPart(Video input) {
+                return new PartVO(input.getPart().getId(), input.getPart().getText(), getComposition(input));
+            }
+
+            private CompositionVO getComposition(Video input) {
+                return new CompositionVO(input.getPart().getComposition().getId(), input.getPart().getComposition().getName(), input.getPart().getComposition().getStatus());
+            }
+        });
     }
 
     private boolean extractHideRepeat(String hideRepeatStr) {
