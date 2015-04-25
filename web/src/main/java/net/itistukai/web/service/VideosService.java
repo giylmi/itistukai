@@ -28,5 +28,5 @@ public interface VideosService {
 
     Video saveVideo(Video video);
 
-    Page getGalleryVideos(int page, Long partId, SortType sort);
+    Page getGalleryVideos(int page, Long partId, boolean hideRepeat, SortType sort);
 }

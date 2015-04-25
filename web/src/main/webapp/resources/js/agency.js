@@ -25,7 +25,8 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 $(document).ready(function () {
-    $('#lang').on('click', function() {
+    $('#lang').on('click', function(e) {
+        e.preventDefault();
         $('.lang_dropdown').toggle();
     });
 });
