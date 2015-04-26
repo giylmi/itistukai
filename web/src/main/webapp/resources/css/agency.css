@@ -298,11 +298,13 @@ header .intro-text .intro-heading {
     font-weight: 700;
     line-height: 50px;
 }
-
+.intro-text > div{
+    margin-bottom: 20px;
+}
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 300px;
-        padding-bottom: 200px;
+        /*padding-top: 300px;*/
+        padding-bottom: 360px;
     }
 
     header .intro-text .intro-lead-in {

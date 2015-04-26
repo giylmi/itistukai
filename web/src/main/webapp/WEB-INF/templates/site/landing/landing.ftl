@@ -1,4 +1,3 @@
-
 <#include "../mainTemplate.ftl"/>
 <#macro m_body>
 <!-- Header -->
@@ -6,8 +5,14 @@
     <div class="container">
         <div class="intro-text">
             <!--<div class="intro-lead-in">проект</div>-->
-            <div class="intro-heading">IT IS Tuqay</div>
-            <a href="#tuqai" class="page-scroll btn btn-xl"><@spring.message code="site.knowmore"/></a>
+            <div class="col-md-6 col-xs-12">
+                <div class="intro-heading">IT IS Tuqay</div>
+                <a href="#tuqai" class="page-scroll btn btn-xl"><@spring.message code="site.knowmore"/></a>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/zX2eMyRE9pY" frameborder="0"
+                        allowfullscreen=""></iframe>
+            </div>
         </div>
     </div>
 </header>
@@ -48,6 +53,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <p><@spring.message code="site.itistuqaiinfo"/></p>
+
                 <p>
                     <@spring.message code="site.flashmobinfo"/>
                 </p>
@@ -99,16 +105,16 @@
         <div class="row">
             <div class="col-sm-12">
                 <p class="text-center">
-                    <ol>
-                        <li><@spring.message code="site.joinrule1"/></li>
-                        <li><@spring.messageArgs code="site.joinrule2" args=[(randomPart.id)!]/></li>
-                        <li><@spring.message code="site.joinrule3"/></li>
-                    </ol>
+                <ol>
+                    <li><@spring.message code="site.joinrule1"/></li>
+                    <li><@spring.messageArgs code="site.joinrule2" args=[(randomPart.id)!]/></li>
+                    <li><@spring.message code="site.joinrule3"/></li>
+                </ol>
                 </p>
             </div>
             <div class="col-sm-12">
                 <p class="text-center text_p">
-                    ${(randomPart.htmlText())!}
+                ${(randomPart.htmlText())!}
                 </p>
             </div>
             <div class="text-center">
@@ -125,19 +131,22 @@
             </div>
         </div>
         <div class="row">
-            <#--col-sm-4 col-sm-push-2-->
+        <#--col-sm-4 col-sm-push-2-->
             <div class="col-xs-12 col-sm-3 col-sm-push-3">
                 <div class="team-member">
-                    <div style="background-image: url('/resources/img/team/da.jpg')" class="center-block img-responsive img-circle photo_block">
+                    <div style="background-image: url('/resources/img/team/da.jpg')"
+                         class="center-block img-responsive img-circle photo_block">
                     </div>
 
                     <h4><@spring.message code="site.team.da"/></h4>
+
                     <p class="text-muted"><@spring.message code="site.team.da.reg"/></p>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 col-sm-push-3">
                 <div class="team-member">
-                    <div style="background-image: url('/resources/img/team/ag.jpg')" class="center-block img-responsive img-circle photo_block">
+                    <div style="background-image: url('/resources/img/team/ag.jpg')"
+                         class="center-block img-responsive img-circle photo_block">
                     </div>
 
                     <h4><@spring.message code="site.team.ag"/></h4>
@@ -148,7 +157,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-3 col-sm-push-1">
                 <div class="team-member">
-                    <div style="background-image: url('/resources/img/team/am.jpg')" class="center-block img-responsive img-circle photo_block">
+                    <div style="background-image: url('/resources/img/team/am.jpg')"
+                         class="center-block img-responsive img-circle photo_block">
                     </div>
 
                     <h4><@spring.message code="site.team.am"/></h4>
@@ -156,14 +166,16 @@
             </div>
             <div class="col-xs-12 col-sm-3 col-sm-push-2">
                 <div class="team-member">
-                    <div style="background-image: url('/resources/img/team/rs.jpg')" class="center-block img-responsive img-circle photo_block">
+                    <div style="background-image: url('/resources/img/team/rs.jpg')"
+                         class="center-block img-responsive img-circle photo_block">
                     </div>
                     <h4><@spring.message code="site.team.rs"/></h4>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 col-sm-push-3">
                 <div class="team-member ">
-                    <div style="background-image: url('/resources/img/team/pb.jpg')" class="center-block img-responsive img-circle photo_block">
+                    <div style="background-image: url('/resources/img/team/pb.jpg')"
+                         class="center-block img-responsive img-circle photo_block">
                     </div>
 
                     <h4><@spring.message code="site.team.pb"/></h4>
