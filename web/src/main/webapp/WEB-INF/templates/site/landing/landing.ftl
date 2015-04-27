@@ -10,7 +10,7 @@
                 <a href="#tuqai" class="page-scroll btn btn-xl"><@spring.message code="site.knowmore"/></a>
             </div>
             <div class="col-md-6 col-xs-12">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/zX2eMyRE9pY" frameborder="0"
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7j3AxVymKUk" frameborder="0"
                         allowfullscreen=""></iframe>
             </div>
         </div>
