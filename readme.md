@@ -1,8 +1,7 @@
-##Настройки бд
-находим database-local.properties.origin, перекладываем в файл без ориджина, делаем свои настройки.
-##Настройки выгрузки видео
-Видосы из инстаграма подгружаются через `InstagramDownloadJob`.
-Чтобы не грузить постоянно(локально нам это не нужно), джоб активируется только при наличия спрингового профиля `uploadOn`.
-Профиль можно проставить через VM options. Нужно добавить `-Dspring.profiles.active=uploadOn`
-##добавление админа
-выполняем через миграцию флайвеем. логин admin пароль admin_pa$$
+# Itistukai
+
+Social project that gives its user a part of a poem, videos playing of which should be downloaded to Instagram. Then the web-server aggregates them on a site, so the whole poem can be played by different people.
+
+It has been launched in honor of great Tatar composer Gabdullat Tukai.
+
+The resulted video. https://www.youtube.com/watch?v=7j3AxVymKUk&t=70s
